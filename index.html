@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLLY | High-End Web Developer Portfolio</title>
-    
-    <!-- Иконки и шрифты (Geist - самый трендовый сейчас) -->
+    <title>NOLLY | Digital Developer Portfolio</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Geist:wght@300;500;800&display=swap" rel="stylesheet">
-    
-    <!-- Файлы стилей -->
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Навигация -->
     <nav class="navbar">
         <div class="container nav-flex">
             <div class="logo">NOLLY<span>.</span></div>
             <div class="nav-links">
                 <a href="#philosophy">Философия</a>
+                <a href="#skills">Навыки</a>
                 <a href="#cases">Портфолио</a>
-                <a href="#process">Процесс</a>
                 <a href="#pricing">Инвестиции</a>
                 <a href="#contact" class="btn-cta">Начать проект</a>
             </div>
         </div>
     </nav>
 
-    <!-- Главный экран (Hero) -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="status-badge">Available for high-end projects</div>
-                <h1 class="gradient-text">Разработка<br>с характером</h1>
-                <p class="hero-sub">Меня зовут NOLLY, мне 19 лет. Я создаю цифровые продукты, которые выглядят дорого, работают быстро и превращают посетителей в клиентов.</p>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Разработка</span><br>
+                    <span class="gradient-text">с характером</span>
+                </h1>
+                <p class="hero-sub">NOLLY, 19 лет. Создаю цифровые продукты, которые выглядят дорого, работают быстро и превращают посетителей в лояльных клиентов.</p>
                 <div class="hero-btns">
                     <a href="#cases" class="btn-primary">Смотреть работы</a>
                 </div>
@@ -45,7 +42,6 @@
         </div>
     </header>
 
-    <!-- Раздел: Философия -->
     <section id="philosophy" class="section">
         <div class="container">
             <h2 class="section-title">Философия</h2>
@@ -53,132 +49,147 @@
                 <div class="phi-card main-phi">
                     <span class="phi-tag">01 / Мощность</span>
                     <h3>Молодой и всемогущий</h3>
-                    <p>В 19 лет мой взгляд не замылен шаблонами прошлого. Я использую самый свежий стек технологий. Для меня нет фразы «это невозможно реализовать». Если вы это придумали — я это запрограммирую с нуля, чисто и быстро.</p>
+                    <p>В 19 лет я не смотрю на старые шаблоны. Мой код — это современное искусство. Если вы можете это представить, я могу это запрограммировать, используя самый свежий стек технологий.</p>
                 </div>
                 <div class="phi-card side-phi">
                     <span class="phi-tag">02 / Эстетика</span>
                     <h3>Мягкий дизайн</h3>
-                    <p>Я сторонник «округлого» веба. Мой дизайн приятен глазу, его хочется скроллить. Каждая кнопка и карточка — это баланс между мировыми трендами и удобством пользователя.</p>
+                    <p>Я создаю округлый, приятный глазу веб. Моя цель — сделать так, чтобы ваш сайт не просто работал, а вызывал эстетическое удовольствие при каждом клике.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: Избранные Кейсы -->
+    <section id="skills" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Профессиональные Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card phi-card">
+                    <i class="fa-brands fa-js skill-icon"></i>
+                    <h4>JavaScript (ES6+)</h4>
+                    <p>Сложная логика, асинхронные запросы, работа с DOM и современными API. Чистый и масштабируемый код.</p>
+                </div>
+                <div class="skill-card phi-card">
+                    <i class="fa-brands fa-css3-alt skill-icon"></i>
+                    <h4>HTML5 & CSS3</h4>
+                    <p>Адаптивная верстка, Flexbox, Grid, сложные анимации и работа с переменными для гибкого дизайна.</p>
+                </div>
+                <div class="skill-card phi-card">
+                    <i class="fa-brands fa-react skill-icon"></i>
+                    <h4>Современные либы</h4>
+                    <p>Опыт работы с React, анимациями GSAP и библиотеками для создания плавного пользовательского опыта.</p>
+                </div>
+                <div class="skill-card phi-card">
+                    <i class="fa-solid fa-layer-group skill-icon"></i>
+                    <h4>UI/UX & SEO</h4>
+                    <p>Проработка пользовательских путей, дизайн в Figma и базовая оптимизация для поисковых систем.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="cases" class="section">
         <div class="container">
             <h2 class="section-title">Избранные Кейсы</h2>
 
-            <!-- Категория: Обычные -->
+            <!-- Essential Level -->
             <div class="category-block">
                 <div class="category-header">
                     <span class="cat-label">Essential Level</span>
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <!-- Кейс 1: Дома -->
-                    <div class="case-card" onclick="openModal(['img/house/1.jpg', 'img/house/2.jpg', 'img/house/3.jpg', 'img/house/4.jpg', 'img/house/5.jpg'], 'Продажа недвижимости', 'Классический Landing Page для продажи загородных домов. Акцент на качественных фото, удобные формы захвата и высокая скорость загрузки.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/house/1.jpg');"></div>
+                    <div class="case-card" onclick="openModal(['img/house1.jpg', 'img/house2.jpg', 'img/house3.jpg', 'img/house4.jpg', 'img/house5.jpg'], 'Продажа недвижимости', 'Премиальный Landing Page для продажи загородных домов. Акцент на визуале и конверсии.')">
+                        <div class="case-img-container">
+                            <div class="case-img" style="background-image: url('img/house1.jpg');"></div>
+                            <div class="case-overlay"><span>Смотреть кейс</span></div>
+                        </div>
                         <div class="case-info">
                             <h4>Продажа домов</h4>
-                            <p>Essential / 5 фото</p>
+                            <p class="case-meta">Essential / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 2: Адвокаты -->
-                    <div class="case-card" onclick="openModal(['img/law/1.jpg', 'img/law/2.jpg', 'img/law/3.jpg', 'img/law/4.jpg', 'img/law/5.jpg'], 'Услуги адвокатов', 'Сайт для юридического бюро. Лаконичный дизайн, вызывающий доверие. Полная адаптивность и проработка UX-пути клиента.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/law/1.jpg');"></div>
+                    <div class="case-card" onclick="openModal(['img/law1.jpg', 'img/law2.jpg', 'img/law3.jpg', 'img/law4.jpg', 'img/law5.jpg'], 'Услуги адвокатов', 'Корпоративный сайт для юридического бюро. Доверие и лаконичный стиль.')">
+                        <div class="case-img-container">
+                            <div class="case-img" style="background-image: url('img/law1.jpg');"></div>
+                            <div class="case-overlay"><span>Смотреть кейс</span></div>
+                        </div>
                         <div class="case-info">
                             <h4>Услуги адвокатов</h4>
-                            <p>Essential / 5 фото</p>
+                            <p class="case-meta">Essential / 5 фото</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Категория: High-End -->
-            <div class="category-block">
+            <!-- High-End Level -->
+            <div class="category-block premium-section">
                 <div class="category-header">
                     <span class="cat-label premium-label">High-End Level</span>
-                    <div class="line"></div>
+                    <div class="line gold-line"></div>
                 </div>
                 <div class="case-grid">
-                    <!-- Кейс 3: Авто -->
-                    <div class="case-card premium" onclick="openModal(['img/car/1.jpg', 'img/car/2.jpg', 'img/car/3.jpg', 'img/car/4.jpg', 'img/car/5.jpg'], 'Rent a Car Premium', 'Сложный интерфейс аренды авто. Интерактивные фильтры, плавная анимация появления элементов и уникальный темный стиль.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/car/1.jpg');"></div>
+                    <div class="case-card premium" onclick="openModal(['img/car1.jpg', 'img/car2.jpg', 'img/car3.jpg', 'img/car4.jpg', 'img/car5.jpg'], 'Rent a Car Premium', 'Сложный интерфейс аренды авто с фильтрами.')">
+                        <div class="case-img-container gold-border">
+                            <div class="case-img" style="background-image: url('img/car1.jpg');"></div>
+                            <div class="case-overlay"><span>Premium Case</span></div>
+                        </div>
                         <div class="case-info">
                             <h4>Аренда авто</h4>
-                            <p>High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 4: Агентство -->
-                    <div class="case-card premium" onclick="openModal(['img/agency/1.jpg', 'img/agency/2.jpg', 'img/agency/3.jpg', 'img/agency/4.jpg', 'img/agency/5.jpg'], 'Digital Agency', 'Сайт-портфолио для агентства. Нестандартные переходы между страницами, много цветного текста и параллакс эффекты.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/agency/1.jpg');"></div>
+                    <div class="case-card premium" onclick="openModal(['img/agency1.jpg', 'img/agency2.jpg', 'img/agency3.jpg', 'img/agency4.jpg', 'img/agency5.jpg'], 'Digital Agency', 'Сайт для креативного агентства.')">
+                        <div class="case-img-container gold-border">
+                            <div class="case-img" style="background-image: url('img/agency1.jpg');"></div>
+                            <div class="case-overlay"><span>Premium Case</span></div>
+                        </div>
                         <div class="case-info">
                             <h4>Агентство</h4>
-                            <p>High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 5: Клуб -->
-                    <div class="case-card premium" onclick="openModal(['img/club/1.jpg', 'img/club/2.jpg', 'img/club/3.jpg', 'img/club/4.jpg', 'img/club/5.jpg'], 'Club Experience', 'Погружающий дизайн для ночного клуба. Видео-фоны, неоновые акценты и интеграция с социальными сетями.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/club/1.jpg');"></div>
+                    <div class="case-card premium" onclick="openModal(['img/club1.jpg', 'img/club2.jpg', 'img/club3.jpg', 'img/club4.jpg', 'img/club5.jpg'], 'Club Experience', 'Погружающий дизайн для ночного клуба.')">
+                        <div class="case-img-container gold-border">
+                            <div class="case-img" style="background-image: url('img/club1.jpg');"></div>
+                            <div class="case-overlay"><span>Premium Case</span></div>
+                        </div>
                         <div class="case-info">
                             <h4>Сайт клуба</h4>
-                            <p>High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 5 фото</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Резервные места -->
+            <!-- Reserved Spots -->
             <div class="category-block">
                 <div class="category-header">
-                    <span class="cat-label premium-label">Reserved Spots</span>
+                    <span class="cat-label">Reserved Spots</span>
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <div class="case-card premium placeholder">
-                        <h4>High-End Spot 01</h4>
-                        <p>Место для вашего проекта</p>
+                    <div class="case-card placeholder-card">
+                        <div class="placeholder-content">
+                            <div class="pulse-dot"></div>
+                            <h4>High-End Spot 01</h4>
+                        </div>
                     </div>
-                    <div class="case-card premium placeholder">
-                        <h4>High-End Spot 02</h4>
-                        <p>Место для вашего проекта</p>
+                    <div class="case-card placeholder-card">
+                        <div class="placeholder-content">
+                            <div class="pulse-dot"></div>
+                            <h4>High-End Spot 02</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: Процесс -->
-    <section id="process" class="section">
-        <div class="container">
-            <h2 class="section-title">Путь к результату</h2>
-            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <div class="proc-card phi-card">
-                    <div class="phi-tag">01</div>
-                    <h4>Аналитика</h4>
-                    <p>Изучаю ваш бизнес и конкурентов, чтобы найти точки роста.</p>
-                </div>
-                <div class="proc-card phi-card">
-                    <div class="phi-tag">02</div>
-                    <h4>Дизайн</h4>
-                    <p>Создаю уникальный визуальный стиль в Figma с упором на UX.</p>
-                </div>
-                <div class="proc-card phi-card">
-                    <div class="phi-tag">03</div>
-                    <h4>Разработка</h4>
-                    <p>Пишу чистый код, который работает быстро и без ошибок.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Раздел: Инвестиции -->
     <section id="pricing" class="section">
         <div class="container">
             <h2 class="section-title">Инвестиции в результат</h2>
             <div class="price-wrapper">
-                <!-- 5 000 -->
                 <div class="price-card">
                     <div class="price-header">
                         <h3>Start</h3>
@@ -188,16 +199,10 @@
                         <li><i class="fa-solid fa-check"></i> Адаптивный Landing</li>
                         <li><i class="fa-solid fa-check"></i> 10 блоков контента</li>
                         <li><i class="fa-solid fa-check"></i> Базовая SEO-база</li>
-                        <li><i class="fa-solid fa-check"></i> Интеграция форм</li>
-                        <li><i class="fa-solid fa-check"></i> Подбор шрифтов</li>
                         <li><i class="fa-solid fa-check"></i> Срок: до 3 дней</li>
-                        <li><i class="fa-solid fa-check"></i> Анимации появления</li>
-                        <li><i class="fa-solid fa-check"></i> Настройка хостинга</li>
-                        <li><i class="fa-solid fa-check"></i> SSL-сертификат</li>
                         <li><i class="fa-solid fa-check"></i> Поддержка 7 дней</li>
                     </ul>
                 </div>
-                <!-- 15 000 -->
                 <div class="price-card featured">
                     <div class="price-header">
                         <h3>Advanced</h3>
@@ -205,18 +210,12 @@
                     </div>
                     <ul class="price-list">
                         <li><i class="fa-solid fa-check"></i> До 5 страниц сайта</li>
-                        <li><i class="fa-solid fa-check"></i> Сложные анимации</li>
                         <li><i class="fa-solid fa-check"></i> Дизайн в Figma</li>
                         <li><i class="fa-solid fa-check"></i> Оптимизация PageSpeed</li>
-                        <li><i class="fa-solid fa-check"></i> Кнопки мессенджеров</li>
                         <li><i class="fa-solid fa-check"></i> Срок: 7-10 дней</li>
-                        <li><i class="fa-solid fa-check"></i> Маркетинговые текста</li>
-                        <li><i class="fa-solid fa-check"></i> Брендинг (лого)</li>
-                        <li><i class="fa-solid fa-check"></i> Удобная админка</li>
                         <li><i class="fa-solid fa-check"></i> Поддержка 30 дней</li>
                     </ul>
                 </div>
-                <!-- 23 000 -->
                 <div class="price-card">
                     <div class="price-header">
                         <h3>Elite</h3>
@@ -225,38 +224,34 @@
                     <ul class="price-list">
                         <li><i class="fa-solid fa-check"></i> High-End разработка</li>
                         <li><i class="fa-solid fa-check"></i> 3D элементы декора</li>
-                        <li><i class="fa-solid fa-check"></i> Личный кабинет</li>
-                        <li><i class="fa-solid fa-check"></i> Аналитика продаж</li>
                         <li><i class="fa-solid fa-check"></i> Приоритет в очереди</li>
-                        <li><i class="fa-solid fa-check"></i> Уникальные шрифты</li>
-                        <li><i class="fa-solid fa-check"></i> Срок: от 14 дней</li>
                         <li><i class="fa-solid fa-check"></i> AI-ассистент на сайт</li>
                         <li><i class="fa-solid fa-check"></i> Пожизненный сервис</li>
-                        <li><i class="fa-solid fa-check"></i> Маркетинг-стратегия</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Модальное окно (Слайдер) -->
+    <!-- Модальное окно -->
     <div id="caseModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-window" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="modal-slider-box" style="position: relative; display: flex; align-items: center;">
-                <button class="slider-btn prev" onclick="changeSlide(-1)" style="left: 10px;">&#10094;</button>
+            <div class="modal-slider-box">
+                <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
                 <div id="modalImg" class="modal-img"></div>
-                <button class="slider-btn next" onclick="changeSlide(1)" style="right: 10px;">&#10095;</button>
+                <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+                <div id="slideCounter" class="slide-counter">1 / 5</div>
             </div>
             <div class="modal-body">
-                <div id="slideCounter" class="slide-counter" style="color: var(--accent-primary); font-weight: 800; margin-bottom: 10px;">1 / 5</div>
                 <h3 id="modalTitle">Название проекта</h3>
                 <p id="modalDesc">Описание проекта...</p>
+                <a href="#contact" class="btn-primary modal-cta" onclick="closeModal()">Заказать такой проект</a>
             </div>
         </div>
     </div>
 
-    <!-- AI Ассистент -->
+    <!-- AI Контейнер -->
     <div class="ai-container">
         <button id="aiBtn" class="ai-toggle">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -271,11 +266,6 @@
                     <button class="ai-q" data-q="3">Делаешь дизайн?</button>
                     <button class="ai-q" data-q="4">Есть ли поддержка?</button>
                     <button class="ai-q" data-q="5">Работа по договору?</button>
-                    <button class="ai-q" data-q="6">Как оплачивать?</button>
-                    <button class="ai-q" data-q="7">Сделаешь скидку?</button>
-                    <button class="ai-q" data-q="8">Какой хостинг?</button>
-                    <button class="ai-q" data-q="9">Что по SEO?</button>
-                    <button class="ai-q" data-q="10">Почему именно ты?</button>
                 </div>
                 <div id="aiBox" class="ai-box">Привет! Выбери вопрос выше.</div>
             </div>
