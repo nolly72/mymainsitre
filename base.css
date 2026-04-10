@@ -1,43 +1,40 @@
 /* ============================================================
-   BASE.CSS — Глобальные настройки, Шрифты и Переменные
+   BASE.CSS — Фундамент, Шрифты и Цветовая Среда
    ============================================================ */
 
 :root {
-    /* Основные цвета (Трендовый Dark Mode) */
-    --bg-dark: #070708;
-    --bg-card: #121214;
-    --bg-card-hover: #19191c;
+    /* Основная палитра (Deep Dark) */
+    --bg-dark: #050505;
+    --bg-card: #0f0f11;
+    --bg-card-hover: #161618;
     
-    /* Акцентные цвета и градиенты */
-    --accent-primary: #ff3c5f; /* Яркий розовый */
-    --accent-secondary: #7928ca; /* Фиолетовый */
+    /* Акцентные цвета как в логотипе и заголовке */
+    --accent-primary: #ff3c5f;
+    --accent-secondary: #7928ca;
     --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 100%);
-    --gradient-text: linear-gradient(90deg, #ffffff 0%, #a1a1aa 100%);
     
-    /* Текст */
-    --text-white: #ffffff;
-    --text-gray: #a1a1aa;
+    /* Текстовые переменные */
+    --text-pure: #ffffff;
+    --text-dim: #a1a1aa;
     --text-muted: #63636b;
     
-    /* Трендовые скругления (Border Radius) */
+    /* Трендовые скругления (High-End Style) */
     --radius-full: 100px;
-    --radius-xl: 40px;   /* Для основных блоков */
-    --radius-lg: 24px;   /* Для карточек и фото */
+    --radius-xl: 42px;   /* Для больших блоков и карточек */
+    --radius-lg: 28px;   /* Для фотографий и внутренних элементов */
     --radius-md: 16px;   /* Для кнопок и инпутов */
     
-    /* Анимации и переходы */
-    --transition-fast: 0.3s ease;
-    --transition-smooth: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    
-    /* Тени */
-    --shadow-glow: 0 10px 40px rgba(255, 60, 95, 0.15);
+    /* Тайминги анимаций */
+    --transition-smooth: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Обнуление стилей */
+/* Принудительная установка шрифта Montserrat для всего проекта */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif !important;
+    outline: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -48,35 +45,48 @@ html {
 
 body {
     background-color: var(--bg-dark);
-    color: var(--text-white);
-    font-family: 'Geist', sans-serif;
+    color: var(--text-pure);
     line-height: 1.6;
     overflow-x: hidden;
+    
+    /* Фоновые "цветные пятна" (Градиент на весь экран) */
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 60, 95, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(255, 60, 95, 0.03) 0%, transparent 60%);
+    background-attachment: fixed;
 }
 
-/* Округлый текст и заголовки */
-h1, h2, h3, h4, h5, .logo, .btn-cta {
-    font-weight: 800;
-    letter-spacing: -0.04em;
+/* Округлый стиль для всех текстовых блоков */
+h1, h2, h3, h4, h5, p, span, a, li, button {
+    border-radius: 12px; /* Визуальное смягчение границ текстовых контейнеров */
 }
 
-/* Контейнер */
+/* Контейнер для выравнивания */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-/* Ссылки */
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition-fast);
+/* Секции */
+.section {
+    padding: 120px 0;
+    position: relative;
 }
 
-/* Скроллбар в стиле NOLLY */
+.section-title {
+    font-size: clamp(38px, 7vw, 68px);
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 80px;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+/* Стилизация скроллбара под дизайн */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -84,7 +94,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #222;
     border-radius: var(--radius-full);
 }
 
@@ -92,44 +102,41 @@ a {
     background: var(--accent-primary);
 }
 
-/* Вспомогательные классы */
+/* Градиентный текст (как в "Разработка с характером") */
 .gradient-text {
     background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
     display: inline-block;
 }
 
+/* Утилиты */
 .hidden {
     display: none !important;
 }
 
-.section {
-    padding: 120px 0;
+.alt-bg {
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.section-title {
-    font-size: clamp(36px, 6vw, 64px);
-    text-align: center;
-    margin-bottom: 70px;
-    line-height: 1.1;
-}
-
-/* Общие стили для кнопок */
+/* Кнопки */
 .btn-cta, .btn-primary {
     display: inline-block;
-    padding: 16px 32px;
-    background: var(--text-white);
+    padding: 20px 40px;
+    background: var(--text-pure);
     color: var(--bg-dark);
     border-radius: var(--radius-full);
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    border: none;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
     transition: var(--transition-smooth);
+    border: none;
+    cursor: pointer;
+    text-align: center;
 }
 
-.btn-cta:hover, .btn-primary:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+.btn-primary:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }

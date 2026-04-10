@@ -20,23 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
         "7": "Я всегда открыт к обсуждению. При заказе комплекса услуг или для очень интересных стартапов я делаю приятные бонусы.",
         "8": "Я помогу с выбором и настройкой: от бесплатного Vercel для лендингов до мощных защищенных серверов для крупных проектов.",
         "9": "В каждый сайт уже заложена правильная структура для поисковиков: теги, мета-данные, высокая скорость загрузки и адаптивность.",
-        "10": "Мне 19, я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
+        "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
+    // Открытие/закрытие чата
     aiBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         aiChat.classList.toggle('hidden');
     });
 
+    // Обработка клика по вопросу
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
+            const answer = aiAnswers[qId];
+            
             aiBox.style.opacity = '0.5';
             aiBox.innerText = "NOLLY печатает...";
+            
             setTimeout(() => {
                 aiBox.style.opacity = '1';
-                aiBox.innerText = aiAnswers[qId];
-            }, 600);
+                aiBox.innerText = answer;
+            }, 500);
         });
     });
 
@@ -50,8 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImages = [];
     let currentSlideIndex = 0;
 
-    // Глобальная функция открытия (вызывается из HTML)
+    // Глобальная функция открытия (вызывается из HTML через onclick)
     window.openModal = function(images, title, description) {
+        // Проверяем, массив это или одна строка
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
         
@@ -61,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlide();
         
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Отключаем скролл страницы
     };
 
-    // Глобальная функция переключения (вызывается кнопками в HTML)
+    // Глобальная функция переключения (вызывается кнопками в модалке)
     window.changeSlide = function(direction) {
         currentSlideIndex += direction;
         
@@ -75,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updateSlide() {
+        // Устанавливаем картинку
         modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
+        // Обновляем счетчик 1 / 5
         if (slideCounter) {
             slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
         }
@@ -83,18 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.closeModal = function() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; // Возвращаем скролл
     };
 
     // Закрытие по клику вне окна
     window.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
+        // Закрываем чат, если кликнули мимо него
         if (!aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
             aiChat.classList.add('hidden');
         }
     });
 
-    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ
+    const observerOptions = {
+        threshold: 0.15
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -102,13 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .proc-card');
+    // Выбираем все блоки для анимации (карточки, цены, заголовки)
+    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title');
+    
     itemsToAnimate.forEach(item => {
         item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+        item.style.transform = 'translateY(40px)';
+        item.style.transition = 'all 0.9s cubic-bezier(0.23, 1, 0.32, 1)';
         observer.observe(item);
     });
 });
