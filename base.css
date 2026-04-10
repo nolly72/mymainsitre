@@ -1,42 +1,41 @@
 /* ============================================================
-   BASE.CSS — Фундамент, Шрифты и Цветовая Среда
+   BASE.CSS — Фундамент и Глобальные Настройки
    ============================================================ */
 
 :root {
-    /* Основная палитра (Deep Dark) */
+    /* Палитра Deep Dark */
     --bg-dark: #050505;
     --bg-card: #0f0f11;
     --bg-card-hover: #161618;
     
-    /* Акцентные цвета как в логотипе и заголовке */
+    /* Акценты */
     --accent-primary: #ff3c5f;
     --accent-secondary: #7928ca;
     --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 100%);
     
-    /* Текстовые переменные */
+    /* Текст */
     --text-pure: #ffffff;
     --text-dim: #a1a1aa;
     --text-muted: #63636b;
     
-    /* Трендовые скругления (High-End Style) */
+    /* Радиусы (High-End Style) */
     --radius-full: 100px;
-    --radius-xl: 42px;   /* Для больших блоков и карточек */
-    --radius-lg: 28px;   /* Для фотографий и внутренних элементов */
-    --radius-md: 16px;   /* Для кнопок и инпутов */
+    --radius-xl: 42px;   
+    --radius-lg: 28px;   
+    --radius-md: 16px;   
     
-    /* Тайминги анимаций */
+    /* Анимации */
     --transition-smooth: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Принудительная установка шрифта Montserrat для всего проекта */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Шрифт Montserrat ко всему проекту принудительно */
     font-family: 'Montserrat', sans-serif !important;
     outline: none;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -49,30 +48,21 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     
-    /* Фоновые "цветные пятна" (Градиент на весь экран) */
+    /* Фоновые градиенты */
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(255, 60, 95, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(255, 60, 95, 0.03) 0%, transparent 60%);
+        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 45%);
     background-attachment: fixed;
 }
 
-/* Округлый стиль для всех текстовых блоков */
-h1, h2, h3, h4, h5, p, span, a, li, button {
-    border-radius: 12px; /* Визуальное смягчение границ текстовых контейнеров */
-}
-
-/* Контейнер для выравнивания */
 .container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-/* Секции */
 .section {
     padding: 120px 0;
-    position: relative;
 }
 
 .section-title {
@@ -80,63 +70,37 @@ h1, h2, h3, h4, h5, p, span, a, li, button {
     text-align: center;
     font-weight: 800;
     margin-bottom: 80px;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-/* Стилизация скроллбара под дизайн */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #222;
-    border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-primary);
-}
-
-/* Градиентный текст (как в "Разработка с характером") */
 .gradient-text {
     background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
-    display: inline-block;
-}
-
-/* Утилиты */
-.hidden {
-    display: none !important;
-}
-
-.alt-bg {
-    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Кнопки */
-.btn-cta, .btn-primary {
+.btn-primary, .btn-cta {
     display: inline-block;
-    padding: 20px 40px;
+    padding: 18px 38px;
     background: var(--text-pure);
     color: var(--bg-dark);
     border-radius: var(--radius-full);
     font-weight: 800;
-    font-size: 16px;
     text-decoration: none;
     transition: var(--transition-smooth);
     border: none;
     cursor: pointer;
-    text-align: center;
 }
 
 .btn-primary:hover {
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 60, 95, 0.2);
 }
+
+/* Скроллбар */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }

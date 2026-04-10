@@ -1,8 +1,8 @@
 /* ============================================================
-   STYLE.CSS — Дизайн разделов, Навыки, Кейсы и Слайдер
+   STYLE.CSS — Оптимизированный дизайн разделов
    ============================================================ */
 
-/* Навигация (Эффект стекла) */
+/* Навигация */
 .navbar {
     position: fixed;
     top: 0;
@@ -22,6 +22,7 @@
 
 .logo {
     font-size: 28px;
+    font-weight: 800;
 }
 
 .logo span {
@@ -49,7 +50,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 100px;
 }
 
 .hero-title {
@@ -77,6 +77,7 @@
     color: var(--text-dim);
     max-width: 800px;
     margin: 0 auto 50px;
+    font-weight: 300;
 }
 
 /* Карточки Навыков и Философии */
@@ -97,13 +98,6 @@
     transition: var(--transition-smooth);
 }
 
-.phi-card:hover, .skill-card:hover {
-    border-color: var(--accent-primary);
-    transform: translateY(-12px);
-    box-shadow: 0 30px 60px rgba(255, 60, 95, 0.08);
-    background: var(--bg-card-hover);
-}
-
 .phi-tag {
     color: var(--accent-primary);
     font-size: 14px;
@@ -115,9 +109,24 @@
 .phi-card h3, .skill-card h4 {
     font-size: 34px;
     margin-bottom: 20px;
+    font-weight: 800;
 }
 
-/* Кейсы (Исправленная работа с фото в папке IMG) */
+.skill-icon {
+    font-size: 40px;
+    color: var(--accent-primary);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.phi-card:hover, .skill-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(255, 60, 95, 0.08);
+    background: var(--bg-card-hover);
+}
+
+/* Кейсы Портфолио */
 .category-block {
     margin-bottom: 120px;
 }
@@ -142,12 +151,6 @@
     color: var(--accent-secondary);
 }
 
-.line {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-}
-
 .case-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -160,27 +163,56 @@
     padding: 30px;
     cursor: pointer;
     transition: var(--transition-smooth);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.case-img-placeholder {
+.case-img-container {
     width: 100%;
-    height: 260px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.case-img, .case-img-placeholder {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    border-radius: var(--radius-lg);
-    margin-bottom: 28px;
-    background-color: #1a1a1c;
     transition: var(--transition-smooth);
 }
 
-.case-card:hover {
-    background: var(--bg-card-hover);
-    border-color: rgba(255, 255, 255, 0.1);
+.case-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    backdrop-filter: blur(5px);
+    transition: 0.4s ease;
+}
+
+.case-overlay span {
+    padding: 12px 25px;
+    border: 1px solid white;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.case-card:hover .case-img {
+    transform: scale(1.1);
+}
+
+.case-card:hover .case-overlay {
+    opacity: 1;
 }
 
 .case-card.premium {
-    border: 1px solid rgba(121, 40, 202, 0.3);
+    border: 1px solid rgba(121, 40, 202, 0.2);
 }
 
 .case-card.premium:hover {
@@ -189,24 +221,19 @@
 }
 
 /* Инвестиции (Прайс) */
-.price-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
-}
-
 .price-card {
     background: var(--bg-card);
     padding: 60px 45px;
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.04);
     transition: var(--transition-smooth);
-    position: relative;
+    text-align: left;
 }
 
 .price-card.featured {
     border: 2px solid var(--accent-primary);
     transform: scale(1.05);
+    background: var(--bg-card-hover);
 }
 
 .cost {
@@ -220,8 +247,11 @@
     color: var(--text-dim);
 }
 
+.price-list {
+    margin-top: 30px;
+}
+
 .price-list li {
-    list-style: none;
     margin-bottom: 18px;
     display: flex;
     align-items: center;
@@ -230,17 +260,13 @@
     color: var(--text-dim);
 }
 
-.price-list i {
-    color: var(--accent-primary);
-}
-
-/* Модальное окно (Слайдер) */
+/* Модальное окно */
 .modal-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.97);
-    backdrop-filter: blur(25px);
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(20px);
     z-index: 3000;
     align-items: center;
     justify-content: center;
@@ -248,85 +274,64 @@
 
 .modal-window {
     background: var(--bg-card);
-    width: 95%;
-    max-width: 950px;
+    width: 90%;
+    max-width: 1000px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     position: relative;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
 }
-
-.modal-close {
-    position: absolute;
-    top: 30px; right: 35px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none; color: white;
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    font-size: 28px; cursor: pointer;
-    z-index: 100;
-    transition: 0.3s;
-}
-
-.modal-close:hover { background: var(--accent-primary); }
 
 .modal-img {
     width: 100%;
-    height: 480px;
+    height: 500px;
     background-size: cover;
     background-position: center;
 }
 
-/* AI Ассистент */
-.ai-container {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 2000;
+.modal-body {
+    padding: 40px;
+    text-align: center;
 }
 
+/* AI Ассистент */
 .ai-toggle {
-    background: var(--text-pure);
-    color: var(--bg-dark);
-    padding: 20px 35px;
-    border-radius: var(--radius-full);
-    font-weight: 800;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .ai-chat {
-    position: absolute;
-    bottom: 95px;
-    right: 0;
-    width: 380px;
-    background: var(--bg-card);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
 
-.ai-chat-header {
-    background: var(--gradient-main);
-    padding: 25px;
-    font-weight: 800;
+/* Футер */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
 }
 
-.ai-box {
-    background: #000;
-    padding: 25px;
-    color: #00ff88;
-    font-family: monospace;
-    font-size: 15px;
-}
-
-/* Мобильный адаптив */
+/* Адаптив */
 @media (max-width: 992px) {
     .philosophy-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: scale(1); }
 }
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .hero-title { font-size: 56px; }
-    .section-title { font-size: 40px; }
-    .price-card.featured { transform: scale(1); }
-    .ai-chat { width: 320px; right: -20px; }
+    .section { padding: 80px 0; }
+    .ai-chat { width: 300px; right: -20px; }
+}
+
+
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
 }

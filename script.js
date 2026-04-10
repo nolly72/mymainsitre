@@ -23,25 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
         "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
-    // Открытие/закрытие чата
-    aiBtn.addEventListener('click', (e) => {
+    aiBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         aiChat.classList.toggle('hidden');
     });
 
-    // Обработка клика по вопросу
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
             const answer = aiAnswers[qId];
             
-            aiBox.style.opacity = '0.5';
+            aiBox.style.opacity = '0.4';
             aiBox.innerText = "NOLLY печатает...";
             
             setTimeout(() => {
                 aiBox.style.opacity = '1';
                 aiBox.innerText = answer;
-            }, 500);
+            }, 400);
         });
     });
 
@@ -55,9 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImages = [];
     let currentSlideIndex = 0;
 
-    // Глобальная функция открытия (вызывается из HTML через onclick)
     window.openModal = function(images, title, description) {
-        // Проверяем, массив это или одна строка
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
         
@@ -67,23 +63,24 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlide();
         
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Отключаем скролл страницы
+        document.body.style.overflow = 'hidden'; 
     };
 
-    // Глобальная функция переключения (вызывается кнопками в модалке)
     window.changeSlide = function(direction) {
         currentSlideIndex += direction;
-        
         if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
         if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
-        
         updateSlide();
     };
 
     function updateSlide() {
-        // Устанавливаем картинку
-        modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
-        // Обновляем счетчик 1 / 5
+        // Плавная смена через прозрачность
+        modalImg.style.opacity = '0';
+        setTimeout(() => {
+            modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
+            modalImg.style.opacity = '1';
+        }, 150);
+
         if (slideCounter) {
             slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
         }
@@ -91,39 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.closeModal = function() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Возвращаем скролл
+        document.body.style.overflow = 'auto';
     };
 
-    // Закрытие по клику вне окна
+    // Закрытие по клику вне окна и кнопке Esc
     window.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
-        // Закрываем чат, если кликнули мимо него
-        if (!aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
-            aiChat.classList.add('hidden');
+        if (!aiChat?.contains(e.target) && !aiBtn?.contains(e.target)) {
+            aiChat?.classList.add('hidden');
         }
     });
 
-    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ
-    const observerOptions = {
-        threshold: 0.15
-    };
+    window.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") closeModal();
+    });
 
+    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('reveal-active');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.15 });
 
-    // Выбираем все блоки для анимации (карточки, цены, заголовки)
     const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title');
     
     itemsToAnimate.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(40px)';
-        item.style.transition = 'all 0.9s cubic-bezier(0.23, 1, 0.32, 1)';
+        item.classList.add('reveal-hidden');
         observer.observe(item);
     });
 });
