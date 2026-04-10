@@ -1,91 +1,89 @@
 /**
- * NOLLY CORE ENGINE v3.0
- * Полная логика: Галереи проектов (6 фото), ИИ (6 ответов) и Ссылки
+ * NOLLY ULTRA ENGINE 2024
+ * Логика: Галереи проектов (6 фото), ИИ (6 ответов), Плавный скролл
  */
 
-// 1. КОНТЕНТ ПРОЕКТОВ (6 кейсов)
+// 1. ДАННЫЕ ПРОЕКТОВ (6 КЕЙСОВ)
 const projects = {
     law: {
         title: "Адвокатские услуги",
-        benefit: "Создание непоколебимого авторитета. В юриспруденции сайт — это лицо вашей надежности. Мой дизайн конвертирует доверие в долгосрочные контракты.",
-        video: "#видео_обзор", // Вставь ссылку
-        site: "#ссылка_на_сайт", // Вставь ссылку
-        photos: ["l1.jpg", "l2.jpg", "l3.jpg", "l4.jpg", "l5.jpg", "l6.jpg"] 
+        benefit: "Как это полезно для бизнеса: Создает образ непоколебимого авторитета. В юриспруденции сайт — это цифровая гарантия надежности, которая конвертирует доверие в крупные контракты.",
+        video: "#", site: "#",
+        photos: ["law1.jpg", "law2.jpg", "law3.jpg", "law4.jpg", "law5.jpg", "law6.jpg"] 
     },
     estate: {
         title: "Постройка домов",
-        benefit: "Визуализация мечты. Клиент влюбляется в проект дома через экран. Это мощный инструмент продаж для строительного бизнеса.",
+        benefit: "Как это полезно для бизнеса: Визуализация мечты. Клиент влюбляется в проект дома через экран. Это мощный инструмент продаж, который снимает все возражения еще до звонка.",
         video: "#", site: "#",
-        photos: ["e1.jpg", "e2.jpg", "e3.jpg", "e4.jpg", "e5.jpg", "e6.jpg"]
+        photos: ["es1.jpg", "es2.jpg", "es3.jpg", "es4.jpg", "es5.jpg", "es6.jpg"]
     },
     club: {
         title: "Сайт ночного клуба",
-        benefit: "Автоматизация отдыха. Интерактивное бронирование и афиша превращают случайного посетителя в постоянного гостя вашего заведения.",
+        benefit: "Как это полезно для бизнеса: Автоматизация ажиотажа. Онлайн-бронирование столов и стильная афиша создают очередь в заведение и упрощают работу персоналу.",
         video: "#", site: "#",
-        photos: ["c1.jpg", "c2.jpg", "c3.jpg", "c4.jpg", "c5.jpg", "c6.jpg"]
+        photos: ["cl1.jpg", "cl2.jpg", "cl3.jpg", "cl4.jpg", "cl5.jpg", "cl6.jpg"]
     },
     auto: {
         title: "Премиальные авто",
-        benefit: "Эстетика скорости и статуса. Интерфейс, который соответствует уровню люксовых автомобилей и подчеркивает эксклюзивность сервиса.",
+        benefit: "Как это полезно для бизнеса: Эстетика превосходства. Интерфейс, соответствующий уровню люксового автопарка, подчеркивает высокий статус вашего дилерского центра.",
         video: "#", site: "#",
-        photos: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg", "a5.jpg", "a6.jpg"]
+        photos: ["au1.jpg", "au2.jpg", "au3.jpg", "au4.jpg", "au5.jpg", "au6.jpg"]
     },
     agency: {
         title: "Креативное агентство",
-        benefit: "Манифест стиля. Кейсы упакованы так, чтобы заказчик понимал: вы — лучшие в своем деле. Креатив, подкрепленный мощным кодом.",
+        benefit: "Как это полезно для бизнеса: Демонстрация вкуса. Если вы продаете идеи, ваш сайт должен быть первой и главной идеей, которая заставит заказчика выбрать именно вас.",
         video: "#", site: "#",
         photos: ["ag1.jpg", "ag2.jpg", "ag3.jpg", "ag4.jpg", "ag5.jpg", "ag6.jpg"]
     },
     weather: {
         title: "Сервис погоды",
-        benefit: "Технологическое превосходство. Работа с API и данными в реальном времени доказывает, что моя организация справится с любой технической задачей.",
+        benefit: "Как это полезно для бизнеса: Доказательство технической мощи. Работа с API и данными в реальном времени показывает, что моя организация способна на задачи любой сложности.",
         video: "#", site: "#",
-        photos: ["w1.jpg", "w2.jpg", "w3.jpg", "w4.jpg", "w5.jpg", "w6.jpg"]
+        photos: ["we1.jpg", "we2.jpg", "we3.jpg", "we4.jpg", "we5.jpg", "we6.jpg"]
     }
 };
 
-// 2. УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ ПРОЕКТОВ
+// 2. УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ
 function openProject(id) {
     const data = projects[id];
     const modal = document.getElementById('project-modal');
     const content = document.getElementById('modal-content-inject');
 
-    // Генерируем HTML для галереи и описания
     content.innerHTML = `
-        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 15px;">${data.title}</h2>
-        <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">${data.benefit}</p>
+        <h2 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; color: #fff;">${data.title}</h2>
+        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 35px; line-height: 1.7;">${data.benefit}</p>
         
         <div class="gallery-grid">
             ${data.photos.map(p => `
                 <div class="gallery-item">
-                    <img src="${p}" alt="Project Screen" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="${p}" alt="Project Preview" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             `).join('')}
         </div>
 
-        <div style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
-            <a href="${data.site}" target="_blank" class="btn btn-main" style="padding: 14px 30px;">Перейти на сайт</a>
-            <a href="${data.video}" target="_blank" class="btn btn-glass" style="padding: 14px 30px; margin: 0;">Смотреть обзор</a>
+        <div style="margin-top: 45px; display: flex; gap: 20px; flex-wrap: wrap;">
+            <a href="${data.site}" target="_blank" class="btn btn-main" style="padding: 16px 35px;">Перейти на сайт</a>
+            <a href="${data.video}" target="_blank" class="btn btn-glass" style="padding: 16px 35px; margin: 0;">Смотреть видео-обзор</a>
         </div>
     `;
 
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Запрет скролла
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeProject() {
     document.getElementById('project-modal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Возврат скролла
+    document.body.style.overflow = 'auto'; 
 }
 
-// 3. ЛОГИКА ИИ-АССИСТЕНТА (6 вопросов)
+// 3. ЛОГИКА ИИ-АССИСТЕНТА (6 ВОПРОСОВ)
 const aiAnswers = [
-    "Тарифы: Обычный (от 5к), Средний (от 15к), Высокий (от 40к). Премиальное качество в каждом пакете.",
-    "Сроки: Я ценю ваше время. Базовые проекты от 1 дня, сложные системы — до 14 дней.",
-    "Стек: Использую современный JavaScript (ES6+), HTML5 и CSS3. Код чистый, быстрый и масштабируемый.",
-    "Опыт: Мне 19 лет, и моя организация развивается ежедневно. Мы внедряем решения, которые станут стандартом завтра.",
-    "Поддержка: Я предоставляю полное сопровождение после запуска и обучаю вас работе с сайтом.",
-    "Старт: Просто напишите мне в Telegram @wnolly. Обсудим вашу идею и начнем экспансию вашего бизнеса!"
+    "Тарифы: Обычный (от 5к), Средний (от 15к), Высокий (от 40к). Премиальный дизайн включен в каждый пакет.",
+    "Сроки: Я ценю скорость. Базовые сайты готовы за 1-3 дня, сложные системы — до 14 дней.",
+    "Стек: Использую современный JavaScript (ES6+), HTML5 и CSS3. Сайты летают и идеально индексируются Google.",
+    "Опыт: Мне 19 лет, и моя организация расширяется ежедневно. Мы внедряем тренды раньше, чем они становятся мейнстримом.",
+    "Поддержка: Я не бросаю проекты. После запуска вы получаете месяц бесплатного сопровождения и обучения.",
+    "Старт: Напишите в Telegram @wnolly прямо сейчас. Обсудим вашу задачу и запустим разработку сегодня!"
 ];
 
 function toggleAI() {
@@ -99,12 +97,13 @@ function askAI(index) {
     setTimeout(() => {
         display.innerText = aiAnswers[index];
         display.style.opacity = '1';
-        display.style.color = '#3b82f6';
+        display.style.color = '#00f2ff'; // Неоновый цвет ответа
     }, 250);
 }
 
-// Закрытие модалки при клике на темный фон
+// Закрытие модалок при клике вне окна
 window.onclick = function(event) {
     const modal = document.getElementById('project-modal');
+    const aiWin = document.getElementById('ai-chat-window');
     if (event.target == modal) closeProject();
 }

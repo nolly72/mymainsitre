@@ -11,19 +11,22 @@
 </head>
 <body>
 
-    <!-- Умная кнопка ИИ (фиксированная справа внизу) -->
+    <!-- Фоновое анимированное сияние -->
+    <div class="main-glow"></div>
+
+    <!-- Умная кнопка ИИ-Ассистента (справа в углу) -->
     <div class="ai-floating-btn" onclick="toggleAI()">
         <span class="ai-icon">✦</span>
     </div>
 
-    <!-- Окно ИИ-ассистента (6 вопросов) -->
+    <!-- Окно ИИ-Ассистента (6 вопросов) -->
     <div id="ai-chat-window" class="ai-modal-win">
         <div class="ai-header">
             <h3>Nolly Assistant</h3>
             <button onclick="toggleAI()">✕</button>
         </div>
         <div class="ai-body">
-            <div id="ai-display">Привет! Я ваш гид по миру разработки Nolly. О чем хотите узнать?</div>
+            <div id="ai-display">Привет! Я помогу тебе выбрать уровень разработки. О чем рассказать?</div>
             <div class="ai-questions">
                 <button onclick="askAI(0)">Тарифы</button>
                 <button onclick="askAI(1)">Сроки</button>
@@ -35,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Навигация -->
+    <!-- Навигация (Glassmorphism) -->
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">NOLLY<span>.</span></div>
@@ -48,15 +51,14 @@
         </div>
     </nav>
 
-    <!-- Главный экран -->
+    <!-- Главный экран (Hero) -->
     <header class="hero">
-        <div class="hero-glow"></div>
         <div class="container">
-            <div class="badge-premium">Next-Generation Engineering</div>
-            <h1>Будущее веба <br><span class="gradient-text">в каждом пикселе</span></h1>
-            <p class="hero-desc">Здравствуйте, меня зовут Nolly! Мне 19 лет и я создаю цифровые экосистемы любого вида и сложности. Быстро. Эстетично. Профессионально.</p>
+            <div class="badge-premium shiny">Next-Generation Engineering</div>
+            <h1 class="animate-title">Будущее веба <br><span class="gradient-text shine-anim">в каждом пикселе</span></h1>
+            <p class="hero-desc">Создаю цифровые экосистемы любого вида и сложности. Быстро. Эстетично. Профессионально.</p>
             <div class="hero-btns">
-                <a href="#contact" class="btn btn-main">Запустить проект</a>
+                <a href="#contact" class="btn btn-main pulse">Запустить проект</a>
                 <a href="#portfolio" class="btn btn-glass">Смотреть работы</a>
             </div>
         </div>
@@ -64,19 +66,19 @@
 
     <!-- Раздел: ФИЛОСОФИЯ -->
     <section id="philosophy" class="container">
-        <div class="philosophy-card">
-            <h2 class="section-title">Моя <span>Философия</span></h2>
+        <div class="philosophy-card glass-shine">
+            <h2 class="section-title animate-title">Моя <span>Философия</span></h2>
             <div class="philosophy-content">
                 <div class="phil-text">
                     <p>Мне 19 лет, и я стою у истоков новой школы разработки. Мой подход прост: для бизнеса не существует «невозможных» задач. Я занимаюсь созданием сайтов любого вида — от высокоэффективных лендингов до масштабируемых корпоративных платформ.</p>
                     <p>Моя организация — это не просто код, это живой организм, который расширяется и эволюционирует каждый день. Молодость дает мне перспективу видеть тренды раньше других, а амбиции заставляют делать каждый проект эталоном качества. Вы инвестируете не в сайт, а в мощный актив, который будет расти вместе с вашими целями.</p>
                 </div>
                 <div class="phil-stats">
-                    <div class="stat-item">
+                    <div class="stat-item neon-box">
                         <span class="stat-num">∞</span>
                         <p class="stat-desc">Перспективы развития</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item neon-box">
                         <span class="stat-num">100%</span>
                         <p class="stat-desc">Уникальный код</p>
                     </div>
@@ -85,15 +87,15 @@
         </div>
     </section>
 
-    <!-- Раздел: ПРОЕКТЫ (Визуальная галерея) -->
+    <!-- Раздел: ПРОЕКТЫ (Крупные визуальные кейсы) -->
     <section id="portfolio" class="container">
-        <h2 class="section-title">Избранные <span>Кейсы</span></h2>
-        <div class="project-grid">
+        <h2 class="section-title animate-title">Избранные <span>Кейсы</span></h2>
+        <div class="project-grid large-cards">
             
             <!-- Проект 1: Law -->
             <div class="project-card" onclick="openProject('law')">
                 <div class="project-image-box">
-                    <!-- Место для фото: <img src="law-preview.jpg"> -->
+                    <!-- Место для фото: <img src="law-main.jpg"> -->
                     <div class="img-placeholder">LAW CASE PREVIEW</div>
                     <div class="card-hover-info">
                         <span>Посмотреть проект</span>
@@ -156,8 +158,8 @@
 
     <!-- Раздел: ТАРИФЫ -->
     <section id="pricing" class="container">
-        <h2 class="section-title">Выбери свой <span>уровень</span></h2>
-        <div class="pricing-glass-box">
+        <h2 class="section-title animate-title">Инвестиции в <span>результат</span></h2>
+        <div class="pricing-glass-box shiny-border">
             <table class="price-table">
                 <thead>
                     <tr>
@@ -170,7 +172,6 @@
                 <tbody>
                     <tr><td>Эксклюзивный дизайн</td><td>✅</td><td>✅</td><td>✅ Premium Gold</td></tr>
                     <tr><td>Анимации интерфейса</td><td>Базовые</td><td>Advanced</td><td>High-End (3D/GSAP)</td></tr>
-                    <tr><td>Мобильная адаптация</td><td>✅</td><td>✅</td><td>✅ Pixel Perfect</td></tr>
                     <tr><td>SEO-подготовка</td><td>✅</td><td>✅</td><td>✅ Full Indexing</td></tr>
                     <tr><td>Интеграция API / БД</td><td>—</td><td>✅</td><td>✅ Unlimited</td></tr>
                     <tr><td>Админ-панель</td><td>—</td><td>✅</td><td>✅ Custom CRM</td></tr>
@@ -186,27 +187,28 @@
         </div>
     </section>
 
-    <!-- Раздел: КОНТАКТЫ -->
+    <!-- Раздел: КОНТАКТЫ (Форма без лишнего дизайна) -->
     <section id="contact" class="container">
-        <div class="premium-form-container">
-            <h2>Оставить <span>заявку:</span></h2>
-            <form id="requestForm" class="contact-form">
+        <div class="premium-form-container glass-morph">
+            <h2 class="animate-title">Оставить <span>заявку</span></h2>
+            <p>ghasttankix@gmail.com | Telegram: @wnolly</p>
+            <form id="requestForm" class="contact-form-clean">
                 <div class="input-grid">
                     <input type="text" placeholder="Ваше имя" required>
                     <input type="text" placeholder="Telegram / Телефон" required>
                 </div>
                 <textarea placeholder="Краткое описание вашей задачи" rows="4"></textarea>
-                <button type="submit" class="btn btn-main">Запустить разработку</button>
+                <button type="submit" class="btn btn-main-neon pulse">Запустить разработку</button>
             </form>
         </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО ДЕТАЛЕЙ (Галерея 6 фото + Ссылки) -->
+    <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА (Галерея 6 фото + Ссылки) -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-window">
             <button class="modal-close" onclick="closeProject()">✕</button>
             <div id="modal-content-inject">
-                <!-- Контент (6 фото, польза, ссылки) вставляется через JS -->
+                <!-- Контент (6 фото, описание, ссылки) вставляется через JS -->
             </div>
         </div>
     </div>

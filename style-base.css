@@ -2,27 +2,23 @@
    1. ПЕРЕМЕННЫЕ И ШРИФТЫ
    ========================================= */
 :root {
-    --bg-dark: #020617;        /* Основной фон */
-    --bg-card: #0f172a;        /* Блоки и карточки */
-    --accent-blue: #3b82f6;    /* Основной синий */
-    --accent-glow: #06b6d4;    /* Бирюза для градиентов */
-    --text-white: #f8fafc;
+    --bg-dark: #010409;        /* Глубокий черный */
+    --bg-card: rgba(15, 23, 42, 0.6);
+    --accent-blue: #007AFF;    /* Синий Apple */
+    --accent-neon: #00f2ff;    /* Неоновый бирюзовый */
+    --accent-purple: #7000ff;  /* Насыщенный фиолетовый */
+    --text-white: #ffffff;
     --text-gray: #94a3b8;
-    
-    /* Геометрия */
-    --radius-xl: 32px;         /* Очень мягкое закругление */
-    --radius-lg: 20px;         /* Кнопки и карточки */
-    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --radius-premium: 30px;
+    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =========================================
-   2. ЕДИНЫЙ ШРИФТ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ
+   2. ГЛОБАЛЬНОЕ СИЯНИЕ И БАЗА
    ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Manrope', sans-serif !important; /* Единый закругленный шрифт */
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Manrope', sans-serif !important; /* Принудительно для всего */
 }
 
 html {
@@ -32,22 +28,45 @@ html {
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
-    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 6%;
+/* Анимированный фон (Сияние) */
+.main-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, #0a192f 0%, #010409 100%);
+    z-index: -2;
 }
 
-section {
-    padding: 120px 0;
+.main-glow::after {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%; width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+    filter: blur(100px);
+    animation: floatGlow 10s infinite alternate;
 }
 
-/* Заголовки */
+@keyframes floatGlow {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-10%, 10%); }
+}
+
+/* =========================================
+   3. АНИМИРОВАННЫЕ ЗАГОЛОВКИ
+   ========================================= */
+.animate-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealTitle 1s forwards ease-out;
+}
+
+@keyframes revealTitle {
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .section-title {
     font-size: 3.5rem;
     font-weight: 800;
@@ -57,66 +76,49 @@ section {
 }
 
 .section-title span {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-glow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-neon);
+    text-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
 }
 
 @media (max-width: 768px) {
-    section { padding: 70px 0; }
-    .section-title { font-size: 2.2rem; letter-spacing: -1px; }
+    .section-title { font-size: 2.4rem; letter-spacing: -1px; }
 }
 
 /* =========================================
-   3. НАВИГАЦИЯ (Glassmorphism)
+   4. НАВИГАЦИЯ (Glassmorphism)
    ========================================= */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 20px 0;
-    background: rgba(2, 6, 23, 0.75);
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 25px 0;
+    background: rgba(1, 4, 9, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
 
-.logo {
-    font-size: 1.7rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.logo span { color: var(--accent-blue); }
+.logo { font-size: 2rem; font-weight: 900; letter-spacing: 1px; }
+.logo span { color: var(--accent-neon); }
 
 .nav-links a {
     color: var(--text-white);
     text-decoration: none;
-    margin-left: 30px;
-    font-weight: 600;
-    font-size: 0.9rem;
+    margin-left: 35px;
+    font-weight: 700;
     transition: var(--transition);
 }
 
+.nav-links a:hover { color: var(--accent-neon); }
+
 .nav-btn {
     background: var(--text-white);
-    color: var(--bg-dark) !important;
-    padding: 10px 24px;
-    border-radius: 14px;
-}
-
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* Скрываем на мобилках для лаконичности */
+    color: #000 !important;
+    padding: 12px 28px;
+    border-radius: 16px;
 }
 
 /* =========================================
-   4. ГЛАВНЫЙ ЭКРАН (Hero)
+   5. ГЛАВНЫЙ ЭКРАН (Hero)
    ========================================= */
 .hero {
     height: 100vh;
@@ -127,69 +129,75 @@ section {
     position: relative;
 }
 
-.hero-glow {
-    position: absolute;
-    top: 10%;
-    width: 40%;
-    height: 40%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-    filter: blur(100px);
-    z-index: -1;
-}
-
 .hero h1 {
-    font-size: 5.5rem;
+    font-size: 6rem;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1;
     margin-bottom: 30px;
-    letter-spacing: -3px;
+    letter-spacing: -4px;
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-glow), #8b5cf6);
-    background-size: 200% auto;
+    background: linear-gradient(90deg, #fff, var(--accent-neon), var(--accent-purple), #fff);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: flow 5s linear infinite;
+    animation: shineText 6s linear infinite;
 }
 
-@keyframes flow { to { background-position: 200% center; } }
+@keyframes shineText {
+    to { background-position: 300% center; }
+}
 
 .hero-desc {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto 50px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--text-gray);
 }
 
-@media (max-width: 768px) {
-    .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
-    .hero-desc { font-size: 1rem; }
+/* Пульсация кнопок */
+.pulse {
+    animation: pulseGlow 2s infinite;
 }
 
-/* Кнопки */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(0, 242, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
+}
+
 .btn {
     display: inline-block;
-    padding: 18px 40px;
-    border-radius: var(--radius-lg);
+    padding: 22px 50px;
+    border-radius: 100px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     transition: var(--transition);
     cursor: pointer;
     border: none;
 }
 
-.btn-main { background: var(--text-white); color: var(--bg-dark); }
-.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15); }
-
-.btn-glass {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-white);
-    background: rgba(255, 255, 255, 0.02);
-    margin-left: 15px;
+.btn-main {
+    background: var(--accent-neon);
+    color: #000;
 }
 
-@media (max-width: 480px) {
-    .btn { width: 100%; margin: 10px 0; }
-    .btn-glass { margin-left: 0; }
+.btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px var(--accent-neon);
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.5rem; letter-spacing: -1px; }
+    .hero-desc { font-size: 1.1rem; }
+    .nav-links { display: none; }
 }
