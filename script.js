@@ -1,5 +1,5 @@
 /* ============================================================
-   SCRIPT.JS — Интерактив, AI-помощник и Модальные окна
+   SCRIPT.JS — Интерактив, AI-помощник и Слайдер Кейсов
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiBox = document.getElementById('aiBox');
     const qButtons = document.querySelectorAll('.ai-q');
 
-    // База заскриптованных ответов
     const aiAnswers = {
         "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3. Для сложных интерфейсов использую библиотеки анимаций GSAP или Framer Motion.",
         "2": "Lite-проекты сдаю за 3 дня. High-End сайты с индивидуальным дизайном и анимациями занимают от 7 до 14 дней.",
@@ -21,52 +20,73 @@ document.addEventListener('DOMContentLoaded', () => {
         "7": "Я всегда открыт к обсуждению. При заказе комплекса услуг или для очень интересных стартапов я делаю приятные бонусы.",
         "8": "Я помогу с выбором и настройкой: от бесплатного Vercel для лендингов до мощных защищенных серверов для крупных проектов.",
         "9": "В каждый сайт уже заложена правильная структура для поисковиков: теги, мета-данные, высокая скорость загрузки и адаптивность.",
-        "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
+        "10": "Мне 19, я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
-    // Открытие/закрытие чата
     aiBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         aiChat.classList.toggle('hidden');
     });
 
-    // Обработка клика по вопросу
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
-            const answer = aiAnswers[qId];
-            
-            // Эффект имитации раздумья
             aiBox.style.opacity = '0.5';
             aiBox.innerText = "NOLLY печатает...";
-            
             setTimeout(() => {
                 aiBox.style.opacity = '1';
-                aiBox.innerText = answer;
+                aiBox.innerText = aiAnswers[qId];
             }, 600);
         });
     });
 
-    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ)
+    // 2. ЛОГИКА МОДАЛЬНОГО ОКНА СО СЛАЙДЕРОМ
     const modal = document.getElementById('caseModal');
     const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
+    const slideCounter = document.getElementById('slideCounter');
 
-    window.openModal = function(imgSrc, title, description) {
-        modalImg.style.backgroundImage = `url('${imgSrc}')`;
+    let currentImages = [];
+    let currentSlideIndex = 0;
+
+    // Глобальная функция открытия (вызывается из HTML)
+    window.openModal = function(images, title, description) {
+        currentImages = Array.isArray(images) ? images : [images];
+        currentSlideIndex = 0;
+        
         modalTitle.innerText = title;
         modalDesc.innerText = description;
+        
+        updateSlide();
+        
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Запрещаем скролл при открытом окне
+        document.body.style.overflow = 'hidden';
     };
+
+    // Глобальная функция переключения (вызывается кнопками в HTML)
+    window.changeSlide = function(direction) {
+        currentSlideIndex += direction;
+        
+        if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
+        if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
+        
+        updateSlide();
+    };
+
+    function updateSlide() {
+        modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
+        if (slideCounter) {
+            slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
+        }
+    }
 
     window.closeModal = function() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Возвращаем скролл
+        document.body.style.overflow = 'auto';
     };
 
-    // Закрытие модалки по клику вне окна
+    // Закрытие по клику вне окна
     window.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
         if (!aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
@@ -75,10 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
-    const observerOptions = {
-        threshold: 0.1
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -86,10 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Выбираем все карточки для плавной анимации
-    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card');
+    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .proc-card');
     itemsToAnimate.forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(30px)';

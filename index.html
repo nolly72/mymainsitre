@@ -64,32 +64,32 @@
         </div>
     </section>
 
-    <!-- Раздел: Избранные Кейсы -->
+      <!-- Раздел: Избранные Кейсы -->
     <section id="cases" class="section">
         <div class="container">
             <h2 class="section-title">Избранные Кейсы</h2>
 
-            <!-- Категория: Обычные -->
+            <!-- Категория: Обычные (Essential) -->
             <div class="category-block">
                 <div class="category-header">
                     <span class="cat-label">Essential Level</span>
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <!-- Кейс 1 -->
-                    <div class="case-card" onclick="openModal('img/house.jpg', 'Продажа недвижимости', 'Классический Landing Page для продажи загородных домов. Акцент на качественных фото, удобные формы захвата и высокая скорость загрузки.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/house.jpg');"></div>
+                    <!-- Кейс 1: Дома -->
+                    <div class="case-card" onclick="openModal(['img/house/1.jpg', 'img/house/2.jpg', 'img/house/3.jpg', 'img/house/4.jpg', 'img/house/5.jpg'], 'Продажа недвижимости', 'Классический Landing Page для продажи загородных домов. Акцент на качественных фото, удобные формы захвата и высокая скорость загрузки.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/house/1.jpg');"></div>
                         <div class="case-info">
                             <h4>Продажа домов</h4>
-                            <p>Обычный Landing</p>
+                            <p>Essential / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 2 -->
-                    <div class="case-card" onclick="openModal('img/law.jpg', 'Услуги адвокатов', 'Сайт для юридического бюро. Лаконичный дизайн, вызывающий доверие. Полная адаптивность и проработка UX-пути клиента.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/law.jpg');"></div>
+                    <!-- Кейс 2: Адвокаты -->
+                    <div class="case-card" onclick="openModal(['img/law/1.jpg', 'img/law/2.jpg', 'img/law/3.jpg', 'img/law/4.jpg', 'img/law/5.jpg'], 'Услуги адвокатов', 'Сайт для юридического бюро. Лаконичный дизайн, вызывающий доверие. Полная адаптивность и проработка UX-пути клиента.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/law/1.jpg');"></div>
                         <div class="case-info">
                             <h4>Услуги адвокатов</h4>
-                            <p>Корпоративный сайт</p>
+                            <p>Essential / 5 фото</p>
                         </div>
                     </div>
                 </div>
@@ -102,46 +102,59 @@
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <!-- Кейс 3 -->
-                    <div class="case-card premium" onclick="openModal('img/car.jpg', 'Rent a Car Premium', 'Сложный интерфейс аренды авто. Интерактивные фильтры, плавная анимация появления элементов и уникальный темный стиль.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/car.jpg');"></div>
+                    <!-- Кейс 3: Авто -->
+                    <div class="case-card premium" onclick="openModal(['img/car/1.jpg', 'img/car/2.jpg', 'img/car/3.jpg', 'img/car/4.jpg', 'img/car/5.jpg'], 'Rent a Car Premium', 'Сложный интерфейс аренды авто. Интерактивные фильтры, плавная анимация появления элементов и уникальный темный стиль.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/car/1.jpg');"></div>
                         <div class="case-info">
                             <h4>Аренда авто</h4>
-                            <p>High-End App</p>
+                            <p>High-End / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 4 -->
-                    <div class="case-card premium" onclick="openModal('img/agency.jpg', 'Digital Agency', 'Сайт-портфолио для агентства. Нестандартные переходы между страницами, много цветного текста и параллакс эффекты.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/agency.jpg');"></div>
+                    <!-- Кейс 4: Агентство -->
+                    <div class="case-card premium" onclick="openModal(['img/agency/1.jpg', 'img/agency/2.jpg', 'img/agency/3.jpg', 'img/agency/4.jpg', 'img/agency/5.jpg'], 'Digital Agency', 'Сайт-портфолио для агентства. Нестандартные переходы между страницами, много цветного текста и параллакс эффекты.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/agency/1.jpg');"></div>
                         <div class="case-info">
-                            <h4>Агенство</h4>
-                            <p>Creative Design</p>
+                            <h4>Агентство</h4>
+                            <p>High-End / 5 фото</p>
                         </div>
                     </div>
-                    <!-- Кейс 5 -->
-                    <div class="case-card premium" onclick="openModal('img/club.jpg', 'Club Experience', 'Погружающий дизайн для ночного клуба. Видео-фоны, неоновые акценты и интеграция с социальными сетями.')">
-                        <div class="case-img-placeholder" style="background-image: url('img/club.jpg');"></div>
+                    <!-- Кейс 5: Клуб -->
+                    <div class="case-card premium" onclick="openModal(['img/club/1.jpg', 'img/club/2.jpg', 'img/club/3.jpg', 'img/club/4.jpg', 'img/club/5.jpg'], 'Club Experience', 'Погружающий дизайн для ночного клуба. Видео-фоны, неоновые акценты и интеграция с социальными сетями.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/club/1.jpg');"></div>
                         <div class="case-info">
                             <h4>Сайт клуба</h4>
-                            <p>Immersive Web</p>
+                            <p>High-End / 5 фото</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Пустые слоты -->
+            <!-- Зарезервированные High-End места -->
             <div class="category-block">
                 <div class="category-header">
-                    <span class="cat-label">Reserved Spots</span>
+                    <span class="cat-label premium-label">Reserved High-End Spots</span>
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <div class="case-card placeholder"><h4>Тут может быть твой High-End проект</h4></div>
-                    <div class="case-card placeholder"><h4>Тут может быть твой High-End проект</h4></div>
+                    <!-- Будущий проект 1 -->
+                    <div class="case-card premium placeholder" onclick="openModal(['img/future/1.jpg'], 'Будущий шедевр', 'Это место зарезервировано для высококлассного проекта. Скоро здесь будет топовый кейс.')">
+                        <div class="case-info">
+                            <h4>High-End Spot 01</h4>
+                            <p>Coming Soon</p>
+                        </div>
+                    </div>
+                    <!-- Будущий проект 2 -->
+                    <div class="case-card premium placeholder" onclick="openModal(['img/future/2.jpg'], 'Будущий шедевр', 'Это место зарезервировано для высококлассного проекта. Скоро здесь будет топовый кейс.')">
+                        <div class="case-info">
+                            <h4>High-End Spot 02</h4>
+                            <p>Coming Soon</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Раздел: Инвестиции (Прайс) -->
     <section id="pricing" class="section">
