@@ -1,5 +1,5 @@
 /* =========================================
-   1. ФИЛОСОФИЯ (Philosophy Card)
+   1. ФИЛОСОФИЯ (Исправленная ровная верстка)
    ========================================= */
 .philosophy-card {
     background: var(--bg-card);
@@ -11,7 +11,7 @@
 
 .philosophy-content {
     display: grid;
-    grid-template-columns: 1.8fr 1fr; /* Ровное распределение текста и статистики */
+    grid-template-columns: 1.8fr 1fr; /* Текст шире, статистика уже */
     gap: 60px;
     align-items: center;
 }
@@ -19,14 +19,14 @@
 .phil-text p {
     font-size: 1.2rem;
     color: var(--text-gray);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     line-height: 1.8;
 }
 
 .phil-stats {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
 
 .stat-item {
@@ -36,12 +36,6 @@
     text-align: center;
     border: 1px solid rgba(0, 242, 255, 0.1);
     transition: var(--transition);
-}
-
-.stat-item:hover {
-    border-color: var(--accent-neon);
-    background: rgba(0, 242, 255, 0.05);
-    transform: translateY(-5px);
 }
 
 .stat-num {
@@ -61,16 +55,16 @@
 }
 
 @media (max-width: 968px) {
-    .philosophy-content { grid-template-columns: 1fr; text-align: center; }
+    .philosophy-content { grid-template-columns: 1fr; }
     .philosophy-card { padding: 40px 20px; }
 }
 
 /* =========================================
-   2. КЕЙСЫ (Увеличенные карточки)
+   2. КЕЙСЫ (Гигантские области для фото)
    ========================================= */
-.project-grid.large-cards {
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 40px;
 }
 
@@ -86,7 +80,7 @@
 .project-image-box {
     position: relative;
     width: 100%;
-    height: 600px; /* Гигантская область для фото */
+    height: 600px; /* Фото стали максимально высокими */
 }
 
 .img-placeholder {
@@ -114,14 +108,14 @@
 }
 
 @media (max-width: 768px) {
-    .project-grid.large-cards { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
     .project-image-box { height: 350px; }
 }
 
 /* =========================================
-   3. ТАРИФЫ (Прозрачная таблица)
+   3. ТАРИФЫ (Прозрачное стекло)
    ========================================= */
-.pricing-glass-box {
+.pricing-box {
     background: var(--bg-card);
     padding: 50px;
     border-radius: var(--radius-premium);
@@ -131,15 +125,15 @@
 
 .price-table { width: 100%; border-collapse: collapse; min-width: 750px; }
 .price-table th, .price-table td { padding: 25px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-.price-table th { color: var(--accent-neon); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+.price-table th { color: var(--accent-neon); font-size: 0.9rem; text-transform: uppercase; }
 
-.final-price-row td {
+.final-price td {
     font-weight: 800; font-size: 1.5rem; color: var(--accent-neon);
     padding-top: 40px; border-bottom: none;
 }
 
 /* =========================================
-   4. ФОРМА ЗАЯВКИ (Чистый Неон)
+   4. НЕОНОВАЯ ФОРМА (Чистый дизайн)
    ========================================= */
 .premium-form-container {
     background: rgba(15, 23, 42, 0.8);
@@ -149,10 +143,10 @@
     text-align: center;
 }
 
-.contact-form-clean { max-width: 800px; margin: 50px auto 0; }
+.contact-form { max-width: 800px; margin: 50px auto 0; }
 .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
 
-.contact-form-clean input, .contact-form-clean textarea {
+.contact-form input, .contact-form textarea {
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -160,10 +154,9 @@
     color: #fff; font-size: 1.1rem; transition: 0.4s;
 }
 
-.contact-form-clean input:focus, .contact-form-clean textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
     outline: none; border-color: var(--accent-neon);
     background: rgba(0, 242, 255, 0.05);
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
 }
 
 .btn-main-neon {
@@ -173,7 +166,7 @@
 }
 
 /* =========================================
-   5. ИИ-КНОПКА И МОДАЛКА
+   5. ИИ-КНОПКА И МОДАЛКА (Шрифт иконки)
    ========================================= */
 .ai-floating-btn {
     position: fixed; bottom: 40px; right: 40px;
@@ -184,13 +177,21 @@
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
 }
 
-.ai-icon { font-size: 2rem; color: #000; }
+.ai-icon {
+    font-family: 'Manrope', sans-serif !important; 
+    font-size: 2rem; color: #000; font-weight: 400; 
+}
 
 .ai-modal-win {
     display: none; position: fixed; bottom: 130px; right: 40px;
     width: 380px; background: #050a15;
     border-radius: 30px; border: 1px solid var(--accent-neon);
     padding: 30px; z-index: 2000; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.ai-questions button {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff; padding: 10px; border-radius: 12px; cursor: pointer; margin-bottom: 8px; width: 100%;
 }
 
 .modal-overlay {

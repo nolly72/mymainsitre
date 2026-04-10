@@ -14,11 +14,13 @@
 }
 
 /* =========================================
-   2. ЕДИНЫЙ ШРИФТ И БАЗА
+   2. ЕДИНЫЙ ПРИЯТНЫЙ ШРИФТ ДЛЯ ВСЕГО
    ========================================= */
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Manrope', sans-serif !important; /* Принудительно для всего сайта */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif !important; /* Тот самый мягкий шрифт для всех */
 }
 
 html {
@@ -28,6 +30,7 @@ html {
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -84,17 +87,31 @@ body {
    4. НАВИГАЦИЯ (Glassmorphism)
    ========================================= */
 .navbar {
-    position: fixed; top: 0; width: 100%; z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
     padding: 25px 0;
     background: rgba(1, 4, 9, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.logo { font-size: 2rem; font-weight: 900; letter-spacing: 1px; }
-.logo span { color: var(--accent-neon); }
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-neon);
+}
 
 .nav-links a {
     color: var(--text-white);
@@ -105,7 +122,9 @@ body {
     transition: var(--transition);
 }
 
-.nav-links a:hover { color: var(--accent-neon); }
+.nav-links a:hover {
+    color: var(--accent-neon);
+}
 
 .nav-btn {
     background: var(--text-white);
@@ -153,9 +172,9 @@ body {
     color: var(--text-gray);
 }
 
-/* Адаптивность */
+/* Адаптивность для мобилок */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 3.5rem; letter-spacing: -1px; }
+    .hero h1 { font-size: 3.5rem; letter-spacing: -1.5px; }
     .hero-desc { font-size: 1.1rem; }
     .nav-links { display: none; }
 }
@@ -172,8 +191,15 @@ body {
     border: none;
 }
 
-.btn-main { background: var(--accent-neon); color: #000; }
-.btn-main:hover { transform: translateY(-5px); box-shadow: 0 0 35px var(--accent-neon); }
+.btn-main {
+    background: var(--accent-neon);
+    color: #000;
+}
+
+.btn-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px var(--accent-neon);
+}
 
 .btn-glass {
     background: rgba(255, 255, 255, 0.05);
@@ -183,7 +209,10 @@ body {
     margin-left: 20px;
 }
 
-.pulse { animation: pulseGlow 2s infinite; }
+.pulse {
+    animation: pulseGlow 2s infinite;
+}
+
 @keyframes pulseGlow {
     0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.4); }
     70% { box-shadow: 0 0 0 20px rgba(0, 242, 255, 0); }

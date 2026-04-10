@@ -1,26 +1,25 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly | Digital Philosophy & Development</title>
-    <!-- Подключение шрифта Manrope для мягкости и премиальности -->
+    <!-- Единый шрифт Manrope для премиального вида -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Ссылки на CSS файлы -->
     <link rel="stylesheet" href="style-base.css">
     <link rel="stylesheet" href="style-content.css">
 </head>
 <body>
 
-    <!-- Фоновое сияние -->
+    <!-- Фоновое анимированное сияние (Glow effect) -->
     <div class="main-glow"></div>
 
-    <!-- Фиксированная кнопка ИИ-Ассистента -->
+    <!-- Фиксированная кнопка ИИ-Ассистента (справа внизу) -->
     <div class="ai-floating-btn" onclick="toggleAI()">
         <span class="ai-icon">✦</span>
     </div>
 
-    <!-- Окно ИИ-Ассистента (6 вопросов) -->
+    <!-- Окно ИИ-ассистента (6 заскриптованных вопросов) -->
     <div id="ai-chat-window" class="ai-modal-win">
         <div class="ai-header">
             <h3>Nolly Assistant</h3>
@@ -39,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Навигация -->
+    <!-- Навигация (Glassmorphism) -->
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">NOLLY<span>.</span></div>
@@ -55,8 +54,8 @@
     <!-- Главный экран (Hero) -->
     <header class="hero">
         <div class="container">
-            <div class="badge-premium shiny">High-End Development</div>
-            <h1 class="animate-title">Будущее веба <br><span class="gradient-text shine-anim">в каждом пикселе</span></h1>
+            <div class="badge-premium">High-End Engineering</div>
+            <h1 class="animate-title">Будущее веба <br><span class="gradient-text">в каждом пикселе</span></h1>
             <p class="hero-desc">Создаю цифровые экосистемы любого вида и сложности. Быстро. Эстетично. Профессионально.</p>
             <div class="hero-btns">
                 <a href="#contact" class="btn btn-main pulse">Запустить проект</a>
@@ -67,8 +66,8 @@
 
     <!-- Раздел: МОЯ ФИЛОСОФИЯ -->
     <section id="philosophy" class="container">
-        <div class="philosophy-card glass-shine">
-            <h2 class="section-title animate-title">Моя <span>Философия</span></h2>
+        <div class="philosophy-card">
+            <h2 class="section-title">Моя <span>Философия</span></h2>
             <div class="philosophy-content">
                 <div class="phil-text">
                     <p>Мне 19 лет, и я стою у истоков новой школы разработки. Мой подход прост: для бизнеса не существует «невозможных» задач. Я занимаюсь созданием сайтов любого вида — от высокоэффективных лендингов до масштабируемых корпоративных платформ.</p>
@@ -88,62 +87,53 @@
         </div>
     </section>
 
-    <!-- Раздел: МОИ ПРОЕКТЫ (Увеличенные карточки) -->
+    <!-- Раздел: КЕЙСЫ (Увеличенные превью) -->
     <section id="portfolio" class="container">
-        <h2 class="section-title animate-title">Избранные <span>Кейсы</span></h2>
-        <div class="project-grid large-cards">
-            
+        <h2 class="section-title">Избранные <span>Кейсы</span></h2>
+        <div class="project-grid">
             <div class="project-card" onclick="openProject('law')">
                 <div class="project-image-box">
-                    <!-- Место для фото 1: <img src="law-main.jpg"> -->
                     <div class="img-placeholder">LAW SERVICE PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
             <div class="project-card" onclick="openProject('estate')">
                 <div class="project-image-box">
-                    <!-- Место для фото 2 -->
                     <div class="img-placeholder">ESTATE PRO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
             <div class="project-card" onclick="openProject('club')">
                 <div class="project-image-box">
                     <div class="img-placeholder">NIGHT CLUB PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
             <div class="project-card" onclick="openProject('auto')">
                 <div class="project-image-box">
                     <div class="img-placeholder">ELITE AUTO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
             <div class="project-card" onclick="openProject('agency')">
                 <div class="project-image-box">
                     <div class="img-placeholder">AGENCY PRO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
             <div class="project-card" onclick="openProject('weather')">
                 <div class="project-image-box">
                     <div class="img-placeholder">SKY CAST PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть кейс</span></div>
+                    <div class="card-hover-info"><span>Посмотреть</span></div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Раздел: ИНВЕСТИЦИИ В РЕЗУЛЬТАТ (Тарифы) -->
+    <!-- Раздел: ТАРИФЫ (Инвестиции в результат) -->
     <section id="pricing" class="container">
-        <h2 class="section-title animate-title">Инвестиции в <span>результат</span></h2>
-        <div class="pricing-glass-box shiny-border">
+        <h2 class="section-title">Инвестиции в <span>результат</span></h2>
+        <div class="pricing-box">
             <table class="price-table">
                 <thead>
                     <tr>
@@ -160,7 +150,7 @@
                     <tr><td>Интеграция API / БД</td><td>—</td><td>✅</td><td>✅ Unlimited</td></tr>
                     <tr><td>Админ-панель</td><td>—</td><td>✅</td><td>✅ Custom CRM</td></tr>
                     <tr><td>Поддержка и обучение</td><td>7 дней</td><td>30 дней</td><td>Бессрочно</td></tr>
-                    <tr class="final-price-row">
+                    <tr class="final-price">
                         <td>Стоимость</td>
                         <td>от 5 000 ₽</td>
                         <td>от 15 000 ₽</td>
@@ -173,9 +163,9 @@
 
     <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ (Чистая форма) -->
     <section id="contact" class="container">
-        <div class="premium-form-container glass-morph">
-            <h2 class="animate-title">Оставить <span>заявку</span></h2>
-            <form id="requestForm" class="contact-form-clean">
+        <div class="premium-form-container">
+            <h2 class="section-title">Оставить <span>заявку</span></h2>
+            <form id="requestForm" class="contact-form">
                 <div class="input-grid">
                     <input type="text" placeholder="Ваше имя" required>
                     <input type="text" placeholder="Telegram / Телефон" required>
@@ -186,13 +176,11 @@
         </div>
     </section>
 
-    <!-- Модальное окно для детального просмотра проектов -->
+    <!-- Модальное окно (Галерея 6 фото) -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-window">
             <button class="modal-close" onclick="closeProject()">✕</button>
-            <div id="modal-content-inject">
-                <!-- Контент подставляется из script.js -->
-            </div>
+            <div id="modal-content-inject"></div>
         </div>
     </div>
 
@@ -200,7 +188,6 @@
         <p>&copy; 2024 NOLLY Development. Эстетика. Код. Перспектива.</p>
     </footer>
 
-    <!-- Подключение логики -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,15 +1,15 @@
 /**
- * NOLLY ULTRA ENGINE v4.0
- * Философия, Кейсы с галереями (6 фото), ИИ (6 ответов) и ссылки
+ * NOLLY ULTRA ENGINE v5.0
+ * Философия, Кейсы с галереями (6 фото), ИИ (6 ответов) и плавная навигация
  */
 
-// 1. КОНТЕНТ ПРОЕКТОВ (Настрой здесь ссылки и фото)
+// 1. ДАННЫЕ ПРОЕКТОВ (Настрой здесь ссылки и пути к фото)
 const projects = {
     law: {
         title: "Адвокатские услуги",
         benefit: "Как это полезно для личного дела: В юриспруденции сайт — это цифровая гарантия статуса. Моя разработка создает образ непоколебимого авторитета, конвертируя доверие в контракты.",
-        video: "#ссылка_на_видео", 
-        site: "#ссылка_на_сайт",      
+        video: "#", // Ссылка на видео-обзор
+        site: "#",  // Ссылка на живой сайт
         photos: ["l1.jpg", "l2.jpg", "l3.jpg", "l4.jpg", "l5.jpg", "l6.jpg"] 
     },
     estate: {
@@ -20,7 +20,7 @@ const projects = {
     },
     club: {
         title: "Сайт ночного клуба",
-        benefit: "Как это полезно для личного дела: Автоматизация хаоса. Интерактивная афиша и бронирование столов онлайн создают очередь в ваше заведение 24/7.",
+        benefit: "Как это полезно для личного дела: Автоматизация ажиотажа. Интерактивная афиша и бронирование столов онлайн создают очередь в ваше заведение 24/7.",
         video: "#", site: "#",
         photos: ["c1.jpg", "c2.jpg", "c3.jpg", "c4.jpg", "c5.jpg", "c6.jpg"]
     },
@@ -44,7 +44,7 @@ const projects = {
     }
 };
 
-// 2. ЛОГИКА МОДАЛЬНОГО ОКНА ПРОЕКТОВ
+// 2. УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ ПРОЕКТОВ
 function openProject(id) {
     const data = projects[id];
     const modal = document.getElementById('project-modal');
@@ -57,14 +57,14 @@ function openProject(id) {
         <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
             ${data.photos.map(p => `
                 <div class="gallery-item" style="aspect-ratio: 16/9; background: #10192a; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-                    <img src="${p}" alt="Preview" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="${p}" alt="Project Image" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             `).join('')}
         </div>
 
         <div style="margin-top: 45px; display: flex; gap: 20px; flex-wrap: wrap;">
-            <a href="${data.site}" target="_blank" class="btn btn-main" style="padding: 16px 35px;">Перейти на сайт</a>
-            <a href="${data.video}" target="_blank" class="btn btn-glass" style="padding: 16px 35px; margin: 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 100px; text-decoration: none; font-weight: 800;">Смотреть обзор</a>
+            <a href="${data.site}" target="_blank" class="btn btn-main" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: #00f2ff; color: #000;">Перейти на сайт</a>
+            <a href="${data.video}" target="_blank" class="btn btn-glass" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1);">Смотреть обзор</a>
         </div>
     `;
 
@@ -112,8 +112,9 @@ window.onclick = function(event) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
