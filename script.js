@@ -1,86 +1,120 @@
 /**
- * NOLLY PORTFOLIO ENGINE
- * Интерактив: ИИ-ассистент, Плавный скролл и Обработка формы
+ * NOLLY PREMIUM ENGINE 2024
+ * Логика портфолио, модальных окон и ИИ-ассистента
  */
 
-// 1. БАЗА ДАННЫХ ИИ-АССИСТЕНТА
-const aiDatabase = [
-    "Стоимость сайта начинается от 5,000₽ (Landing Page) до 40,000₽+ за сложные системы. Для точного расчета нужно ТЗ.",
-    "Обычный сайт делаю за 1-3 дня. Средний уровень — до 7 дней. Сложные проекты — от 10 дней.",
-    "Да, современный UI/UX дизайн уже включен в стоимость разработки каждого пакета услуг.",
-    "Мой стек: HTML5, CSS3 (Grid/Flexbox), JavaScript (ES6+). Создаю чистый и быстрый код.",
-    "Конечно! После сдачи проекта я предоставляю 30 дней бесплатной технической поддержки и правок.",
-    "Напишите мне в Telegram @wnolly или оставьте заявку в форме ниже — я свяжусь с вами в течение часа!"
-];
+// 1. ДАННЫЕ ПРОЕКТОВ (Контент для модальных окон)
+const projectDetails = {
+    law: {
+        title: "Адвокатские услуги",
+        tag: "Premium Law",
+        benefit: "Как это полезно для бизнеса: Создает образ непоколебимого авторитета. В юриспруденции доверие — это валюта. Сайт конвертирует посетителя в клиента за счет строгого стиля и четкой структуры услуг.",
+        description: "Интерфейс с упором на экспертность. Включает блоки с практикой, отзывами и защищенную форму записи на консультацию.",
+        features: ["Элитная типографика", "Формы обратной связи", "Адаптация под Mobile"]
+    },
+    estate: {
+        title: "Постройка домов",
+        tag: "Real Estate",
+        benefit: "Как это полезно для бизнеса: Визуализация мечты. Сайт позволяет клиенту 'пожить' в доме еще до его постройки. Высокая скорость загрузки фото высокого разрешения критична для продаж недвижимости.",
+        description: "Полноэкранные галереи, интерактивные планировки и калькулятор стоимости строительства.",
+        features: ["Галереи 4K", "Калькулятор сметы", "SEO-оптимизация"]
+    },
+    club: {
+        title: "Сайт ночного клуба",
+        tag: "Entertainment",
+        benefit: "Как это полезно для бизнеса: Автоматизация хаоса. Бронирование столов онлайн снижает нагрузку на хостес, а стильный дизайн привлекает премиальную аудиторию города.",
+        description: "Интерактивная карта столов, афиша событий с интеграцией билетов и яркий визуал.",
+        features: ["Бронирование столов", "Интеграция соцсетей", "Dark Mode Design"]
+    },
+    auto: {
+        title: "Премиальные авто",
+        tag: "Auto Premium",
+        benefit: "Как это полезно для бизнеса: Эстетика, соответствующая товару. Продажа дорогих авто требует безупречного интерфейса, который подчеркивает статус бренда.",
+        description: "Каталог с детальными характеристиками, сравнением моделей и записью на тест-драйв.",
+        features: ["Фильтрация моделей", "Форма тест-драйва", "Сверхбыстрый поиск"]
+    },
+    agency: {
+        title: "Креативное агентство",
+        tag: "Creative Agency",
+        benefit: "Как это полезно для бизнеса: Демонстрация вкуса. Если вы продаете креатив, ваш сайт должен быть произведением искусства. Это визитка, которая оправдывает высокий чек.",
+        description: "Минималистичный лендинг с упором на портфолио и команду. Плавные анимации и смелые решения.",
+        features: ["Анимации GSAP-style", "Акцент на кейсы", "Премиальный UX"]
+    },
+    weather: {
+        title: "Сервис погоды",
+        tag: "API Utility",
+        benefit: "Как это полезно для бизнеса: Демонстрация технической мощи. Показывает вашу способность работать со сложными данными и API. Идеально для привлечения заказов на SaaS-сервисы.",
+        description: "Сервис реального времени с геопозицией пользователя и динамической сменой фона.",
+        features: ["Интеграция API", "Геолокация", "Инфографика данных"]
+    }
+};
 
-/**
- * Функция работы ИИ-ассистента
- */
-function askAI(index) {
-    const display = document.getElementById('ai-display');
-    
-    // Эффект затухания перед появлением ответа
-    display.style.opacity = '0';
-    display.style.transform = 'translateY(10px)';
+// 2. ФУНКЦИИ МОДАЛЬНОГО ОКНА ПРОЕКТОВ
+function showDetails(projectId) {
+    const data = projectDetails[projectId];
+    const modal = document.getElementById('project-modal');
+    const content = document.getElementById('project-inner-content');
 
-    setTimeout(() => {
-        display.innerText = aiDatabase[index];
-        display.style.opacity = '1';
-        display.style.transform = 'translateY(0)';
-        display.style.color = '#f8fafc'; // Белый цвет активного текста
-    }, 250);
+    content.innerHTML = `
+        <div class="modal-img-large">
+            <!-- Место для фото: <img src="${projectId}-large.jpg" style="width:100%; border-radius:20px;"> -->
+            <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#3b82f6; font-weight:800; letter-spacing:3px;">
+                ${data.title.toUpperCase()} FULL VIEW
+            </div>
+        </div>
+        <span class="category purple" style="margin-bottom:20px; display:inline-block;">${data.tag}</span>
+        <h2 style="font-size:2.5rem; margin-bottom:20px; font-family:'Manrope';">${data.title}</h2>
+        <p style="color:#f8fafc; font-size:1.1rem; margin-bottom:30px; font-weight:600; line-height:1.6;">${data.benefit}</p>
+        <p style="color:#94a3b8; margin-bottom:30px;">${data.description}</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            ${data.features.map(f => `<span style="background:rgba(255,255,255,0.05); padding:8px 15px; border-radius:10px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">${f}</span>`).join('')}
+        </div>
+    `;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Запрет скролла фона
 }
 
-// 2. ИНИЦИАЛИЗАЦИЯ ИНТЕРФЕЙСА
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Плавная прокрутка для всех ссылок с якорем (#)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80, // Оставляем место под шапку
-                    behavior: 'smooth'
-                });
-            }
+function closeDetails() {
+    document.getElementById('project-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 3. ЛОГИКА ИИ-АССИСТЕНТА
+const aiAnswers = [
+    "Стоимость: Лендинги от 5к, бизнес-сайты от 15к, сложные системы от 40к. Скидка 10% на первый заказ!",
+    "Сроки: Я работаю быстро. Базовый сайт 1-3 дня, сложный проект — до 10-14 дней.",
+    "Стек: HTML5, CSS3 (Modern Flex/Grid), Чистый JavaScript. Код легкий и летает на Vercel.",
+    "Старт: Напиши мне в ТГ @wnolly прямо сейчас, обсудим идею за 5 минут!"
+];
+
+function toggleAI() {
+    const win = document.getElementById('ai-chat');
+    win.style.display = (win.style.display === 'block') ? 'none' : 'block';
+}
+
+function askAI(index) {
+    const output = document.getElementById('ai-output');
+    output.style.opacity = '0';
+    setTimeout(() => {
+        output.innerText = aiAnswers[index];
+        output.style.opacity = '1';
+        output.style.color = '#3b82f6';
+    }, 200);
+}
+
+// 4. ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ
+window.onclick = function(event) {
+    const modal = document.getElementById('project-modal');
+    if (event.target == modal) closeDetails();
+}
+
+// Плавная прокрутка
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
     });
-
-    // Эффект шапки при скролле
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(2, 6, 23, 0.95)';
-            navbar.style.padding = '15px 0';
-            navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-        } else {
-            navbar.style.background = 'rgba(2, 6, 23, 0.85)';
-            navbar.style.padding = '20px 0';
-            navbar.style.boxShadow = 'none';
-        }
-    });
-
-    // Обработка отправки формы
-    const requestForm = document.getElementById('requestForm');
-    if (requestForm) {
-        requestForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Предотвращаем перезагрузку страницы
-            
-            const btn = requestForm.querySelector('button');
-            const originalText = btn.innerText;
-            
-            // Имитация отправки
-            btn.innerText = 'Отправка...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                alert('Спасибо! Ваши данные успешно отправлены Nolly. Я свяжусь с вами в ближайшее время.');
-                requestForm.reset(); // Очистка полей
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
-    }
 });

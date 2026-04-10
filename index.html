@@ -3,177 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nolly | Premium Developer Portfolio</title>
-    <!-- Подключение шрифтов Golos и Montserrat -->
+    <title>Nolly | Digital Production</title>
+    <!-- Премиальный шрифт Manrope -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Подключение файлов стилей -->
     <link rel="stylesheet" href="style-base.css">
     <link rel="stylesheet" href="style-content.css">
 </head>
 <body>
 
-    <!-- Навигационная панель -->
-    <nav class="navbar">
-        <div class="container nav-container">
+    <!-- Умная кнопка ИИ в углу -->
+    <div class="ai-button" onclick="toggleAI()">
+        <div class="ai-glow"></div>
+        <span class="ai-icon">✦</span>
+    </div>
+
+    <!-- Модальное окно ИИ -->
+    <div id="ai-chat" class="ai-window">
+        <div class="ai-head">
+            <span>Nolly Assistant</span>
+            <button onclick="toggleAI()">✕</button>
+        </div>
+        <div class="ai-body">
+            <div id="ai-output">Привет! Готов создать для тебя продукт мирового уровня. О чем хочешь узнать?</div>
+            <div class="ai-chips">
+                <button onclick="askAI(0)">Цены</button>
+                <button onclick="askAI(1)">Сроки</button>
+                <button onclick="askAI(2)">Стек</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="glass-nav">
+        <div class="container nav-flex">
             <div class="logo">NOLLY<span>.</span></div>
             <div class="nav-links">
-                <a href="#portfolio">Проекты</a>
-                <a href="#pricing">Прайс</a>
-                <a href="#ai-faq">ИИ Помощник</a>
-                <a href="#contact" class="nav-btn">Связаться</a>
+                <a href="#portfolio">Кейсы</a>
+                <a href="#pricing">Тарифы</a>
+                <a href="#contact" class="cta-nav">Заказать</a>
             </div>
         </div>
     </nav>
 
-    <!-- Главный экран (Hero) -->
+    <!-- Hero Секция -->
     <header class="hero">
+        <div class="hero-circles"></div>
         <div class="container">
-            <div class="badge">Professional & Fast Development</div>
-            <h1>Разработка сайтов <br><span class="accent">премиального класса</span></h1>
-            <p class="hero-desc">Меня зовут Nolly. Мне 19 лет, и я создаю цифровые решения, которые выделяют ваш бизнес среди конкурентов. Скорость, стиль и безупречный код — мои главные приоритеты.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">Оставить заявку</a>
-                <a href="#portfolio" class="btn btn-secondary">Мои работы</a>
+            <div class="hero-badge">Est. 2024 • Software Engineer</div>
+            <h1>Дизайн. Код. <br><span class="text-gradient">Результат.</span></h1>
+            <p>Мне 19 лет. Я не просто пишу код — я создаю инструменты для вашего роста. Быстро, стильно, эффективно.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-filled">Обсудить идею</a>
+                <a href="#portfolio" class="btn btn-outline">Портфолио</a>
             </div>
         </div>
     </header>
 
-    <!-- Портфолио с твоими сайтами -->
+    <!-- Секция Портфолио -->
     <section id="portfolio" class="container">
-        <h2 class="section-title">Мои <span>Проекты</span></h2>
-        <div class="portfolio-grid">
-            <div class="project-card">
-                <span class="project-tag">Law</span>
-                <h3>Адвокатские услуги</h3>
-                <p>Элегантный и строгий интерфейс для юридического сопровождения.</p>
+        <h2 class="section-h">Мои <span>Проекты</span></h2>
+        <div class="project-grid">
+            
+            <!-- Проект 1 -->
+            <div class="card" onclick="showDetails('law')">
+                <div class="card-image">
+                    <!-- Сюда фото: <img src="law.jpg"> -->
+                    <div class="img-mockup">LAW SERVICE</div>
+                </div>
+                <div class="card-content">
+                    <span class="category gold">Premium Law</span>
+                    <h3>Адвокатские услуги</h3>
+                    <p>Нажми, чтобы узнать пользу для дела →</p>
+                </div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Real Estate</span>
-                <h3>Постройка домов</h3>
-                <p>Современная витрина объектов недвижимости с акцентом на фото.</p>
+
+            <!-- Проект 2 -->
+            <div class="card" onclick="showDetails('estate')">
+                <div class="card-image">
+                    <div class="img-mockup">ESTATE PRO</div>
+                </div>
+                <div class="card-content">
+                    <span class="category cyan">Real Estate</span>
+                    <h3>Постройка домов</h3>
+                    <p>Продающая архитектура в вебе.</p>
+                </div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Entertainment</span>
-                <h3>Сайт клуба</h3>
-                <p>Атмосферный дизайн и полный функционал для гостей клуба.</p>
+
+            <!-- Проект 3 -->
+            <div class="card" onclick="showDetails('club')">
+                <div class="card-image">
+                    <div class="img-mockup">NIGHT CLUB</div>
+                </div>
+                <div class="card-content">
+                    <span class="category purple">Entertainment</span>
+                    <h3>Сайт клуба</h3>
+                    <p>Функционал, который создает очередь.</p>
+                </div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Auto</span>
-                <h3>Премиальные авто</h3>
-                <p>Сайт среднего уровня с глубокой проработкой деталей и стиля.</p>
+
+            <!-- Проект 4 -->
+            <div class="card" onclick="showDetails('auto')">
+                <div class="card-image">
+                    <div class="img-mockup">ELITE AUTO</div>
+                </div>
+                <div class="card-content">
+                    <span class="category blue">Auto Premium</span>
+                    <h3>Премиальные авто</h3>
+                    <p>Эстетика и скорость в интерфейсе.</p>
+                </div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Agency</span>
-                <h3>Агентство</h3>
-                <p>Креативный лендинг для презентации профессиональных услуг.</p>
+
+            <!-- Проект 5 -->
+            <div class="card" onclick="showDetails('agency')">
+                <div class="card-image">
+                    <div class="img-mockup">AGENCY PRO</div>
+                </div>
+                <div class="card-content">
+                    <span class="category green">Marketing Agency</span>
+                    <h3>Агентство</h3>
+                    <p>Упаковка твоего бренда под ключ.</p>
+                </div>
             </div>
-            <div class="project-card">
-                <span class="project-tag">Utility</span>
-                <h3>Погода</h3>
-                <p>Функциональный веб-сервис с точными метеоданными через API.</p>
+
+            <!-- Проект 6 -->
+            <div class="card" onclick="showDetails('weather')">
+                <div class="card-image">
+                    <div class="img-mockup">SKY CAST</div>
+                </div>
+                <div class="card-content">
+                    <span class="category orange">API Solution</span>
+                    <h3>Погода</h3>
+                    <p>Сложные технологии в простом стиле.</p>
+                </div>
             </div>
-            <div class="project-card future">
-                <span class="project-tag">High-End</span>
-                <h3>Будущий проект</h3>
-                <p>Здесь будет реализована ваша самая смелая и масштабная идея.</p>
-            </div>
+
         </div>
     </section>
 
-    <!-- Прайс-лист -->
+    <!-- Скрытое окно для деталей проектов -->
+    <div id="project-modal" class="full-modal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeDetails()">✕</button>
+            <div id="project-inner-content">
+                <!-- Контент подставит JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Тарифы -->
     <section id="pricing" class="container">
-        <h2 class="section-title">Уровни <span>разработки</span></h2>
-        <div class="pricing-container">
-            <div class="price-table-wrapper">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>Возможности</th>
-                            <th>Обычный</th>
-                            <th>Средний</th>
-                            <th>Высокий</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Уникальный дизайн</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅ Premium</td>
-                        </tr>
-                        <tr>
-                            <td>Анимации и JS</td>
-                            <td>Базово</td>
-                            <td>Средне</td>
-                            <td>Advanced</td>
-                        </tr>
-                        <tr>
-                            <td>Любой функционал</td>
-                            <td>—</td>
-                            <td>✅</td>
-                            <td>✅ Full Custom</td>
-                        </tr>
-                        <tr class="price-footer">
-                            <td>Стоимость</td>
-                            <td>от 5 000 ₽</td>
-                            <td>от 15 000 ₽</td>
-                            <td>от 40 000 ₽</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <h2 class="section-h">Выбери свой <span>уровень</span></h2>
+        <div class="price-wrapper">
+            <table class="price-table">
+                <tr><td>Индивидуальный дизайн</td><td>✅</td><td>✅</td><td>✅ Premium</td></tr>
+                <tr><td>Мобильная адаптация</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                <tr><td>Сложная анимация</td><td>—</td><td>✅</td><td>✅ High-End</td></tr>
+                <tr class="price-val"><td>Цена</td><td>от 5 000 ₽</td><td>от 15 000 ₽</td><td>от 40 000 ₽</td></tr>
+            </table>
         </div>
     </section>
 
-    <!-- ИИ Помощник -->
-    <section id="ai-faq" class="container">
-        <div class="ai-box">
-            <h2 class="section-title">Nolly <span>AI Assistant</span></h2>
-            <div class="ai-content">
-                <div class="ai-btns">
-                    <button class="ai-q" onclick="askAI(0)">Сколько стоит сайт?</button>
-                    <button class="ai-q" onclick="askAI(1)">Какие сроки?</button>
-                    <button class="ai-q" onclick="askAI(2)">Делаешь дизайн?</button>
-                    <button class="ai-q" onclick="askAI(3)">Стек технологий?</button>
-                    <button class="ai-q" onclick="askAI(4)">Есть поддержка?</button>
-                    <button class="ai-q" onclick="askAI(5)">Как начать?</button>
-                </div>
-                <div class="ai-answer" id="ai-display">Нажмите на вопрос, чтобы ассистент ответил вам.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты и Форма -->
+    <!-- Контакты -->
     <section id="contact" class="container">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2 class="section-title" style="text-align: left;">Оставить <span>заявку</span></h2>
-                <p>Напишите мне напрямую или заполните форму, чтобы обсудить ваш будущий сайт.</p>
-                <div class="contact-methods">
-                    <div class="method"><strong>Email:</strong> ghasttankix@gmail.com</div>
-                    <div class="method"><strong>Telegram:</strong> <a href="https://t.me" target="_blank">@wnolly</a></div>
+        <div class="form-container">
+            <h2>Оставить <span>заявку</span></h2>
+            <p>ghasttankix@gmail.com | Telegram: @wnolly</p>
+            <form class="main-form">
+                <div class="input-row">
+                    <input type="text" placeholder="Имя" required>
+                    <input type="text" placeholder="Контакт (ТГ/Тел)" required>
                 </div>
-            </div>
-            <div class="contact-form-box">
-                <form id="requestForm" class="main-form">
-                    <input type="text" placeholder="Ваше имя" required>
-                    <input type="email" placeholder="Ваш Email" required>
-                    <input type="text" placeholder="Телефон / TG для связи" required>
-                    <textarea placeholder="О проекте" rows="4"></textarea>
-                    <button type="submit" class="btn btn-primary">Отправить данные</button>
-                </form>
-            </div>
+                <textarea placeholder="Опиши свою задачу" rows="4"></textarea>
+                <button type="submit" class="btn btn-filled">Запустить проект</button>
+            </form>
         </div>
     </section>
 
-    <!-- Футер -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 NOLLY Dev. Создано с вниманием к качеству.</p>
-        </div>
+        <p>&copy; 2024 NOLLY Development. Сделано для лучших.</p>
     </footer>
 
-    <!-- Подключение скрипта -->
     <script src="script.js"></script>
 </body>
 </html>

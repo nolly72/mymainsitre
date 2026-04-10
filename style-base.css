@@ -1,20 +1,24 @@
 /* =========================================
-   1. ПЕРЕМЕННЫЕ (Variables)
+   1. НАСТРОЙКИ ПРЕМИУМ-СТИЛЯ
    ========================================= */
 :root {
-    --bg-main: #020617;        /* Глубокий синий фон */
-    --bg-card: #0f172a;        /* Цвет карточек */
-    --accent-blue: #3b82f6;    /* Основной синий (Electric) */
-    --accent-cyan: #06b6d4;    /* Бирюзовый акцент */
-    --text-primary: #f8fafc;
-    --text-dim: #94a3b8;
-    --font-main: 'Golos Text', sans-serif;
-    --font-header: 'Montserrat', sans-serif;
+    /* Цветовая палитра "Deep Space Premium" */
+    --bg-dark: #020617;        /* Основной фон */
+    --bg-card: #0f172a;        /* Цвет блоков и карточек */
+    --accent-blue: #3b82f6;    /* Основной синий */
+    --accent-cyan: #22d3ee;    /* Яркий бирюзовый для градиентов */
+    --accent-purple: #8b5cf6;  /* Фиолетовый для ИИ-кнопки */
+    --text-white: #f8fafc;
+    --text-gray: #94a3b8;
+    
+    /* Геометрия */
+    --radius-xl: 32px;         /* Очень мягкое закругление для блоков */
+    --radius-lg: 20px;         /* Для карточек и кнопок */
     --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =========================================
-   2. ОБЩИЕ СТИЛИ (General)
+   2. БАЗОВЫЕ СТИЛИ (Reset & Base)
    ========================================= */
 * {
     margin: 0;
@@ -24,90 +28,106 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* База для REM */
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Manrope', sans-serif; /* Тот самый приятный шрифт */
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 5%;
+    padding: 0 6%;
 }
 
 section {
-    padding: 100px 0;
+    padding: 120px 0;
 }
 
-.section-title {
-    font-family: var(--font-header);
-    font-size: 2.8rem;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.section-title span {
-    color: var(--accent-blue);
+/* Адаптивность отступов для мобилок */
+@media (max-width: 768px) {
+    section { padding: 80px 0; }
 }
 
 /* =========================================
-   3. НАВИГАЦИЯ (Navbar)
+   3. ТИПОГРАФИКА (Заголовки и Текст)
    ========================================= */
-.navbar {
+.section-h {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -2px;
+}
+
+.section-h span {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .section-h { font-size: 2.5rem; }
+}
+
+/* =========================================
+   4. НАВИГАЦИЯ (Glassmorphism)
+   ========================================= */
+.glass-nav {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(2, 6, 23, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px 0;
-    transition: var(--transition);
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-container {
+.nav-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-family: var(--font-header);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: 1px;
 }
 
-.logo span {
-    color: var(--accent-blue);
-}
+.logo span { color: var(--accent-blue); }
 
 .nav-links a {
-    color: var(--text-primary);
+    color: var(--text-white);
     text-decoration: none;
     margin-left: 30px;
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
-.nav-links a:hover {
-    color: var(--accent-cyan);
+.nav-links a:hover { color: var(--accent-cyan); }
+
+.cta-nav {
+    background: var(--text-white);
+    color: var(--bg-dark) !important;
+    padding: 10px 24px;
+    border-radius: 14px;
 }
 
-.nav-btn {
-    background: var(--accent-blue);
-    padding: 10px 22px !important;
-    border-radius: 8px;
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Скрываем меню на мобилках для чистоты */
 }
 
 /* =========================================
-   4. ГЛАВНЫЙ ЭКРАН (Hero)
+   5. ГЛАВНЫЙ ЭКРАН (Hero)
    ========================================= */
 .hero {
     height: 100vh;
@@ -115,79 +135,91 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.12), transparent 50%);
+    position: relative;
 }
 
-.badge {
+.hero-circles {
+    position: absolute;
+    top: 20%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    filter: blur(100px);
+    z-index: -1;
+}
+
+.hero-badge {
     display: inline-block;
-    padding: 6px 18px;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid var(--accent-blue);
-    border-radius: 50px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--accent-blue);
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .hero h1 {
-    font-family: var(--font-header);
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 25px;
+    line-height: 1;
+    margin-bottom: 30px;
+    letter-spacing: -3px;
 }
 
-.accent {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+.text-gradient {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: flow 4s linear infinite;
 }
 
-.hero-desc {
-    max-width: 750px;
+@keyframes flow {
+    to { background-position: 200% center; }
+}
+
+.hero p {
+    max-width: 700px;
     margin: 0 auto 40px;
-    font-size: 1.2rem;
-    color: var(--text-dim);
+    font-size: 1.25rem;
+    color: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.5rem; letter-spacing: -1.5px; }
+    .hero p { font-size: 1.1rem; }
 }
 
 /* Кнопки */
 .btn {
     display: inline-block;
-    padding: 16px 35px;
-    border-radius: 12px;
+    padding: 20px 45px;
+    border-radius: var(--radius-lg);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
-    margin: 10px;
     cursor: pointer;
     border: none;
+    margin: 10px;
 }
 
-.btn-primary {
-    background: var(--accent-blue);
-    color: white;
+.btn-filled {
+    background: var(--text-white);
+    color: var(--bg-dark);
 }
 
-.btn-primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+.btn-filled:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }
 
-.btn-secondary {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: white;
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
-}
+.btn-outline:hover { background: rgba(255, 255, 255, 0.05); }
