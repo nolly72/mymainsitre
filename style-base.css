@@ -16,13 +16,13 @@
 }
 
 /* =========================================
-   2. БАЗОВЫЕ СТИЛИ (Единый шрифт Manrope)
+   2. ЕДИНЫЙ ШРИФТ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ
    ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Manrope', sans-serif !important; /* Принудительно для всех элементов */
+    font-family: 'Manrope', sans-serif !important; /* Единый закругленный шрифт */
 }
 
 html {
@@ -47,12 +47,7 @@ section {
     padding: 120px 0;
 }
 
-/* Адаптивные отступы для мобильных */
-@media (max-width: 768px) {
-    section { padding: 80px 0; }
-}
-
-/* Универсальные заголовки */
+/* Заголовки */
 .section-title {
     font-size: 3.5rem;
     font-weight: 800;
@@ -68,7 +63,8 @@ section {
 }
 
 @media (max-width: 768px) {
-    .section-title { font-size: 2.4rem; letter-spacing: -1px; }
+    section { padding: 70px 0; }
+    .section-title { font-size: 2.2rem; letter-spacing: -1px; }
 }
 
 /* =========================================
@@ -108,8 +104,6 @@ section {
     transition: var(--transition);
 }
 
-.nav-links a:hover { color: var(--accent-glow); }
-
 .nav-btn {
     background: var(--text-white);
     color: var(--bg-dark) !important;
@@ -118,7 +112,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Скрываем на мобилках для чистоты */
+    .nav-links { display: none; } /* Скрываем на мобилках для лаконичности */
 }
 
 /* =========================================
@@ -141,18 +135,6 @@ section {
     background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
     filter: blur(100px);
     z-index: -1;
-}
-
-.badge-premium {
-    display: inline-block;
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent-blue);
-    margin-bottom: 30px;
 }
 
 .hero h1 {
@@ -181,8 +163,8 @@ section {
 }
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 3.2rem; letter-spacing: -1.5px; }
-    .hero-desc { font-size: 1.1rem; }
+    .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
+    .hero-desc { font-size: 1rem; }
 }
 
 /* Кнопки */
@@ -197,15 +179,8 @@ section {
     border: none;
 }
 
-.btn-main {
-    background: var(--text-white);
-    color: var(--bg-dark);
-}
-
-.btn-main:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
-}
+.btn-main { background: var(--text-white); color: var(--bg-dark); }
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15); }
 
 .btn-glass {
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -213,8 +188,6 @@ section {
     background: rgba(255, 255, 255, 0.02);
     margin-left: 15px;
 }
-
-.btn-glass:hover { background: rgba(255, 255, 255, 0.05); }
 
 @media (max-width: 480px) {
     .btn { width: 100%; margin: 10px 0; }
