@@ -8,6 +8,20 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style-base.css">
     <link rel="stylesheet" href="style-content.css">
+    <style>
+        /* Дополнительные стили для корректного отображения фото */
+        .philosophy-content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-top: 30px; }
+        .phil-image-container { flex: 1; min-width: 300px; }
+        .phil-my-photo { width: 100%; border-radius: 20px; border: 1px solid rgba(0, 255, 255, 0.3); box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); }
+        .phil-text { flex: 2; min-width: 300px; }
+        
+        .portfolio-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .image-box-mega { position: relative; height: 400px; overflow: hidden; border-radius: 15px; background: #111; cursor: pointer; }
+        
+        .modal-window { max-height: 90vh; overflow-y: auto; width: 85%; max-width: 1200px; padding: 40px; position: relative; }
+        .modal-case-study img { width: 100%; margin-top: 20px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+        .modal-close { position: sticky; top: 0; float: right; z-index: 10; background: #00ffff; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px; }
+    </style>
 </head>
 <body>
 
@@ -20,7 +34,7 @@
         <span class="ai-icon">✦</span>
     </div>
 
-    <!-- Модальное окно ИИ (6 вопросов) -->
+    <!-- Модальное окно ИИ -->
     <div id="ai-chat-window" class="ai-modal-win">
         <div class="ai-header">
             <h3>Nolly Assistant</h3>
@@ -55,9 +69,9 @@
     <!-- Главный экран -->
     <header class="hero">
         <div class="container">
-            <div class="badge-neon shine">High-End Engineering</div>
-            <h1 class="animate-reveal">Будущее веба <br><span class="gradient-text neon-flicker">в каждом пикселе</span></h1>
-            <p class="hero-desc">Создаю цифровые экосистемы любого вида и сложности. Быстро. Эстетично. Профессионально.</p>
+            <div class="badge-neon shine">Est. 2024 • Web Developer</div>
+            <h1 class="animate-reveal">Меня зовут <span class="gradient-text neon-flicker">Nolly.</span><br>Создаю сайты для вашего бизнеса.</h1>
+            <p class="hero-desc">Я не просто пишу код — я создаю эффективные инструменты для ваших продаж. Быстро, стильно, с фокусом на результат.</p>
             <div class="hero-btns">
                 <a href="#contact" class="btn btn-neon-fill">Запустить проект</a>
                 <a href="#portfolio" class="btn btn-glass-border">Смотреть работы</a>
@@ -70,50 +84,71 @@
         <div class="philosophy-card glass-border">
             <h2 class="section-title">Моя <span class="neon-text">Философия</span></h2>
             <div class="philosophy-content">
+                <div class="phil-image-container">
+                    <img src="img/my-photo.jpg" alt="Nolly" class="phil-my-photo">
+                </div>
                 <div class="phil-text">
-                    <p>Мне 19 лет, и я стою у истоков новой школы разработки. Мой подход прост: для бизнеса не существует «невозможных» задач. Я занимаюсь созданием сайтов любого вида — от высокоэффективных лендингов до масштабируемых корпоративных платформ.</p>
-                    <p>Моя организация — это не просто код, это живой организм, который расширяется и эволюционирует каждый день. Молодость дает мне перспективу видеть тренды раньше других, а амбиции заставляют делать каждый проект эталоном качества. Вы инвестируете не в сайт, а в мощный актив, который будет расти вместе с вашими целями.</p>
+                    <p>Мне 19 лет, и я представляю новую школу разработки. Мой подход: сайт должен приносить деньги, а не просто висеть в сети. Я создаю всё — от мощных лендингов до сложных корпоративных платформ.</p>
+                    <p>Для меня каждый проект — это актив, который растет вместе с вашим бизнесом. Молодость позволяет мне чувствовать тренды раньше других, а технический бэкграунд гарантирует стабильность и скорость вашего сайта.</p>
                 </div>
                 <div class="phil-stats">
                     <div class="stat-item neon-border-box">
                         <span class="stat-num">∞</span>
-                        <p class="stat-desc">Перспективы развития</p>
+                        <p class="stat-desc">Идей для роста</p>
                     </div>
                     <div class="stat-item neon-border-box">
                         <span class="stat-num">100%</span>
-                        <p class="stat-desc">Уникальный код</p>
+                        <p class="stat-desc">Ручная работа</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: КЕЙСЫ (Гигантские фото) -->
+    <!-- Раздел: КЕЙСЫ -->
     <section id="portfolio" class="container">
         <h2 class="section-title">Избранные <span class="neon-text">Кейсы</span></h2>
         <div class="project-grid large-scale">
             <div class="project-card" onclick="openProject('law')">
-                <div class="image-box-mega"><div class="mega-placeholder">LAW SERVICE PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/law-preview.jpg" alt="Law Service" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
             <div class="project-card" onclick="openProject('estate')">
-                <div class="image-box-mega"><div class="mega-placeholder">ESTATE PRO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/estate-preview.jpg" alt="Estate Pro" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
             <div class="project-card" onclick="openProject('club')">
-                <div class="image-box-mega"><div class="mega-placeholder">NIGHT CLUB PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/club-preview.jpg" alt="Night Club" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
             <div class="project-card" onclick="openProject('auto')">
-                <div class="image-box-mega"><div class="mega-placeholder">ELITE AUTO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/auto-preview.jpg" alt="Elite Auto" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
             <div class="project-card" onclick="openProject('agency')">
-                <div class="image-box-mega"><div class="mega-placeholder">AGENCY PRO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/agency-preview.jpg" alt="Agency Pro" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
             <div class="project-card" onclick="openProject('weather')">
-                <div class="image-box-mega"><div class="mega-placeholder">SKY CAST PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
+                <div class="image-box-mega">
+                    <img src="img/weather-preview.jpg" alt="Sky Cast" class="portfolio-img">
+                    <div class="hover-neon"><span>Открыть кейс</span></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: ТАРИФЫ (Инвестиции в результат) -->
+    <!-- Раздел: ТАРИФЫ -->
     <section id="pricing" class="container">
         <h2 class="section-title">Инвестиции в <span class="neon-text">результат</span></h2>
         <div class="pricing-premium-box neon-shadow">
@@ -137,14 +172,14 @@
                         <td>Стоимость</td>
                         <td>от 5 000 ₽</td>
                         <td>от 15 000 ₽</td>
-                        <td>от 40 000 ₽</td>
+                        <td>от 25 000 ₽</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ (Чистый дизайн) -->
+    <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ -->
     <section id="contact" class="container">
         <div class="form-wrapper-premium glass-morph">
             <h2 class="section-title">Оставить <span class="neon-text">заявку</span></h2>
@@ -165,8 +200,8 @@
         </div>
     </section>
 
-    <!-- Модальное окно (Галерея 6 фото) -->
-    <div id="project-modal" class="modal-overlay">
+    <!-- Модальное окно -->
+    <div id="project-modal" class="modal-overlay" style="display:none;">
         <div class="modal-window glass-border">
             <button class="modal-close" onclick="closeProject()">✕</button>
             <div id="modal-content-inject"></div>
@@ -174,9 +209,58 @@
     </div>
 
     <footer class="footer">
-        <p>© 2024 NOLLY Development. Эстетика. Код. Перспектива.</p>
+        <p>© 2026 NOLLY Development. Эстетика. Код. Перспектива.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Логика ИИ помощника (пример)
+        function toggleAI() {
+            const win = document.getElementById('ai-chat-window');
+            win.style.display = win.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function askAI(index) {
+            const answers = [
+                "Тарифы начинаются от 5 000 ₽ за лендинг.",
+                "Сроки разработки — от 3 до 14 дней.",
+                "Использую современный стек: HTML5, CSS3 (GSAP), JavaScript, PHP/Node.js.",
+                "Занимаюсь вебом с 2024 года, специализируюсь на бизнес-инструментах.",
+                "Поддержка включена во все тарифы: от 7 дней до бессрочного периода.",
+                "Просто оставьте заявку внизу страницы, и я свяжусь с вами в течение часа!"
+            ];
+            document.getElementById('ai-display').innerText = answers[index];
+        }
+
+        // Данные портфолио
+        const projectData = {
+            'law': { title: 'Юридический сервис', img: 'img/law-full.jpg', desc: 'Премиальный дизайн и сложная структура для юристов.' },
+            'estate': { title: 'Недвижимость Pro', img: 'img/estate-full.jpg', desc: 'Интерактивная карта и каталог объектов недвижимости.' },
+            'club': { title: 'Night Club', img: 'img/club-full.jpg', desc: 'Смелый дизайн с неоновыми элементами и видео-фоном.' },
+            'auto': { title: 'Elite Auto', img: 'img/auto-full.jpg', desc: 'Посадочная страница для продаж автомобилей премиум-сегмента.' },
+            'agency': { title: 'Digital Агентство', img: 'img/agency-full.jpg', desc: 'Минималистичное портфолио с акцентом на типографику.' },
+            'weather': { title: 'Sky Cast', img: 'img/weather-full.jpg', desc: 'Функциональный сервис с интеграцией погодных API.' }
+        };
+
+        function openProject(id) {
+            const project = projectData[id];
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content-inject');
+            
+            content.innerHTML = `
+                <div class="modal-case-study">
+                    <h2 class="neon-text" style="font-size: 2.5rem;">${project.title}</h2>
+                    <p style="font-size: 1.1rem; color: #ccc; margin-top: 10px;">${project.desc}</p>
+                    <img src="${project.img}" alt="${project.title}">
+                </div>
+            `;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Запрет скролла при открытом модальном окне
+        }
+
+        function closeProject() {
+            document.getElementById('project-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
