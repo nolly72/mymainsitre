@@ -3,131 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nolly | Premium Web Development</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Подключаем премиальный шрифт -->
+    <title>Nolly | Premium Developer Portfolio</title>
+    <!-- Подключаем мягкий шрифт Golos Text и Montserrat для заголовков -->
     <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Навигация -->
     <nav class="navbar">
-        <div class="logo">NOLLY<span>.</span></div>
-        <div class="nav-links">
-            <a href="#services">Уровни</a>
-            <a href="#pricing">Прайс</a>
-            <a href="#contact" class="nav-btn">Заказать проект</a>
+        <div class="container nav-container">
+            <div class="logo">NOLLY<span>.</span></div>
+            <div class="nav-links">
+                <a href="#portfolio">Проекты</a>
+                <a href="#pricing">Прайс</a>
+                <a href="#ai-faq">ИИ Помощник</a>
+                <a href="#contact" class="nav-btn">Связаться</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Главный экран (Hero) -->
+    <!-- Главный экран -->
     <header class="hero">
-        <div class="hero-content">
-            <div class="badge">Fast & Premium</div>
-            <h1>Разработка сайтов <br><span class="accent">со скоростью мысли</span></h1>
-            <p>Меня зовут Nolly. Я создаю цифровые продукты любой сложности: от стильных лендингов до мощных систем. Ваш бизнес получит сайт быстрее, чем конкуренты успеют составить ТЗ.</p>
+        <div class="container">
+            <div class="badge">Professional & Fast Development</div>
+            <h1>Разработка сайтов <br><span class="accent">премиального класса</span></h1>
+            <p class="hero-desc">Меня зовут Nolly. Мне 19 лет, и я создаю цифровые решения, которые выделяют ваш бизнес среди конкурентов. Скорость, стиль и безупречный код — мои главные приоритеты.</p>
             <div class="hero-btns">
-                <a href="#pricing" class="btn-primary">Узнать стоимость</a>
-                <a href="#services" class="btn-secondary">Мои возможности</a>
+                <a href="#contact" class="btn btn-primary">Оставить заявку</a>
+                <a href="#portfolio" class="btn btn-secondary">Мои работы</a>
             </div>
         </div>
     </header>
 
-    <!-- Разделы по уровням -->
-    <section id="services" class="levels-section">
-        <h2 class="section-title">Выберите свой <span>уровень</span></h2>
-        <div class="levels-grid">
-            <!-- Обычный -->
-            <div class="level-card">
-                <div class="level-icon">01</div>
-                <h3>Обычный</h3>
-                <p>Идеально для быстрого старта. Чистый код, адаптив и базовый SEO-пакет.</p>
-                <span class="level-tag">Срок: 1-3 дня</span>
+    <!-- Раздел Портфолио -->
+    <section id="portfolio" class="container">
+        <h2 class="section-title">Мои <span>Проекты</span></h2>
+        <div class="portfolio-grid">
+            <div class="project-card">
+                <span class="project-tag">Law</span>
+                <h3>Адвокатские услуги</h3>
+                <p>Строгий и доверительный стиль для юридической практики.</p>
             </div>
-            <!-- Средний -->
-            <div class="level-card featured">
-                <div class="level-icon">02</div>
-                <h3>Средний</h3>
-                <p>Сложные анимации, уникальный дизайн и интеграция с вашими сервисами.</p>
-                <span class="level-tag">Срок: 3-7 дней</span>
+            <div class="project-card">
+                <span class="project-tag">Real Estate</span>
+                <h3>Постройка домов</h3>
+                <p>Удобный каталог недвижимости с акцентом на визуальную составляющую.</p>
             </div>
-            <!-- Высокий -->
-            <div class="level-card">
-                <div class="level-icon">03</div>
-                <h3>Высокий</h3>
-                <p>Абсолютно любой функционал. Индивидуальные решения и премиальный визуал.</p>
-                <span class="level-tag">Срок: от 7 дней</span>
+            <div class="project-card">
+                <span class="project-tag">Entertainment</span>
+                <h3>Сайт клуба</h3>
+                <p>Интерактивные функции и стильное меню для развлекательных заведений.</p>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">Auto</span>
+                <h3>Премиальные авто</h3>
+                <p>Минималистичный интерфейс для продажи люксового транспорта.</p>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">Agency</span>
+                <h3>Агентство</h3>
+                <p>Продающий лендинг с плавной анимацией и чистой структурой.</p>
+            </div>
+            <div class="project-card">
+                <span class="project-tag">Utility</span>
+                <h3>Сервис погоды</h3>
+                <p>Технологичное решение с использованием внешних API данных.</p>
+            </div>
+            <div class="project-card future">
+                <span class="project-tag">High-End</span>
+                <h3>Будущий проект</h3>
+                <p>Здесь будет реализована ваша самая сложная бизнес-задача.</p>
             </div>
         </div>
     </section>
 
-    <!-- Прайс-лист -->
-    <section id="pricing" class="pricing-section">
-        <h2 class="section-title">Прозрачный <span>прайс</span></h2>
-        <div class="pricing-table-container">
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th>Что входит</th>
-                        <th>Обычный</th>
-                        <th>Средний</th>
-                        <th>Высокий</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Уникальный дизайн</td>
-                        <td>Шаблонный + правки</td>
-                        <td>Индивидуальный</td>
-                        <td>Premium Art</td>
-                    </tr>
-                    <tr>
-                        <td>Адаптивность (Mobile)</td>
-                        <td>✅</td>
-                        <td>✅</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td>Сложные JS анимации</td>
-                        <td>—</td>
-                        <td>Базовые</td>
-                        <td>Advanced UX</td>
-                    </tr>
-                    <tr>
-                        <td>Админ-панель</td>
-                        <td>—</td>
-                        <td>✅</td>
-                        <td>✅ Custom</td>
-                    </tr>
-                    <tr>
-                        <td>Поддержка 24/7</td>
-                        <td>1 неделя</td>
-                        <td>1 месяц</td>
-                        <td>Бессрочно</td>
-                    </tr>
-                    <tr class="price-row">
-                        <td>Стоимость</td>
-                        <td>от 5 000 ₽</td>
-                        <td>от 15 000 ₽</td>
-                        <td>от 40 000 ₽</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Раздел Прайс -->
+    <section id="pricing" class="container">
+        <h2 class="section-title">Уровни <span>разработки</span></h2>
+        <div class="pricing-container">
+            <div class="price-table-wrapper">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Возможности</th>
+                            <th>Обычный</th>
+                            <th>Средний</th>
+                            <th>Высокий</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Уникальный дизайн</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅ Premium</td>
+                        </tr>
+                        <tr>
+                            <td>Анимации и JS</td>
+                            <td>Базово</td>
+                            <td>Средне</td>
+                            <td>Advanced</td>
+                        </tr>
+                        <tr>
+                            <td>Любой функционал</td>
+                            <td>—</td>
+                            <td>✅</td>
+                            <td>✅ Full Custom</td>
+                        </tr>
+                        <tr class="price-footer">
+                            <td>Стоимость</td>
+                            <td>от 5 000 ₽</td>
+                            <td>от 15 000 ₽</td>
+                            <td>от 40 000 ₽</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <p class="pricing-note">* Цены снижены для формирования портфолио. Успейте занять место!</p>
     </section>
 
-    <!-- Футер -->
-    <footer id="contact">
-        <h2>Готовы начать?</h2>
-        <p>Напишите мне, и мы обсудим ваш проект сегодня.</p>
-        <div class="social-links">
-            <a href="#">Telegram</a>
-            <a href="#">WhatsApp</a>
-            <a href="#">GitHub</a>
+    <!-- AI Ассистент -->
+    <section id="ai-faq" class="container">
+        <div class="ai-box">
+            <h2 class="section-title">Nolly <span>AI Assistant</span></h2>
+            <div class="ai-content">
+                <div class="ai-btns">
+                    <button class="ai-q" onclick="askAI(0)">Сколько стоит сайт?</button>
+                    <button class="ai-q" onclick="askAI(1)">Какие сроки?</button>
+                    <button class="ai-q" onclick="askAI(2)">Делаешь дизайн?</button>
+                    <button class="ai-q" onclick="askAI(3)">Стек технологий?</button>
+                    <button class="ai-q" onclick="askAI(4)">Есть поддержка?</button>
+                    <button class="ai-q" onclick="askAI(5)">Как начать?</button>
+                </div>
+                <div class="ai-response" id="ai-display">
+                    Нажмите на интересующий вопрос, чтобы мгновенно получить ответ.
+                </div>
+            </div>
         </div>
-        <div class="copyright">&copy; 2024 NOLLY DEV. Все права защищены.</div>
+    </section>
+
+    <!-- Связь и Форма -->
+    <section id="contact" class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2 class="section-title" style="text-align: left;">Оставить <span>заявку</span></h2>
+                <p>Я всегда открыт к новым предложениям. Пишите мне в удобный мессенджер или заполните форму.</p>
+                <div class="contact-methods">
+                    <div class="method"><strong>Email:</strong> ghasttankix@gmail.com</div>
+                    <div class="method"><strong>Telegram:</strong> <a href="https://t.me">@wnolly</a></div>
+                </div>
+            </div>
+            <div class="contact-form-box">
+                <form id="requestForm" class="main-form">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Ваш Email" required>
+                    <input type="text" placeholder="Телефон / TG для связи" required>
+                    <textarea placeholder="О проекте" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary">Отправить данные</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 NOLLY Dev. Все права защищены.</p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,194 @@
+/* =========================================
+   1. ПЕРЕМЕННЫЕ И НАСТРОЙКИ (Variables)
+   ========================================= */
+:root {
+    --bg-main: #020617;        /* Глубокий темно-синий */
+    --bg-card: #0f172a;        /* Цвет карточек */
+    --accent-blue: #3b82f6;    /* Основной синий */
+    --accent-cyan: #06b6d4;    /* Бирюзовый акцент */
+    --accent-purple: #8b5cf6;  /* Фиолетовый (для ИИ) */
+    --text-primary: #f8fafc;
+    --text-dim: #94a3b8;
+    --font-main: 'Golos Text', sans-serif;
+    --font-header: 'Montserrat', sans-serif;
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   2. БАЗОВЫЕ СТИЛИ (Base Styles)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-family: var(--font-header);
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-title span {
+    color: var(--accent-blue);
+}
+
+/* =========================================
+   3. НАВИГАЦИЯ (Navigation)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-header);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-blue);
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-cyan);
+}
+
+.nav-btn {
+    background: var(--accent-blue);
+    padding: 10px 22px !important;
+    border-radius: 8px;
+}
+
+/* =========================================
+   4. ГЛАВНЫЙ ЭКРАН (Hero Section)
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.15), transparent 50%);
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--accent-blue);
+    border-radius: 50px;
+    color: var(--accent-blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-family: var(--font-header);
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.accent {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    max-width: 750px;
+    margin: 0 auto 40px;
+    font-size: 1.2rem;
+    color: var(--text-dim);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 16px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Адаптив для Hero */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    .nav-links { display: none; }
+}
