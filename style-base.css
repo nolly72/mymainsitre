@@ -1,40 +1,37 @@
 /* =========================================
-   1. НАСТРОЙКИ ПРЕМИУМ-СТИЛЯ
+   1. ПЕРЕМЕННЫЕ И ШРИФТЫ
    ========================================= */
 :root {
-    /* Цветовая палитра "Deep Space Premium" */
     --bg-dark: #020617;        /* Основной фон */
-    --bg-card: #0f172a;        /* Цвет блоков и карточек */
+    --bg-card: #0f172a;        /* Блоки и карточки */
     --accent-blue: #3b82f6;    /* Основной синий */
-    --accent-cyan: #22d3ee;    /* Яркий бирюзовый для градиентов */
-    --accent-purple: #8b5cf6;  /* Фиолетовый для ИИ-кнопки */
+    --accent-glow: #06b6d4;    /* Бирюза для градиентов */
     --text-white: #f8fafc;
     --text-gray: #94a3b8;
     
     /* Геометрия */
-    --radius-xl: 32px;         /* Очень мягкое закругление для блоков */
-    --radius-lg: 20px;         /* Для карточек и кнопок */
+    --radius-xl: 32px;         /* Очень мягкое закругление */
+    --radius-lg: 20px;         /* Кнопки и карточки */
     --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =========================================
-   2. БАЗОВЫЕ СТИЛИ (Reset & Base)
+   2. БАЗОВЫЕ СТИЛИ (Единый шрифт Manrope)
    ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Manrope', sans-serif !important; /* Принудительно для всех элементов */
 }
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px; /* База для REM */
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
-    font-family: 'Manrope', sans-serif; /* Тот самый приятный шрифт */
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -50,15 +47,13 @@ section {
     padding: 120px 0;
 }
 
-/* Адаптивность отступов для мобилок */
+/* Адаптивные отступы для мобильных */
 @media (max-width: 768px) {
     section { padding: 80px 0; }
 }
 
-/* =========================================
-   3. ТИПОГРАФИКА (Заголовки и Текст)
-   ========================================= */
-.section-h {
+/* Универсальные заголовки */
+.section-title {
     font-size: 3.5rem;
     font-weight: 800;
     text-align: center;
@@ -66,38 +61,38 @@ section {
     letter-spacing: -2px;
 }
 
-.section-h span {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+.section-title span {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-glow));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 768px) {
-    .section-h { font-size: 2.5rem; }
+    .section-title { font-size: 2.4rem; letter-spacing: -1px; }
 }
 
 /* =========================================
-   4. НАВИГАЦИЯ (Glassmorphism)
+   3. НАВИГАЦИЯ (Glassmorphism)
    ========================================= */
-.glass-nav {
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     padding: 20px 0;
-    background: rgba(2, 6, 23, 0.7);
+    background: rgba(2, 6, 23, 0.75);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-flex {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 800;
     letter-spacing: 1px;
 }
@@ -113,9 +108,9 @@ section {
     transition: var(--transition);
 }
 
-.nav-links a:hover { color: var(--accent-cyan); }
+.nav-links a:hover { color: var(--accent-glow); }
 
-.cta-nav {
+.nav-btn {
     background: var(--text-white);
     color: var(--bg-dark) !important;
     padding: 10px 24px;
@@ -123,11 +118,11 @@ section {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Скрываем меню на мобилках для чистоты */
+    .nav-links { display: none; } /* Скрываем на мобилках для чистоты */
 }
 
 /* =========================================
-   5. ГЛАВНЫЙ ЭКРАН (Hero)
+   4. ГЛАВНЫЙ ЭКРАН (Hero)
    ========================================= */
 .hero {
     height: 100vh;
@@ -138,17 +133,17 @@ section {
     position: relative;
 }
 
-.hero-circles {
+.hero-glow {
     position: absolute;
-    top: 20%;
+    top: 10%;
     width: 40%;
     height: 40%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
     filter: blur(100px);
     z-index: -1;
 }
 
-.hero-badge {
+.badge-premium {
     display: inline-block;
     padding: 8px 20px;
     background: rgba(255, 255, 255, 0.03);
@@ -157,69 +152,71 @@ section {
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--accent-blue);
-    margin-bottom: 24px;
-    text-transform: uppercase;
+    margin-bottom: 30px;
 }
 
 .hero h1 {
     font-size: 5.5rem;
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.1;
     margin-bottom: 30px;
     letter-spacing: -3px;
 }
 
-.text-gradient {
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+.gradient-text {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-glow), #8b5cf6);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: flow 4s linear infinite;
+    animation: flow 5s linear infinite;
 }
 
-@keyframes flow {
-    to { background-position: 200% center; }
-}
+@keyframes flow { to { background-position: 200% center; } }
 
-.hero p {
+.hero-desc {
     max-width: 700px;
-    margin: 0 auto 40px;
-    font-size: 1.25rem;
+    margin: 0 auto 50px;
+    font-size: 1.3rem;
     color: var(--text-gray);
 }
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 3.5rem; letter-spacing: -1.5px; }
-    .hero p { font-size: 1.1rem; }
+    .hero h1 { font-size: 3.2rem; letter-spacing: -1.5px; }
+    .hero-desc { font-size: 1.1rem; }
 }
 
 /* Кнопки */
 .btn {
     display: inline-block;
-    padding: 20px 45px;
+    padding: 18px 40px;
     border-radius: var(--radius-lg);
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
     cursor: pointer;
     border: none;
-    margin: 10px;
 }
 
-.btn-filled {
+.btn-main {
     background: var(--text-white);
     color: var(--bg-dark);
 }
 
-.btn-filled:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+.btn-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
 }
 
-.btn-outline {
+.btn-glass {
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-white);
     background: rgba(255, 255, 255, 0.02);
+    margin-left: 15px;
 }
 
-.btn-outline:hover { background: rgba(255, 255, 255, 0.05); }
+.btn-glass:hover { background: rgba(255, 255, 255, 0.05); }
+
+@media (max-width: 480px) {
+    .btn { width: 100%; margin: 10px 0; }
+    .btn-glass { margin-left: 0; }
+}
