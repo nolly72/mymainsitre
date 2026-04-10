@@ -3,264 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nolly | Digital Philosophy & Development</title>
-    <!-- Единый премиальный шрифт Manrope -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="style-base.css">
-    <link rel="stylesheet" href="style-content.css">
-    <style>
-        /* Дополнительные стили для корректного отображения фото */
-        .philosophy-content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-top: 30px; }
-        .phil-image-container { flex: 1; min-width: 300px; }
-        .phil-my-photo { width: 100%; border-radius: 20px; border: 1px solid rgba(0, 255, 255, 0.3); box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); }
-        .phil-text { flex: 2; min-width: 300px; }
-        
-        .portfolio-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .image-box-mega { position: relative; height: 400px; overflow: hidden; border-radius: 15px; background: #111; cursor: pointer; }
-        
-        .modal-window { max-height: 90vh; overflow-y: auto; width: 85%; max-width: 1200px; padding: 40px; position: relative; }
-        .modal-case-study img { width: 100%; margin-top: 20px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-        .modal-close { position: sticky; top: 0; float: right; z-index: 10; background: #00ffff; border: none; padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px; }
-    </style>
+    <title>NOLLY | High-End Web Developer Portfolio</title>
+    
+    <!-- Подключение шрифтов и иконок -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Geist:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Анимированные слои сияния -->
-    <div class="neon-bg-glow"></div>
-    <div class="main-glow"></div>
-
-    <!-- Интеллектуальная кнопка ИИ -->
-    <div class="ai-floating-btn neon-pulse" onclick="toggleAI()">
-        <span class="ai-icon">✦</span>
-    </div>
-
-    <!-- Модальное окно ИИ -->
-    <div id="ai-chat-window" class="ai-modal-win">
-        <div class="ai-header">
-            <h3>Nolly Assistant</h3>
-            <button onclick="toggleAI()">✕</button>
-        </div>
-        <div class="ai-body">
-            <div id="ai-display">Привет! Я помогу тебе выбрать уровень разработки. О чем рассказать?</div>
-            <div class="ai-questions">
-                <button onclick="askAI(0)">Тарифы</button>
-                <button onclick="askAI(1)">Сроки</button>
-                <button onclick="askAI(2)">Стек</button>
-                <button onclick="askAI(3)">Опыт</button>
-                <button onclick="askAI(4)">Поддержка</button>
-                <button onclick="askAI(5)">Старт</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Навигация -->
-    <nav class="navbar glass-effect">
-        <div class="container nav-container">
-            <div class="logo">NOLLY<span class="neon-dot">.</span></div>
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">NOLLY<span>.</span></div>
             <div class="nav-links">
                 <a href="#philosophy">Философия</a>
-                <a href="#portfolio">Кейсы</a>
-                <a href="#pricing">Тарифы</a>
-                <a href="#contact" class="nav-btn-neon">Заказать</a>
+                <a href="#cases">Портфолио</a>
+                <a href="#process">Процесс</a>
+                <a href="#pricing">Инвестиции</a>
+                <a href="#contact" class="btn-cta">Начать проект</a>
             </div>
         </div>
     </nav>
 
-    <!-- Главный экран -->
+    <!-- Главный экран (Hero) -->
     <header class="hero">
         <div class="container">
-            <div class="badge-neon shine">Est. 2024 • Web Developer</div>
-            <h1 class="animate-reveal">Меня зовут <span class="gradient-text neon-flicker">Nolly.</span><br>Создаю сайты для вашего бизнеса.</h1>
-            <p class="hero-desc">Я не просто пишу код — я создаю эффективные инструменты для ваших продаж. Быстро, стильно, с фокусом на результат.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-neon-fill">Запустить проект</a>
-                <a href="#portfolio" class="btn btn-glass-border">Смотреть работы</a>
+            <div class="hero-content">
+                <div class="status-badge">Available for high-end projects</div>
+                <h1 class="gradient-text">Разработка<br>с характером</h1>
+                <p class="hero-sub">Меня зовут NOLLY, мне 19 лет. Я создаю цифровые продукты, которые выглядят дорого, работают быстро и решают задачи вашего бизнеса.</p>
+                <div class="hero-btns">
+                    <a href="#cases" class="btn-primary">Смотреть работы</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Раздел: МОЯ ФИЛОСОФИЯ -->
-    <section id="philosophy" class="container">
-        <div class="philosophy-card glass-border">
-            <h2 class="section-title">Моя <span class="neon-text">Философия</span></h2>
-            <div class="philosophy-content">
-                <div class="phil-image-container">
-                    <img src="img/my-photo.jpg" alt="Nolly" class="phil-my-photo">
+    <!-- Раздел: Философия -->
+    <section id="philosophy" class="section">
+        <div class="container">
+            <h2 class="section-title">Философия</h2>
+            <div class="philosophy-grid">
+                <div class="phi-card main-phi">
+                    <span class="phi-tag">01 / Мощность</span>
+                    <h3>Молодой и всемогущий</h3>
+                    <p>В 19 лет мой взгляд не замылен шаблонами 10-летней давности. Я использую самый свежий стек технологий. Для меня нет фразы «это невозможно реализовать». Если вы это придумали — я это запрограммирую.</p>
                 </div>
-                <div class="phil-text">
-                    <p>Мне 19 лет, и я представляю новую школу разработки. Мой подход: сайт должен приносить деньги, а не просто висеть в сети. Я создаю всё — от мощных лендингов до сложных корпоративных платформ.</p>
-                    <p>Для меня каждый проект — это актив, который растет вместе с вашим бизнесом. Молодость позволяет мне чувствовать тренды раньше других, а технический бэкграунд гарантирует стабильность и скорость вашего сайта.</p>
-                </div>
-                <div class="phil-stats">
-                    <div class="stat-item neon-border-box">
-                        <span class="stat-num">∞</span>
-                        <p class="stat-desc">Идей для роста</p>
-                    </div>
-                    <div class="stat-item neon-border-box">
-                        <span class="stat-num">100%</span>
-                        <p class="stat-desc">Ручная работа</p>
-                    </div>
+                <div class="phi-card side-phi">
+                    <span class="phi-tag">02 / Эстетика</span>
+                    <h3>Мягкий дизайн</h3>
+                    <p>Я сторонник «округлого» веба. Мой дизайн приятен глазу, его хочется скроллить. Каждая кнопка, каждая карточка — это баланс между трендами и удобством.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: КЕЙСЫ -->
-    <section id="portfolio" class="container">
-        <h2 class="section-title">Избранные <span class="neon-text">Кейсы</span></h2>
-        <div class="project-grid large-scale">
-            <div class="project-card" onclick="openProject('law')">
-                <div class="image-box-mega">
-                    <img src="img/law-preview.jpg" alt="Law Service" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('estate')">
-                <div class="image-box-mega">
-                    <img src="img/estate-preview.jpg" alt="Estate Pro" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('club')">
-                <div class="image-box-mega">
-                    <img src="img/club-preview.jpg" alt="Night Club" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('auto')">
-                <div class="image-box-mega">
-                    <img src="img/auto-preview.jpg" alt="Elite Auto" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('agency')">
-                <div class="image-box-mega">
-                    <img src="img/agency-preview.jpg" alt="Agency Pro" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('weather')">
-                <div class="image-box-mega">
-                    <img src="img/weather-preview.jpg" alt="Sky Cast" class="portfolio-img">
-                    <div class="hover-neon"><span>Открыть кейс</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Раздел: Избранные Кейсы -->
+    <section id="cases" class="section">
+        <div class="container">
+            <h2 class="section-title">Избранные Кейсы</h2>
 
-    <!-- Раздел: ТАРИФЫ -->
-    <section id="pricing" class="container">
-        <h2 class="section-title">Инвестиции в <span class="neon-text">результат</span></h2>
-        <div class="pricing-premium-box neon-shadow">
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Функционал</th>
-                        <th>Обычный</th>
-                        <th>Средний</th>
-                        <th>Высокий</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Эксклюзивный дизайн</td><td>✅</td><td>✅</td><td><span class="gold-text">✅ Premium Gold</span></td></tr>
-                    <tr><td>Анимации интерфейса</td><td>Базовые</td><td>Advanced</td><td>High-End (3D/GSAP)</td></tr>
-                    <tr><td>SEO-подготовка</td><td>✅</td><td>✅</td><td>✅ Full Indexing</td></tr>
-                    <tr><td>Интеграция API / БД</td><td>—</td><td>✅</td><td>✅ Unlimited</td></tr>
-                    <tr><td>Админ-панель</td><td>—</td><td>✅</td><td>✅ Custom CRM</td></tr>
-                    <tr><td>Поддержка и обучение</td><td>7 дней</td><td>30 дней</td><td>Бессрочно</td></tr>
-                    <tr class="final-row">
-                        <td>Стоимость</td>
-                        <td>от 5 000 ₽</td>
-                        <td>от 15 000 ₽</td>
-                        <td>от 25 000 ₽</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ -->
-    <section id="contact" class="container">
-        <div class="form-wrapper-premium glass-morph">
-            <h2 class="section-title">Оставить <span class="neon-text">заявку</span></h2>
-            <form id="requestForm" class="minimal-form">
-                <div class="form-grid">
-                    <div class="field">
-                        <input type="text" placeholder="Ваше имя" required>
+            <!-- Категория: Обычные -->
+            <div class="category-block">
+                <div class="category-header">
+                    <span class="cat-label">Essential Level</span>
+                    <div class="line"></div>
+                </div>
+                <div class="case-grid">
+                    <!-- Кейс 1 -->
+                    <div class="case-card" onclick="openModal('img/house.jpg', 'Продажа недвижимости', 'Классический Landing Page для продажи загородных домов. Акцент на качественных фото, удобные формы захвата и высокая скорость загрузки.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/house.jpg');"></div>
+                        <div class="case-info">
+                            <h4>Продажа домов</h4>
+                            <p>Обычный Landing</p>
+                        </div>
                     </div>
-                    <div class="field">
-                        <input type="text" placeholder="Telegram / Телефон" required>
+                    <!-- Кейс 2 -->
+                    <div class="case-card" onclick="openModal('img/law.jpg', 'Услуги адвокатов', 'Сайт для юридического бюро. Лаконичный дизайн, вызывающий доверие. Полная адаптивность и проработка UX-пути клиента.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/law.jpg');"></div>
+                        <div class="case-info">
+                            <h4>Услуги адвокатов</h4>
+                            <p>Корпоративный сайт</p>
+                        </div>
                     </div>
                 </div>
-                <div class="field">
-                    <textarea placeholder="Краткое описание вашей задачи" rows="4" required></textarea>
+            </div>
+
+            <!-- Категория: High-End -->
+            <div class="category-block">
+                <div class="category-header">
+                    <span class="cat-label premium-label">High-End Level</span>
+                    <div class="line"></div>
                 </div>
-                <button type="submit" class="btn-launch-neon">Запустить разработку</button>
-            </form>
+                <div class="case-grid">
+                    <!-- Кейс 3 -->
+                    <div class="case-card premium" onclick="openModal('img/car.jpg', 'Rent a Car Premium', 'Сложный интерфейс аренды авто. Интерактивные фильтры, плавная анимация появления элементов и уникальный темный стиль.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/car.jpg');"></div>
+                        <div class="case-info">
+                            <h4>Аренда авто</h4>
+                            <p>High-End App</p>
+                        </div>
+                    </div>
+                    <!-- Кейс 4 -->
+                    <div class="case-card premium" onclick="openModal('img/agency.jpg', 'Digital Agency', 'Сайт-портфолио для агентства. Нестандартные переходы между страницами, много цветного текста и параллакс эффекты.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/agency.jpg');"></div>
+                        <div class="case-info">
+                            <h4>Агенство</h4>
+                            <p>Creative Design</p>
+                        </div>
+                    </div>
+                    <!-- Кейс 5 -->
+                    <div class="case-card premium" onclick="openModal('img/club.jpg', 'Club Experience', 'Погружающий дизайн для ночного клуба. Видео-фоны, неоновые акценты и интеграция с социальными сетями.')">
+                        <div class="case-img-placeholder" style="background-image: url('img/club.jpg');"></div>
+                        <div class="case-info">
+                            <h4>Сайт клуба</h4>
+                            <p>Immersive Web</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пустые слоты -->
+            <div class="category-block">
+                <div class="category-header">
+                    <span class="cat-label">Reserved Spots</span>
+                    <div class="line"></div>
+                </div>
+                <div class="case-grid">
+                    <div class="case-card placeholder"><h4>Тут может быть твой High-End проект</h4></div>
+                    <div class="case-card placeholder"><h4>Тут может быть твой High-End проект</h4></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Модальное окно -->
-    <div id="project-modal" class="modal-overlay" style="display:none;">
-        <div class="modal-window glass-border">
-            <button class="modal-close" onclick="closeProject()">✕</button>
-            <div id="modal-content-inject"></div>
+    <!-- Раздел: Инвестиции (Прайс) -->
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title">Инвестиции в результат</h2>
+            <div class="price-wrapper">
+                <!-- 5 000 -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Start</h3>
+                        <div class="cost">5 000<span>₽</span></div>
+                    </div>
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-check"></i> Адаптивный Landing</li>
+                        <li><i class="fa-solid fa-check"></i> 10 блоков контента</li>
+                        <li><i class="fa-solid fa-check"></i> Базовая SEO-база</li>
+                        <li><i class="fa-solid fa-check"></i> Интеграция форм</li>
+                        <li><i class="fa-solid fa-check"></i> Подбор шрифтов</li>
+                        <li><i class="fa-solid fa-check"></i> Срок: до 3 дней</li>
+                        <li><i class="fa-solid fa-check"></i> Анимации появления</li>
+                        <li><i class="fa-solid fa-check"></i> Настройка хостинга</li>
+                        <li><i class="fa-solid fa-check"></i> SSL-сертификат</li>
+                        <li><i class="fa-solid fa-check"></i> Поддержка 7 дней</li>
+                    </ul>
+                </div>
+                <!-- 15 000 -->
+                <div class="price-card featured">
+                    <div class="price-header">
+                        <h3>Advanced</h3>
+                        <div class="cost">15 000<span>₽</span></div>
+                    </div>
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-check"></i> До 5 страниц сайта</li>
+                        <li><i class="fa-solid fa-check"></i> Сложные анимации</li>
+                        <li><i class="fa-solid fa-check"></i> Дизайн в Figma</li>
+                        <li><i class="fa-solid fa-check"></i> Оптимизация PageSpeed</li>
+                        <li><i class="fa-solid fa-check"></i> Кнопки мессенджеров</li>
+                        <li><i class="fa-solid fa-check"></i> Срок: 7-10 дней</li>
+                        <li><i class="fa-solid fa-check"></i> Маркетинговые текста</li>
+                        <li><i class="fa-solid fa-check"></i> Брендинг (лого)</li>
+                        <li><i class="fa-solid fa-check"></i> Удобная админка</li>
+                        <li><i class="fa-solid fa-check"></i> Поддержка 30 дней</li>
+                    </ul>
+                </div>
+                <!-- 23 000 -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Elite</h3>
+                        <div class="cost">23 000<span>₽</span></div>
+                    </div>
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-check"></i> High-End разработка</li>
+                        <li><i class="fa-solid fa-check"></i> 3D элементы декора</li>
+                        <li><i class="fa-solid fa-check"></i> Личный кабинет</li>
+                        <li><i class="fa-solid fa-check"></i> Аналитика продаж</li>
+                        <li><i class="fa-solid fa-check"></i> Приоритет в очереди</li>
+                        <li><i class="fa-solid fa-check"></i> Уникальные шрифты</li>
+                        <li><i class="fa-solid fa-check"></i> Срок: от 14 дней</li>
+                        <li><i class="fa-solid fa-check"></i> AI-ассистент на сайт</li>
+                        <li><i class="fa-solid fa-check"></i> Пожизненный сервис</li>
+                        <li><i class="fa-solid fa-check"></i> Маркетинг-стратегия</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно (Поп-ап для кейсов) -->
+    <div id="caseModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-window" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalImg" class="modal-img"></div>
+            <div class="modal-body">
+                <h3 id="modalTitle">Название проекта</h3>
+                <p id="modalDesc">Описание проекта...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Ассистент -->
+    <div class="ai-container">
+        <button id="aiBtn" class="ai-toggle">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>AI NOLLY</span>
+        </button>
+        <div id="aiChat" class="ai-chat hidden">
+            <div class="ai-chat-header">Задай вопрос NOLLY</div>
+            <div class="ai-chat-content">
+                <div class="ai-qa-list">
+                    <button class="ai-q" data-q="1">Какие технологии?</button>
+                    <button class="ai-q" data-q="2">Сроки работы?</button>
+                    <button class="ai-q" data-q="3">Делаешь дизайн?</button>
+                    <button class="ai-q" data-q="4">Есть ли поддержка?</button>
+                    <button class="ai-q" data-q="5">Работа по договору?</button>
+                    <button class="ai-q" data-q="6">Как оплачивать?</button>
+                    <button class="ai-q" data-q="7">Сделаешь скидку?</button>
+                    <button class="ai-q" data-q="8">Какой хостинг?</button>
+                    <button class="ai-q" data-q="9">Что по SEO?</button>
+                    <button class="ai-q" data-q="10">Почему именно ты?</button>
+                </div>
+                <div id="aiBox" class="ai-box">Выбери интересующий вопрос, и я отвечу мгновенно!</div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>© 2026 NOLLY Development. Эстетика. Код. Перспектива.</p>
+        <p>© 2024 NOLLY. Все права защищены. Сделано с душой.</p>
     </footer>
 
-    <script>
-        // Логика ИИ помощника (пример)
-        function toggleAI() {
-            const win = document.getElementById('ai-chat-window');
-            win.style.display = win.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function askAI(index) {
-            const answers = [
-                "Тарифы начинаются от 5 000 ₽ за лендинг.",
-                "Сроки разработки — от 3 до 14 дней.",
-                "Использую современный стек: HTML5, CSS3 (GSAP), JavaScript, PHP/Node.js.",
-                "Занимаюсь вебом с 2024 года, специализируюсь на бизнес-инструментах.",
-                "Поддержка включена во все тарифы: от 7 дней до бессрочного периода.",
-                "Просто оставьте заявку внизу страницы, и я свяжусь с вами в течение часа!"
-            ];
-            document.getElementById('ai-display').innerText = answers[index];
-        }
-
-        // Данные портфолио
-        const projectData = {
-            'law': { title: 'Юридический сервис', img: 'img/law-full.jpg', desc: 'Премиальный дизайн и сложная структура для юристов.' },
-            'estate': { title: 'Недвижимость Pro', img: 'img/estate-full.jpg', desc: 'Интерактивная карта и каталог объектов недвижимости.' },
-            'club': { title: 'Night Club', img: 'img/club-full.jpg', desc: 'Смелый дизайн с неоновыми элементами и видео-фоном.' },
-            'auto': { title: 'Elite Auto', img: 'img/auto-full.jpg', desc: 'Посадочная страница для продаж автомобилей премиум-сегмента.' },
-            'agency': { title: 'Digital Агентство', img: 'img/agency-full.jpg', desc: 'Минималистичное портфолио с акцентом на типографику.' },
-            'weather': { title: 'Sky Cast', img: 'img/weather-full.jpg', desc: 'Функциональный сервис с интеграцией погодных API.' }
-        };
-
-        function openProject(id) {
-            const project = projectData[id];
-            const modal = document.getElementById('project-modal');
-            const content = document.getElementById('modal-content-inject');
-            
-            content.innerHTML = `
-                <div class="modal-case-study">
-                    <h2 class="neon-text" style="font-size: 2.5rem;">${project.title}</h2>
-                    <p style="font-size: 1.1rem; color: #ccc; margin-top: 10px;">${project.desc}</p>
-                    <img src="${project.img}" alt="${project.title}">
-                </div>
-            `;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Запрет скролла при открытом модальном окне
-        }
-
-        function closeProject() {
-            document.getElementById('project-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

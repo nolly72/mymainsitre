@@ -1,0 +1,135 @@
+/* ============================================================
+   BASE.CSS — Глобальные настройки, Шрифты и Переменные
+   ============================================================ */
+
+:root {
+    /* Основные цвета (Трендовый Dark Mode) */
+    --bg-dark: #070708;
+    --bg-card: #121214;
+    --bg-card-hover: #19191c;
+    
+    /* Акцентные цвета и градиенты */
+    --accent-primary: #ff3c5f; /* Яркий розовый */
+    --accent-secondary: #7928ca; /* Фиолетовый */
+    --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 100%);
+    --gradient-text: linear-gradient(90deg, #ffffff 0%, #a1a1aa 100%);
+    
+    /* Текст */
+    --text-white: #ffffff;
+    --text-gray: #a1a1aa;
+    --text-muted: #63636b;
+    
+    /* Трендовые скругления (Border Radius) */
+    --radius-full: 100px;
+    --radius-xl: 40px;   /* Для основных блоков */
+    --radius-lg: 24px;   /* Для карточек и фото */
+    --radius-md: 16px;   /* Для кнопок и инпутов */
+    
+    /* Анимации и переходы */
+    --transition-fast: 0.3s ease;
+    --transition-smooth: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* Тени */
+    --shadow-glow: 0 10px 40px rgba(255, 60, 95, 0.15);
+}
+
+/* Обнуление стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Geist', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Округлый текст и заголовки */
+h1, h2, h3, h4, h5, .logo, .btn-cta {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Ссылки */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+/* Скроллбар в стиле NOLLY */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Вспомогательные классы */
+.gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.section-title {
+    font-size: clamp(36px, 6vw, 64px);
+    text-align: center;
+    margin-bottom: 70px;
+    line-height: 1.1;
+}
+
+/* Общие стили для кнопок */
+.btn-cta, .btn-primary {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--text-white);
+    color: var(--bg-dark);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+}
+
+.btn-cta:hover, .btn-primary:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+}
