@@ -1,5 +1,5 @@
 /* ============================================================
-   BASE.CSS — Фундамент, Шрифты и Цветовая Среда
+   BASE.CSS — Фундамент с Анимированной Цветовой Средой
    ============================================================ */
 
 :root {
@@ -11,7 +11,7 @@
     /* Акцентные цвета */
     --accent-primary: #ff3c5f;
     --accent-secondary: #7928ca;
-    --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 100%);
+    --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 50%, #ff3c5f 100%);
     
     /* Текстовые переменные */
     --text-pure: #ffffff;
@@ -20,15 +20,27 @@
     
     /* Трендовые скругления (High-End Style) */
     --radius-full: 100px;
-    --radius-xl: 42px;   /* Для больших блоков и карточек */
-    --radius-lg: 28px;   /* Для фотографий и внутренних элементов */
-    --radius-md: 16px;   /* Для кнопок и инпутов */
+    --radius-xl: 42px;   
+    --radius-lg: 28px;   
+    --radius-md: 16px;   
     
     /* Тайминги анимаций */
     --transition-smooth: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Принудительная установка шрифта Montserrat для всего проекта */
+/* Анимация для "дышащего" фона */
+@keyframes fluidBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Анимация для переливающегося текста */
+@keyframes textShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -48,12 +60,15 @@ body {
     color: var(--text-pure);
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
     
-    /* Фоновые "цветные пятна" (Мягкие градиенты) */
+    /* Фоновые "цветные пятна" с анимацией */
     background-image: 
-        radial-gradient(circle at 15% 15%, rgba(255, 60, 95, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 45%);
+        radial-gradient(circle at 20% 30%, rgba(255, 60, 95, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(121, 40, 202, 0.15) 0%, transparent 40%);
     background-attachment: fixed;
+    background-size: 200% 200%;
+    animation: fluidBackground 15s ease infinite;
 }
 
 /* Контейнер для выравнивания */
@@ -96,22 +111,15 @@ body {
     background: var(--accent-primary);
 }
 
-/* Градиентный текст */
+/* ГРАДИЕНТНЫЙ ТЕКСТ (теперь переливается) */
 .gradient-text {
     background: var(--gradient-main);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
     display: inline-block;
-}
-
-/* Утилиты */
-.hidden {
-    display: none !important;
-}
-
-.alt-bg {
-    background: rgba(255, 255, 255, 0.02);
+    animation: textShimmer 4s linear infinite;
 }
 
 /* Кнопки */
@@ -132,5 +140,9 @@ body {
 
 .btn-primary:hover {
     transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(255, 60, 95, 0.2);
 }
+
+/* Утилиты */
+.hidden { display: none !important; }
+.alt-bg { background: rgba(255, 255, 255, 0.02); }
