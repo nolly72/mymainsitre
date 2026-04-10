@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly | Premium Developer Portfolio</title>
-    <!-- Подключаем мягкий шрифт Golos Text и Montserrat для заголовков -->
+    <!-- Подключение шрифтов Golos и Montserrat -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Подключение файлов стилей -->
+    <link rel="stylesheet" href="style-base.css">
+    <link rel="stylesheet" href="style-content.css">
 </head>
 <body>
 
-    <!-- Навигация -->
+    <!-- Навигационная панель -->
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">NOLLY<span>.</span></div>
@@ -23,7 +25,7 @@
         </div>
     </nav>
 
-    <!-- Главный экран -->
+    <!-- Главный экран (Hero) -->
     <header class="hero">
         <div class="container">
             <div class="badge">Professional & Fast Development</div>
@@ -36,49 +38,49 @@
         </div>
     </header>
 
-    <!-- Раздел Портфолио -->
+    <!-- Портфолио с твоими сайтами -->
     <section id="portfolio" class="container">
         <h2 class="section-title">Мои <span>Проекты</span></h2>
         <div class="portfolio-grid">
             <div class="project-card">
                 <span class="project-tag">Law</span>
                 <h3>Адвокатские услуги</h3>
-                <p>Строгий и доверительный стиль для юридической практики.</p>
+                <p>Элегантный и строгий интерфейс для юридического сопровождения.</p>
             </div>
             <div class="project-card">
                 <span class="project-tag">Real Estate</span>
                 <h3>Постройка домов</h3>
-                <p>Удобный каталог недвижимости с акцентом на визуальную составляющую.</p>
+                <p>Современная витрина объектов недвижимости с акцентом на фото.</p>
             </div>
             <div class="project-card">
                 <span class="project-tag">Entertainment</span>
                 <h3>Сайт клуба</h3>
-                <p>Интерактивные функции и стильное меню для развлекательных заведений.</p>
+                <p>Атмосферный дизайн и полный функционал для гостей клуба.</p>
             </div>
             <div class="project-card">
                 <span class="project-tag">Auto</span>
                 <h3>Премиальные авто</h3>
-                <p>Минималистичный интерфейс для продажи люксового транспорта.</p>
+                <p>Сайт среднего уровня с глубокой проработкой деталей и стиля.</p>
             </div>
             <div class="project-card">
                 <span class="project-tag">Agency</span>
                 <h3>Агентство</h3>
-                <p>Продающий лендинг с плавной анимацией и чистой структурой.</p>
+                <p>Креативный лендинг для презентации профессиональных услуг.</p>
             </div>
             <div class="project-card">
                 <span class="project-tag">Utility</span>
-                <h3>Сервис погоды</h3>
-                <p>Технологичное решение с использованием внешних API данных.</p>
+                <h3>Погода</h3>
+                <p>Функциональный веб-сервис с точными метеоданными через API.</p>
             </div>
             <div class="project-card future">
                 <span class="project-tag">High-End</span>
                 <h3>Будущий проект</h3>
-                <p>Здесь будет реализована ваша самая сложная бизнес-задача.</p>
+                <p>Здесь будет реализована ваша самая смелая и масштабная идея.</p>
             </div>
         </div>
     </section>
 
-    <!-- Раздел Прайс -->
+    <!-- Прайс-лист -->
     <section id="pricing" class="container">
         <h2 class="section-title">Уровни <span>разработки</span></h2>
         <div class="pricing-container">
@@ -123,7 +125,7 @@
         </div>
     </section>
 
-    <!-- AI Ассистент -->
+    <!-- ИИ Помощник -->
     <section id="ai-faq" class="container">
         <div class="ai-box">
             <h2 class="section-title">Nolly <span>AI Assistant</span></h2>
@@ -136,22 +138,20 @@
                     <button class="ai-q" onclick="askAI(4)">Есть поддержка?</button>
                     <button class="ai-q" onclick="askAI(5)">Как начать?</button>
                 </div>
-                <div class="ai-response" id="ai-display">
-                    Нажмите на интересующий вопрос, чтобы мгновенно получить ответ.
-                </div>
+                <div class="ai-answer" id="ai-display">Нажмите на вопрос, чтобы ассистент ответил вам.</div>
             </div>
         </div>
     </section>
 
-    <!-- Связь и Форма -->
+    <!-- Контакты и Форма -->
     <section id="contact" class="container">
         <div class="contact-grid">
             <div class="contact-info">
                 <h2 class="section-title" style="text-align: left;">Оставить <span>заявку</span></h2>
-                <p>Я всегда открыт к новым предложениям. Пишите мне в удобный мессенджер или заполните форму.</p>
+                <p>Напишите мне напрямую или заполните форму, чтобы обсудить ваш будущий сайт.</p>
                 <div class="contact-methods">
                     <div class="method"><strong>Email:</strong> ghasttankix@gmail.com</div>
-                    <div class="method"><strong>Telegram:</strong> <a href="https://t.me">@wnolly</a></div>
+                    <div class="method"><strong>Telegram:</strong> <a href="https://t.me" target="_blank">@wnolly</a></div>
                 </div>
             </div>
             <div class="contact-form-box">
@@ -166,12 +166,14 @@
         </div>
     </section>
 
+    <!-- Футер -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 NOLLY Dev. Все права защищены.</p>
+            <p>&copy; 2024 NOLLY Dev. Создано с вниманием к качеству.</p>
         </div>
     </footer>
 
+    <!-- Подключение скрипта -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 /* =========================================
-   1. ПЕРЕМЕННЫЕ И НАСТРОЙКИ (Variables)
+   1. ПЕРЕМЕННЫЕ (Variables)
    ========================================= */
 :root {
-    --bg-main: #020617;        /* Глубокий темно-синий */
+    --bg-main: #020617;        /* Глубокий синий фон */
     --bg-card: #0f172a;        /* Цвет карточек */
-    --accent-blue: #3b82f6;    /* Основной синий */
+    --accent-blue: #3b82f6;    /* Основной синий (Electric) */
     --accent-cyan: #06b6d4;    /* Бирюзовый акцент */
-    --accent-purple: #8b5cf6;  /* Фиолетовый (для ИИ) */
     --text-primary: #f8fafc;
     --text-dim: #94a3b8;
     --font-main: 'Golos Text', sans-serif;
@@ -15,7 +14,7 @@
 }
 
 /* =========================================
-   2. БАЗОВЫЕ СТИЛИ (Base Styles)
+   2. ОБЩИЕ СТИЛИ (General)
    ========================================= */
 * {
     margin: 0;
@@ -57,7 +56,7 @@ section {
 }
 
 /* =========================================
-   3. НАВИГАЦИЯ (Navigation)
+   3. НАВИГАЦИЯ (Navbar)
    ========================================= */
 .navbar {
     position: fixed;
@@ -68,6 +67,7 @@ section {
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px 0;
+    transition: var(--transition);
 }
 
 .nav-container {
@@ -107,7 +107,7 @@ section {
 }
 
 /* =========================================
-   4. ГЛАВНЫЙ ЭКРАН (Hero Section)
+   4. ГЛАВНЫЙ ЭКРАН (Hero)
    ========================================= */
 .hero {
     height: 100vh;
@@ -115,7 +115,7 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.15), transparent 50%);
+    background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.12), transparent 50%);
 }
 
 .badge {
@@ -160,7 +160,6 @@ section {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
     transition: var(--transition);
     margin: 10px;
     cursor: pointer;
@@ -187,8 +186,8 @@ section {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Адаптив для Hero */
+/* Адаптивность */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.8rem; }
+    .hero h1 { font-size: 2.5rem; }
     .nav-links { display: none; }
 }
