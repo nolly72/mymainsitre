@@ -1,26 +1,24 @@
 /* =========================================
-   1. ПЕРЕМЕННЫЕ И СИЯНИЕ
+   1. ПЕРЕМЕННЫЕ И НЕОНОВЫЕ ЭФФЕКТЫ
    ========================================= */
 :root {
-    --bg-dark: #010409;        /* Глубокий черный */
-    --bg-card: rgba(15, 23, 42, 0.7);
-    --accent-blue: #007AFF;    /* Синий Apple */
-    --accent-neon: #00f2ff;    /* Неоновый бирюзовый */
-    --accent-purple: #7000ff;  /* Насыщенный фиолетовый */
-    --text-white: #ffffff;
-    --text-gray: #94a3b8;
+    --bg-dark: #02040a;
+    --accent-neon: #00f2ff;    /* Основной неоновый */
+    --accent-purple: #7000ff;  /* Фиолетовый акцент */
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
     --radius-premium: 32px;
-    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --neon-glow: 0 0 15px rgba(0, 242, 255, 0.5), 0 0 30px rgba(0, 242, 255, 0.2);
 }
 
 /* =========================================
-   2. ЕДИНЫЙ ПРИЯТНЫЙ ШРИФТ ДЛЯ ВСЕГО
+   2. ЕДИНЫЙ ПРЕМИАЛЬНЫЙ ШРИФТ (MANROPE)
    ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Manrope', sans-serif !important; /* Тот самый мягкий шрифт для всех */
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Manrope', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -29,109 +27,101 @@ html {
 
 body {
     background-color: var(--bg-dark);
-    color: var(--text-white);
-    line-height: 1.6;
+    color: var(--text-main);
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* Фоновое анимированное сияние */
+/* Фоновое сияние */
 .main-glow {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #0a192f 0%, #010409 100%);
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, #0a1426 0%, #02040a 100%);
     z-index: -2;
 }
 
-.main-glow::after {
-    content: '';
-    position: absolute;
-    top: -20%; right: -10%; width: 60%; height: 60%;
-    background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+.neon-bg-glow {
+    position: fixed;
+    top: -10%; right: -5%; width: 50%; height: 50%;
+    background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
     filter: blur(100px);
-    animation: floatGlow 10s infinite alternate;
+    z-index: -1;
+    animation: float 8s infinite alternate;
 }
 
-@keyframes floatGlow {
+@keyframes float {
     from { transform: translate(0, 0); }
     to { transform: translate(-10%, 10%); }
 }
 
 /* =========================================
-   3. ТИПОГРАФИКА И ЗАГОЛОВКИ
+   3. АНИМАЦИИ ЗАГОЛОВКОВ И ТЕКСТА
    ========================================= */
 .section-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: 800;
     text-align: center;
     margin-bottom: 60px;
     letter-spacing: -2px;
 }
 
-.section-title span {
+.neon-text {
     color: var(--accent-neon);
-    text-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+    text-shadow: var(--neon-glow);
 }
 
-.animate-title {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: revealTitle 1s forwards ease-out;
+.neon-flicker {
+    animation: flicker 3s infinite;
 }
 
-@keyframes revealTitle {
-    to { opacity: 1; transform: translateY(0); }
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; text-shadow: var(--neon-glow); }
+    20%, 22%, 24%, 55% { opacity: 0.5; text-shadow: none; }
 }
+
+.gradient-text {
+    background: linear-gradient(90deg, #fff, var(--accent-neon), var(--accent-purple), #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine { to { background-position: 200% center; } }
 
 /* =========================================
    4. НАВИГАЦИЯ (Glassmorphism)
    ========================================= */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+    position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 25px 0;
-    background: rgba(1, 4, 9, 0.8);
+    background: rgba(2, 4, 10, 0.8);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
 
-.logo {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--accent-neon);
-}
+.logo { font-size: 2.2rem; font-weight: 900; letter-spacing: 1px; }
+.logo span { color: var(--accent-neon); text-shadow: var(--neon-glow); }
 
 .nav-links a {
-    color: var(--text-white);
+    color: var(--text-main);
     text-decoration: none;
     margin-left: 35px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
-.nav-links a:hover {
-    color: var(--accent-neon);
-}
+.nav-links a:hover { color: var(--accent-neon); text-shadow: var(--neon-glow); }
 
-.nav-btn {
-    background: var(--text-white);
-    color: #000 !important;
-    padding: 12px 28px;
-    border-radius: 16px;
-    font-weight: 800;
+.nav-btn-neon {
+    background: transparent;
+    border: 1px solid var(--accent-neon);
+    color: var(--accent-neon) !important;
+    padding: 10px 25px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.2);
 }
 
 /* =========================================
@@ -145,41 +135,35 @@ body {
     text-align: center;
 }
 
-.hero h1 {
-    font-size: 6rem;
+.badge-neon {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid var(--accent-neon);
+    border-radius: 100px;
+    color: var(--accent-neon);
+    font-size: 0.8rem;
     font-weight: 800;
-    line-height: 1.1;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    box-shadow: var(--neon-glow);
+}
+
+.hero h1 {
+    font-size: 6.5rem;
+    font-weight: 800;
+    line-height: 1;
     margin-bottom: 30px;
     letter-spacing: -4px;
 }
 
-.gradient-text {
-    background: linear-gradient(90deg, #fff, var(--accent-neon), var(--accent-purple), #fff);
-    background-size: 300% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shineText 6s linear infinite;
-}
-
-@keyframes shineText {
-    to { background-position: 300% center; }
-}
-
 .hero-desc {
-    max-width: 750px;
+    max-width: 800px;
     margin: 0 auto 50px;
     font-size: 1.4rem;
-    color: var(--text-gray);
+    color: var(--text-dim);
 }
 
-/* Адаптивность для мобилок */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 3.5rem; letter-spacing: -1.5px; }
-    .hero-desc { font-size: 1.1rem; }
-    .nav-links { display: none; }
-}
-
-/* Кнопки */
 .btn {
     display: inline-block;
     padding: 22px 50px;
@@ -187,34 +171,29 @@ body {
     text-decoration: none;
     font-weight: 800;
     transition: var(--transition);
-    cursor: pointer;
     border: none;
+    cursor: pointer;
 }
 
-.btn-main {
+.btn-neon-fill {
     background: var(--accent-neon);
     color: #000;
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
 }
 
-.btn-main:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 35px var(--accent-neon);
-}
+.btn-neon-fill:hover { transform: translateY(-5px); box-shadow: 0 0 40px var(--accent-neon); }
 
-.btn-glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+.btn-glass-border {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     margin-left: 20px;
 }
 
-.pulse {
-    animation: pulseGlow 2s infinite;
-}
+.btn-glass-border:hover { border-color: var(--accent-neon); background: rgba(0, 242, 255, 0.05); }
 
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.4); }
-    70% { box-shadow: 0 0 0 20px rgba(0, 242, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.5rem; letter-spacing: -1px; }
+    .hero-desc { font-size: 1.1rem; }
+    .nav-links { display: none; }
 }

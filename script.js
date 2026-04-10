@@ -1,9 +1,9 @@
 /**
- * NOLLY ULTRA ENGINE v5.0
+ * NOLLY ULTRA ENGINE v6.0
  * Философия, Кейсы с галереями (6 фото), ИИ (6 ответов) и плавная навигация
  */
 
-// 1. ДАННЫЕ ПРОЕКТОВ (Настрой здесь ссылки и пути к фото)
+// 1. КОНТЕНТ ПРОЕКТОВ (Настрой здесь ссылки и пути к фото)
 const projects = {
     law: {
         title: "Адвокатские услуги",
@@ -63,8 +63,8 @@ function openProject(id) {
         </div>
 
         <div style="margin-top: 45px; display: flex; gap: 20px; flex-wrap: wrap;">
-            <a href="${data.site}" target="_blank" class="btn btn-main" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: #00f2ff; color: #000;">Перейти на сайт</a>
-            <a href="${data.video}" target="_blank" class="btn btn-glass" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1);">Смотреть обзор</a>
+            <a href="${data.site}" target="_blank" class="btn btn-neon-fill" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: #00f2ff; color: #000;">Перейти на сайт</a>
+            <a href="${data.video}" target="_blank" class="btn btn-glass-border" style="padding: 16px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); margin: 0;">Смотреть обзор</a>
         </div>
     `;
 
@@ -79,9 +79,9 @@ function closeProject() {
 
 // 3. ЛОГИКА ИИ-АССИСТЕНТА (6 ответов)
 const aiAnswers = [
-    "Тарифы: Обычный (от 5к), Средний (от 15к), Высокий (от 40к). Премиальный дизайн включен по умолчанию.",
-    "Сроки: Я ценю время. Базовые сайты — от 1 дня, сложные системы — до 14 дней.",
-    "Стек: Использую современный JavaScript, HTML5 и CSS3. Код оптимизирован под экстремальные нагрузки.",
+    "Тарифы: Обычный (от 5к), Средний (от 15к), Высокий (от 40к). Инвестируйте в качество, которое окупается.",
+    "Сроки: Я ценю ваше время. Базовые решения — от 1 дня, масштабные платформы — до 14 дней.",
+    "Стек: Использую современный JavaScript (ES6+), HTML5 и CSS3. Сайты летают и безупречно индексируются.",
     "Опыт: Мне 19 лет, и моя организация — это энергия роста. Мы внедряем тренды раньше, чем они становятся нормой.",
     "Поддержка: После запуска вы получаете месяц бесплатного сопровождения и обучение работе с системой.",
     "Старт: Напишите в Telegram @wnolly прямо сейчас. Обсудим вашу задачу и запустим экспансию сегодня!"

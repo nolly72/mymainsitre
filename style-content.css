@@ -1,70 +1,76 @@
 /* =========================================
-   1. ФИЛОСОФИЯ (Исправленная ровная верстка)
+   1. ФИЛОСОФИЯ (Стабильная сетка)
    ========================================= */
 .philosophy-card {
     background: var(--bg-card);
     padding: 80px 60px;
     border-radius: var(--radius-premium);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
 .philosophy-content {
     display: grid;
-    grid-template-columns: 1.8fr 1fr; /* Текст шире, статистика уже */
+    grid-template-columns: 1.8fr 1fr; /* Текст шире, статы уже */
     gap: 60px;
     align-items: center;
 }
 
 .phil-text p {
     font-size: 1.2rem;
-    color: var(--text-gray);
-    margin-bottom: 25px;
-    line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.9;
 }
 
 .phil-stats {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
-.stat-item {
+.neon-border-box {
     background: rgba(255, 255, 255, 0.02);
-    padding: 40px 30px;
+    padding: 45px 30px;
     border-radius: 24px;
     text-align: center;
     border: 1px solid rgba(0, 242, 255, 0.1);
     transition: var(--transition);
 }
 
+.neon-border-box:hover {
+    border-color: var(--accent-neon);
+    background: rgba(0, 242, 255, 0.05);
+    box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
 .stat-num {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     color: var(--accent-neon);
     line-height: 1;
     display: block;
-    margin-bottom: 10px;
+    text-shadow: var(--neon-glow);
 }
 
 .stat-desc {
     font-size: 0.9rem;
-    color: var(--text-gray);
+    color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    margin-top: 10px;
 }
 
 @media (max-width: 968px) {
-    .philosophy-content { grid-template-columns: 1fr; }
-    .philosophy-card { padding: 40px 20px; }
+    .philosophy-content { grid-template-columns: 1fr; text-align: center; }
 }
 
 /* =========================================
-   2. КЕЙСЫ (Гигантские области для фото)
+   2. КЕЙСЫ (Гигантские рамки)
    ========================================= */
-.project-grid {
+.project-grid.large-scale {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     gap: 40px;
 }
 
@@ -77,65 +83,63 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.project-image-box {
+.image-box-mega {
     position: relative;
     width: 100%;
     height: 600px; /* Фото стали максимально высокими */
 }
 
-.img-placeholder {
+.mega-placeholder {
     width: 100%; height: 100%;
-    background: linear-gradient(135deg, #0f172a, #010409);
+    background: linear-gradient(135deg, #0f172a, #02040a);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; font-weight: 900; color: var(--accent-neon);
-    letter-spacing: 5px; text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    font-size: 1.4rem; font-weight: 900; color: var(--accent-neon);
+    letter-spacing: 6px; text-shadow: var(--neon-glow);
 }
 
-.card-hover-info {
+.hover-neon {
     position: absolute; inset: 0;
-    background: rgba(0, 242, 255, 0.15);
+    background: rgba(0, 242, 255, 0.2);
     backdrop-filter: blur(15px);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; transition: var(--transition);
 }
 
-.project-card:hover { transform: scale(1.02); }
-.project-card:hover .card-hover-info { opacity: 1; }
+.project-card:hover { transform: scale(1.02); border-color: var(--accent-neon); box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); }
+.project-card:hover .hover-neon { opacity: 1; }
 
-.card-hover-info span {
-    padding: 15px 40px; background: #fff; color: #000;
-    border-radius: 100px; font-weight: 800;
-}
-
-@media (max-width: 768px) {
-    .project-grid { grid-template-columns: 1fr; }
-    .project-image-box { height: 350px; }
+.hover-neon span {
+    padding: 18px 45px; background: #fff; color: #000;
+    border-radius: 100px; font-weight: 800; font-size: 1.1rem;
 }
 
 /* =========================================
-   3. ТАРИФЫ (Прозрачное стекло)
+   3. ТАРИФЫ (Neon Table)
    ========================================= */
-.pricing-box {
+.pricing-premium-box {
     background: var(--bg-card);
-    padding: 50px;
+    padding: 60px;
     border-radius: var(--radius-premium);
     border: 1px solid rgba(255, 255, 255, 0.05);
     overflow-x: auto;
 }
 
-.price-table { width: 100%; border-collapse: collapse; min-width: 750px; }
+.price-table { width: 100%; border-collapse: collapse; min-width: 800px; }
 .price-table th, .price-table td { padding: 25px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-.price-table th { color: var(--accent-neon); font-size: 0.9rem; text-transform: uppercase; }
+.price-table th { color: var(--accent-neon); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; }
 
-.final-price td {
-    font-weight: 800; font-size: 1.5rem; color: var(--accent-neon);
-    padding-top: 40px; border-bottom: none;
+.gold-text { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
+
+.final-row td {
+    font-weight: 800; font-size: 1.6rem; color: var(--accent-neon);
+    padding-top: 50px; border-bottom: none;
+    text-shadow: var(--neon-glow);
 }
 
 /* =========================================
-   4. НЕОНОВАЯ ФОРМА (Чистый дизайн)
+   4. ФОРМА ЗАЯВКИ (Чистый Неон)
    ========================================= */
-.premium-form-container {
+.form-wrapper-premium {
     background: rgba(15, 23, 42, 0.8);
     padding: 80px 10%;
     border-radius: var(--radius-premium);
@@ -143,65 +147,56 @@
     text-align: center;
 }
 
-.contact-form { max-width: 800px; margin: 50px auto 0; }
-.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.minimal-form { max-width: 850px; margin: 0 auto; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
 
-.contact-form input, .contact-form textarea {
+input, textarea {
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 22px; border-radius: 18px;
-    color: #fff; font-size: 1.1rem; transition: 0.4s;
+    color: #fff; font-size: 1.1rem; transition: var(--transition);
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
+input:focus, textarea:focus {
     outline: none; border-color: var(--accent-neon);
     background: rgba(0, 242, 255, 0.05);
+    box-shadow: inset 0 0 15px rgba(0, 242, 255, 0.1);
 }
 
-.btn-main-neon {
-    width: 100%; background: transparent;
-    border: 2px solid var(--accent-neon); color: var(--accent-neon);
-    text-transform: uppercase; letter-spacing: 3px;
+.btn-launch-neon {
+    width: 100%; padding: 25px;
+    background: transparent; border: 2px solid var(--accent-neon);
+    color: var(--accent-neon); font-size: 1.2rem; font-weight: 800;
+    border-radius: 100px; text-transform: uppercase; letter-spacing: 4px;
+    cursor: pointer; transition: var(--transition);
+    margin-top: 20px;
+}
+
+.btn-launch-neon:hover {
+    background: var(--accent-neon); color: #000;
+    box-shadow: 0 0 50px var(--accent-neon);
 }
 
 /* =========================================
-   5. ИИ-КНОПКА И МОДАЛКА (Шрифт иконки)
+   5. ИИ И ФУТЕР
    ========================================= */
 .ai-floating-btn {
     position: fixed; bottom: 40px; right: 40px;
-    width: 75px; height: 75px;
+    width: 80px; height: 80px;
     background: var(--accent-neon); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; z-index: 2000;
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 30px var(--accent-neon);
 }
 
-.ai-icon {
-    font-family: 'Manrope', sans-serif !important; 
-    font-size: 2rem; color: #000; font-weight: 400; 
-}
+.ai-icon { font-size: 2.2rem; color: #000; }
 
 .ai-modal-win {
-    display: none; position: fixed; bottom: 130px; right: 40px;
+    display: none; position: fixed; bottom: 135px; right: 40px;
     width: 380px; background: #050a15;
-    border-radius: 30px; border: 1px solid var(--accent-neon);
-    padding: 30px; z-index: 2000; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border-radius: 35px; border: 1px solid var(--accent-neon);
+    padding: 35px; z-index: 2000; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
 
-.ai-questions button {
-    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff; padding: 10px; border-radius: 12px; cursor: pointer; margin-bottom: 8px; width: 100%;
-}
-
-.modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(1, 4, 9, 0.98); z-index: 3000;
-    backdrop-filter: blur(20px); padding: 20px;
-}
-
-.modal-window {
-    background: var(--bg-card); max-width: 1100px; width: 100%;
-    margin: 40px auto; border-radius: var(--radius-premium);
-    padding: 60px; position: relative; border: 1px solid rgba(255, 255, 255, 0.1);
-}
+.footer { padding: 60px; text-align: center; color: var(--text-dim); border-top: 1px solid rgba(255, 255, 255, 0.05); }

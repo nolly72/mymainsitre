@@ -1,25 +1,26 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly | Digital Philosophy & Development</title>
-    <!-- Единый шрифт Manrope для премиального вида -->
+    <!-- Единый премиальный шрифт Manrope -->
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style-base.css">
     <link rel="stylesheet" href="style-content.css">
 </head>
 <body>
 
-    <!-- Фоновое анимированное сияние (Glow effect) -->
+    <!-- Анимированные слои сияния -->
+    <div class="neon-bg-glow"></div>
     <div class="main-glow"></div>
 
-    <!-- Фиксированная кнопка ИИ-Ассистента (справа внизу) -->
-    <div class="ai-floating-btn" onclick="toggleAI()">
+    <!-- Интеллектуальная кнопка ИИ -->
+    <div class="ai-floating-btn neon-pulse" onclick="toggleAI()">
         <span class="ai-icon">✦</span>
     </div>
 
-    <!-- Окно ИИ-ассистента (6 заскриптованных вопросов) -->
+    <!-- Модальное окно ИИ (6 вопросов) -->
     <div id="ai-chat-window" class="ai-modal-win">
         <div class="ai-header">
             <h3>Nolly Assistant</h3>
@@ -38,47 +39,47 @@
         </div>
     </div>
 
-    <!-- Навигация (Glassmorphism) -->
-    <nav class="navbar">
+    <!-- Навигация -->
+    <nav class="navbar glass-effect">
         <div class="container nav-container">
-            <div class="logo">NOLLY<span>.</span></div>
+            <div class="logo">NOLLY<span class="neon-dot">.</span></div>
             <div class="nav-links">
                 <a href="#philosophy">Философия</a>
                 <a href="#portfolio">Кейсы</a>
                 <a href="#pricing">Тарифы</a>
-                <a href="#contact" class="nav-btn">Заказать</a>
+                <a href="#contact" class="nav-btn-neon">Заказать</a>
             </div>
         </div>
     </nav>
 
-    <!-- Главный экран (Hero) -->
+    <!-- Главный экран -->
     <header class="hero">
         <div class="container">
-            <div class="badge-premium">High-End Engineering</div>
-            <h1 class="animate-title">Будущее веба <br><span class="gradient-text">в каждом пикселе</span></h1>
+            <div class="badge-neon shine">High-End Engineering</div>
+            <h1 class="animate-reveal">Будущее веба <br><span class="gradient-text neon-flicker">в каждом пикселе</span></h1>
             <p class="hero-desc">Создаю цифровые экосистемы любого вида и сложности. Быстро. Эстетично. Профессионально.</p>
             <div class="hero-btns">
-                <a href="#contact" class="btn btn-main pulse">Запустить проект</a>
-                <a href="#portfolio" class="btn btn-glass">Смотреть работы</a>
+                <a href="#contact" class="btn btn-neon-fill">Запустить проект</a>
+                <a href="#portfolio" class="btn btn-glass-border">Смотреть работы</a>
             </div>
         </div>
     </header>
 
     <!-- Раздел: МОЯ ФИЛОСОФИЯ -->
     <section id="philosophy" class="container">
-        <div class="philosophy-card">
-            <h2 class="section-title">Моя <span>Философия</span></h2>
+        <div class="philosophy-card glass-border">
+            <h2 class="section-title">Моя <span class="neon-text">Философия</span></h2>
             <div class="philosophy-content">
                 <div class="phil-text">
                     <p>Мне 19 лет, и я стою у истоков новой школы разработки. Мой подход прост: для бизнеса не существует «невозможных» задач. Я занимаюсь созданием сайтов любого вида — от высокоэффективных лендингов до масштабируемых корпоративных платформ.</p>
                     <p>Моя организация — это не просто код, это живой организм, который расширяется и эволюционирует каждый день. Молодость дает мне перспективу видеть тренды раньше других, а амбиции заставляют делать каждый проект эталоном качества. Вы инвестируете не в сайт, а в мощный актив, который будет расти вместе с вашими целями.</p>
                 </div>
                 <div class="phil-stats">
-                    <div class="stat-item neon-box">
+                    <div class="stat-item neon-border-box">
                         <span class="stat-num">∞</span>
                         <p class="stat-desc">Перспективы развития</p>
                     </div>
-                    <div class="stat-item neon-box">
+                    <div class="stat-item neon-border-box">
                         <span class="stat-num">100%</span>
                         <p class="stat-desc">Уникальный код</p>
                     </div>
@@ -87,53 +88,35 @@
         </div>
     </section>
 
-    <!-- Раздел: КЕЙСЫ (Увеличенные превью) -->
+    <!-- Раздел: КЕЙСЫ (Гигантские фото) -->
     <section id="portfolio" class="container">
-        <h2 class="section-title">Избранные <span>Кейсы</span></h2>
-        <div class="project-grid">
+        <h2 class="section-title">Избранные <span class="neon-text">Кейсы</span></h2>
+        <div class="project-grid large-scale">
             <div class="project-card" onclick="openProject('law')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">LAW SERVICE PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">LAW SERVICE PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
             <div class="project-card" onclick="openProject('estate')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">ESTATE PRO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">ESTATE PRO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
             <div class="project-card" onclick="openProject('club')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">NIGHT CLUB PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">NIGHT CLUB PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
             <div class="project-card" onclick="openProject('auto')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">ELITE AUTO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">ELITE AUTO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
             <div class="project-card" onclick="openProject('agency')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">AGENCY PRO PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">AGENCY PRO PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
             <div class="project-card" onclick="openProject('weather')">
-                <div class="project-image-box">
-                    <div class="img-placeholder">SKY CAST PREVIEW</div>
-                    <div class="card-hover-info"><span>Посмотреть</span></div>
-                </div>
+                <div class="image-box-mega"><div class="mega-placeholder">SKY CAST PREVIEW</div><div class="hover-neon"><span>Открыть кейс</span></div></div>
             </div>
         </div>
     </section>
 
     <!-- Раздел: ТАРИФЫ (Инвестиции в результат) -->
     <section id="pricing" class="container">
-        <h2 class="section-title">Инвестиции в <span>результат</span></h2>
-        <div class="pricing-box">
+        <h2 class="section-title">Инвестиции в <span class="neon-text">результат</span></h2>
+        <div class="pricing-premium-box neon-shadow">
             <table class="price-table">
                 <thead>
                     <tr>
@@ -144,13 +127,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Эксклюзивный дизайн</td><td>✅</td><td>✅</td><td>✅ Premium Gold</td></tr>
+                    <tr><td>Эксклюзивный дизайн</td><td>✅</td><td>✅</td><td><span class="gold-text">✅ Premium Gold</span></td></tr>
                     <tr><td>Анимации интерфейса</td><td>Базовые</td><td>Advanced</td><td>High-End (3D/GSAP)</td></tr>
                     <tr><td>SEO-подготовка</td><td>✅</td><td>✅</td><td>✅ Full Indexing</td></tr>
                     <tr><td>Интеграция API / БД</td><td>—</td><td>✅</td><td>✅ Unlimited</td></tr>
                     <tr><td>Админ-панель</td><td>—</td><td>✅</td><td>✅ Custom CRM</td></tr>
                     <tr><td>Поддержка и обучение</td><td>7 дней</td><td>30 дней</td><td>Бессрочно</td></tr>
-                    <tr class="final-price">
+                    <tr class="final-row">
                         <td>Стоимость</td>
                         <td>от 5 000 ₽</td>
                         <td>от 15 000 ₽</td>
@@ -161,31 +144,37 @@
         </div>
     </section>
 
-    <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ (Чистая форма) -->
+    <!-- Раздел: ОСТАВИТЬ ЗАЯВКУ (Чистый дизайн) -->
     <section id="contact" class="container">
-        <div class="premium-form-container">
-            <h2 class="section-title">Оставить <span>заявку</span></h2>
-            <form id="requestForm" class="contact-form">
-                <div class="input-grid">
-                    <input type="text" placeholder="Ваше имя" required>
-                    <input type="text" placeholder="Telegram / Телефон" required>
+        <div class="form-wrapper-premium glass-morph">
+            <h2 class="section-title">Оставить <span class="neon-text">заявку</span></h2>
+            <form id="requestForm" class="minimal-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Telegram / Телефон" required>
+                    </div>
                 </div>
-                <textarea placeholder="Краткое описание вашей задачи" rows="4" required></textarea>
-                <button type="submit" class="btn btn-main-neon pulse">Запустить разработку</button>
+                <div class="field">
+                    <textarea placeholder="Краткое описание вашей задачи" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-launch-neon">Запустить разработку</button>
             </form>
         </div>
     </section>
 
     <!-- Модальное окно (Галерея 6 фото) -->
     <div id="project-modal" class="modal-overlay">
-        <div class="modal-window">
+        <div class="modal-window glass-border">
             <button class="modal-close" onclick="closeProject()">✕</button>
             <div id="modal-content-inject"></div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 NOLLY Development. Эстетика. Код. Перспектива.</p>
+        <p>© 2024 NOLLY Development. Эстетика. Код. Перспектива.</p>
     </footer>
 
     <script src="script.js"></script>
