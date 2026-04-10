@@ -23,23 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
         "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
-    aiBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        aiChat.classList.toggle('hidden');
-    });
+    // Открытие/закрытие чата
+    if (aiBtn) {
+        aiBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            aiChat.classList.toggle('hidden');
+        });
+    }
 
+    // Обработка клика по вопросу
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
             const answer = aiAnswers[qId];
             
-            aiBox.style.opacity = '0.4';
+            aiBox.style.opacity = '0.5';
             aiBox.innerText = "NOLLY печатает...";
             
             setTimeout(() => {
                 aiBox.style.opacity = '1';
                 aiBox.innerText = answer;
-            }, 400);
+            }, 500);
         });
     });
 
@@ -53,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImages = [];
     let currentSlideIndex = 0;
 
+    // Глобальная функция открытия
     window.openModal = function(images, title, description) {
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
@@ -66,15 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden'; 
     };
 
+    // Глобальная функция переключения
     window.changeSlide = function(direction) {
         currentSlideIndex += direction;
+        
         if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
         if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
+        
         updateSlide();
     };
 
     function updateSlide() {
-        // Плавная смена через прозрачность
         modalImg.style.opacity = '0';
         setTimeout(() => {
             modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
@@ -88,14 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.closeModal = function() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; 
     };
 
     // Закрытие по клику вне окна и кнопке Esc
     window.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
-        if (!aiChat?.contains(e.target) && !aiBtn?.contains(e.target)) {
-            aiChat?.classList.add('hidden');
+        if (aiChat && !aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
+            aiChat.classList.add('hidden');
         }
     });
 
@@ -103,14 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === "Escape") closeModal();
     });
 
-    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
+    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+    const observerOptions = { threshold: 0.15 };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-active');
             }
         });
-    }, { threshold: 0.15 });
+    }, observerOptions);
 
     const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title');
     

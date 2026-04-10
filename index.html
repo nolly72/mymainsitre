@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOLLY | Digital Developer Portfolio</title>
+    <!-- Подключаем иконки и шрифты -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
+    <!-- Стили -->
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Навигация -->
     <nav class="navbar">
         <div class="container nav-flex">
             <div class="logo">NOLLY<span>.</span></div>
@@ -26,6 +29,7 @@
         </div>
     </nav>
 
+    <!-- Главный экран -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
@@ -42,6 +46,7 @@
         </div>
     </header>
 
+    <!-- Философия -->
     <section id="philosophy" class="section">
         <div class="container">
             <h2 class="section-title">Философия</h2>
@@ -60,26 +65,27 @@
         </div>
     </section>
 
+    <!-- Навыки -->
     <section id="skills" class="section alt-bg">
         <div class="container">
             <h2 class="section-title">Профессиональные Навыки</h2>
             <div class="skills-grid">
-                <div class="skill-card phi-card">
+                <div class="skill-card">
                     <i class="fa-brands fa-js skill-icon"></i>
                     <h4>JavaScript (ES6+)</h4>
                     <p>Сложная логика, асинхронные запросы, работа с DOM и современными API. Чистый и масштабируемый код.</p>
                 </div>
-                <div class="skill-card phi-card">
+                <div class="skill-card">
                     <i class="fa-brands fa-css3-alt skill-icon"></i>
                     <h4>HTML5 & CSS3</h4>
                     <p>Адаптивная верстка, Flexbox, Grid, сложные анимации и работа с переменными для гибкого дизайна.</p>
                 </div>
-                <div class="skill-card phi-card">
+                <div class="skill-card">
                     <i class="fa-brands fa-react skill-icon"></i>
                     <h4>Современные либы</h4>
                     <p>Опыт работы с React, анимациями GSAP и библиотеками для создания плавного пользовательского опыта.</p>
                 </div>
-                <div class="skill-card phi-card">
+                <div class="skill-card">
                     <i class="fa-solid fa-layer-group skill-icon"></i>
                     <h4>UI/UX & SEO</h4>
                     <p>Проработка пользовательских путей, дизайн в Figma и базовая оптимизация для поисковых систем.</p>
@@ -88,6 +94,7 @@
         </div>
     </section>
 
+    <!-- Портфолио -->
     <section id="cases" class="section">
         <div class="container">
             <h2 class="section-title">Избранные Кейсы</h2>
@@ -99,64 +106,64 @@
                     <div class="line"></div>
                 </div>
                 <div class="case-grid">
-                    <div class="case-card" onclick="openModal(['img/house1.jpg', 'img/house2.jpg', 'img/house3.jpg', 'img/house4.jpg', 'img/house5.jpg'], 'Продажа недвижимости', 'Премиальный Landing Page для продажи загородных домов. Акцент на визуале и конверсии.')">
+                    <div class="case-card" onclick="openModal(['img/house1.jpg', 'img/house2.jpg', 'img/house3.jpg'], 'Продажа недвижимости', 'Премиальный Landing Page для продажи загородных домов.')">
                         <div class="case-img-container">
                             <div class="case-img" style="background-image: url('img/house1.jpg');"></div>
-                            <div class="case-overlay"><span>Смотреть кейс</span></div>
+                            <div class="case-overlay"><span>Открыть проект</span></div>
                         </div>
                         <div class="case-info">
                             <h4>Продажа домов</h4>
-                            <p class="case-meta">Essential / 5 фото</p>
+                            <p class="case-meta">Essential / 3 фото</p>
                         </div>
                     </div>
-                    <div class="case-card" onclick="openModal(['img/law1.jpg', 'img/law2.jpg', 'img/law3.jpg', 'img/law4.jpg', 'img/law5.jpg'], 'Услуги адвокатов', 'Корпоративный сайт для юридического бюро. Доверие и лаконичный стиль.')">
+                    <div class="case-card" onclick="openModal(['img/law1.jpg', 'img/law2.jpg'], 'Услуги адвокатов', 'Корпоративный сайт для юридического бюро.')">
                         <div class="case-img-container">
                             <div class="case-img" style="background-image: url('img/law1.jpg');"></div>
-                            <div class="case-overlay"><span>Смотреть кейс</span></div>
+                            <div class="case-overlay"><span>Открыть проект</span></div>
                         </div>
                         <div class="case-info">
                             <h4>Услуги адвокатов</h4>
-                            <p class="case-meta">Essential / 5 фото</p>
+                            <p class="case-meta">Essential / 2 фото</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- High-End Level -->
-            <div class="category-block premium-section">
+            <div class="category-block">
                 <div class="category-header">
                     <span class="cat-label premium-label">High-End Level</span>
                     <div class="line gold-line"></div>
                 </div>
                 <div class="case-grid">
-                    <div class="case-card premium" onclick="openModal(['img/car1.jpg', 'img/car2.jpg', 'img/car3.jpg', 'img/car4.jpg', 'img/car5.jpg'], 'Rent a Car Premium', 'Сложный интерфейс аренды авто с фильтрами.')">
+                    <div class="case-card premium" onclick="openModal(['img/car1.jpg', 'img/car2.jpg'], 'Rent a Car Premium', 'Сложный интерфейс аренды авто.')">
                         <div class="case-img-container gold-border">
                             <div class="case-img" style="background-image: url('img/car1.jpg');"></div>
                             <div class="case-overlay"><span>Premium Case</span></div>
                         </div>
                         <div class="case-info">
                             <h4>Аренда авто</h4>
-                            <p class="case-meta gold-text">High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 2 фото</p>
                         </div>
                     </div>
-                    <div class="case-card premium" onclick="openModal(['img/agency1.jpg', 'img/agency2.jpg', 'img/agency3.jpg', 'img/agency4.jpg', 'img/agency5.jpg'], 'Digital Agency', 'Сайт для креативного агентства.')">
+                    <div class="case-card premium" onclick="openModal(['img/agency1.jpg'], 'Digital Agency', 'Сайт для креативного агентства.')">
                         <div class="case-img-container gold-border">
                             <div class="case-img" style="background-image: url('img/agency1.jpg');"></div>
                             <div class="case-overlay"><span>Premium Case</span></div>
                         </div>
                         <div class="case-info">
                             <h4>Агентство</h4>
-                            <p class="case-meta gold-text">High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 1 фото</p>
                         </div>
                     </div>
-                    <div class="case-card premium" onclick="openModal(['img/club1.jpg', 'img/club2.jpg', 'img/club3.jpg', 'img/club4.jpg', 'img/club5.jpg'], 'Club Experience', 'Погружающий дизайн для ночного клуба.')">
+                    <div class="case-card premium" onclick="openModal(['img/club1.jpg'], 'Club Experience', 'Погружающий дизайн для ночного клуба.')">
                         <div class="case-img-container gold-border">
                             <div class="case-img" style="background-image: url('img/club1.jpg');"></div>
                             <div class="case-overlay"><span>Premium Case</span></div>
                         </div>
                         <div class="case-info">
                             <h4>Сайт клуба</h4>
-                            <p class="case-meta gold-text">High-End / 5 фото</p>
+                            <p class="case-meta gold-text">High-End / 1 фото</p>
                         </div>
                     </div>
                 </div>
@@ -173,12 +180,14 @@
                         <div class="placeholder-content">
                             <div class="pulse-dot"></div>
                             <h4>High-End Spot 01</h4>
+                            <p>Доступно для бронирования</p>
                         </div>
                     </div>
                     <div class="case-card placeholder-card">
                         <div class="placeholder-content">
                             <div class="pulse-dot"></div>
                             <h4>High-End Spot 02</h4>
+                            <p>Доступно для бронирования</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +195,8 @@
         </div>
     </section>
 
-    <section id="pricing" class="section">
+    <!-- Цены -->
+    <section id="pricing" class="section alt-bg">
         <div class="container">
             <h2 class="section-title">Инвестиции в результат</h2>
             <div class="price-wrapper">
@@ -200,7 +210,6 @@
                         <li><i class="fa-solid fa-check"></i> 10 блоков контента</li>
                         <li><i class="fa-solid fa-check"></i> Базовая SEO-база</li>
                         <li><i class="fa-solid fa-check"></i> Срок: до 3 дней</li>
-                        <li><i class="fa-solid fa-check"></i> Поддержка 7 дней</li>
                     </ul>
                 </div>
                 <div class="price-card featured">
@@ -213,7 +222,6 @@
                         <li><i class="fa-solid fa-check"></i> Дизайн в Figma</li>
                         <li><i class="fa-solid fa-check"></i> Оптимизация PageSpeed</li>
                         <li><i class="fa-solid fa-check"></i> Срок: 7-10 дней</li>
-                        <li><i class="fa-solid fa-check"></i> Поддержка 30 дней</li>
                     </ul>
                 </div>
                 <div class="price-card">
@@ -225,7 +233,6 @@
                         <li><i class="fa-solid fa-check"></i> High-End разработка</li>
                         <li><i class="fa-solid fa-check"></i> 3D элементы декора</li>
                         <li><i class="fa-solid fa-check"></i> Приоритет в очереди</li>
-                        <li><i class="fa-solid fa-check"></i> AI-ассистент на сайт</li>
                         <li><i class="fa-solid fa-check"></i> Пожизненный сервис</li>
                     </ul>
                 </div>
@@ -233,9 +240,9 @@
         </div>
     </section>
 
-    <!-- Модальное окно -->
-    <div id="caseModal" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-window" onclick="event.stopPropagation()">
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="caseModal" class="modal-overlay">
+        <div class="modal-window">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-slider-box">
                 <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
@@ -246,26 +253,38 @@
             <div class="modal-body">
                 <h3 id="modalTitle">Название проекта</h3>
                 <p id="modalDesc">Описание проекта...</p>
-                <a href="#contact" class="btn-primary modal-cta" onclick="closeModal()">Заказать такой проект</a>
+                <a href="#" class="btn-primary">Связаться</a>
             </div>
         </div>
     </div>
 
-    <!-- AI Контейнер -->
+    <!-- AI NOLLY (Секция вопросов) -->
     <div class="ai-container">
         <button id="aiBtn" class="ai-toggle">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>AI NOLLY</span>
         </button>
+        
         <div id="aiChat" class="ai-chat hidden">
-            <div class="ai-chat-header">Задай вопрос NOLLY</div>
+            <div class="ai-chat-header">
+                <div class="ai-header-info">
+                    <span class="ai-name">AI NOLLY</span>
+                    <span class="ai-status">Online</span>
+                </div>
+            </div>
             <div class="ai-chat-content">
+                <p class="ai-chat-label">Задай вопрос NOLLY:</p>
                 <div class="ai-qa-list">
                     <button class="ai-q" data-q="1">Какие технологии?</button>
                     <button class="ai-q" data-q="2">Сроки работы?</button>
                     <button class="ai-q" data-q="3">Делаешь дизайн?</button>
                     <button class="ai-q" data-q="4">Есть ли поддержка?</button>
                     <button class="ai-q" data-q="5">Работа по договору?</button>
+                    <button class="ai-q" data-q="6">Как оплачивать?</button>
+                    <button class="ai-q" data-q="7">Сделаешь скидку?</button>
+                    <button class="ai-q" data-q="8">Какой хостинг?</button>
+                    <button class="ai-q" data-q="9">Что по SEO?</button>
+                    <button class="ai-q" data-q="10">Почему именно ты?</button>
                 </div>
                 <div id="aiBox" class="ai-box">Привет! Выбери вопрос выше.</div>
             </div>

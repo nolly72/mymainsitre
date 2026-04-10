@@ -1,41 +1,42 @@
 /* ============================================================
-   BASE.CSS — Фундамент и Глобальные Настройки
+   BASE.CSS — Фундамент, Шрифты и Цветовая Среда
    ============================================================ */
 
 :root {
-    /* Палитра Deep Dark */
+    /* Основная палитра (Deep Dark) */
     --bg-dark: #050505;
     --bg-card: #0f0f11;
     --bg-card-hover: #161618;
     
-    /* Акценты */
+    /* Акцентные цвета */
     --accent-primary: #ff3c5f;
     --accent-secondary: #7928ca;
     --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 100%);
     
-    /* Текст */
+    /* Текстовые переменные */
     --text-pure: #ffffff;
     --text-dim: #a1a1aa;
     --text-muted: #63636b;
     
-    /* Радиусы (High-End Style) */
+    /* Трендовые скругления (High-End Style) */
     --radius-full: 100px;
-    --radius-xl: 42px;   
-    --radius-lg: 28px;   
-    --radius-md: 16px;   
+    --radius-xl: 42px;   /* Для больших блоков и карточек */
+    --radius-lg: 28px;   /* Для фотографий и внутренних элементов */
+    --radius-md: 16px;   /* Для кнопок и инпутов */
     
-    /* Анимации */
+    /* Тайминги анимаций */
     --transition-smooth: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Принудительная установка шрифта Montserrat для всего проекта */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Шрифт Montserrat ко всему проекту принудительно */
     font-family: 'Montserrat', sans-serif !important;
     outline: none;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -48,59 +49,88 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     
-    /* Фоновые градиенты */
+    /* Фоновые "цветные пятна" (Мягкие градиенты) */
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(255, 60, 95, 0.08) 0%, transparent 45%),
         radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08) 0%, transparent 45%);
     background-attachment: fixed;
 }
 
+/* Контейнер для выравнивания */
 .container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
+/* Секции */
 .section {
-    padding: 120px 0;
+    padding: 100px 0;
+    position: relative;
 }
 
 .section-title {
-    font-size: clamp(38px, 7vw, 68px);
+    font-size: clamp(34px, 7vw, 60px);
     text-align: center;
     font-weight: 800;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     letter-spacing: -0.02em;
+    line-height: 1.1;
 }
 
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Градиентный текст */
 .gradient-text {
     background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
+    display: inline-block;
+}
+
+/* Утилиты */
+.hidden {
+    display: none !important;
+}
+
+.alt-bg {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Кнопки */
-.btn-primary, .btn-cta {
+.btn-cta, .btn-primary {
     display: inline-block;
-    padding: 18px 38px;
+    padding: 16px 36px;
     background: var(--text-pure);
     color: var(--bg-dark);
     border-radius: var(--radius-full);
     font-weight: 800;
+    font-size: 15px;
     text-decoration: none;
     transition: var(--transition-smooth);
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(255, 60, 95, 0.2);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }
-
-/* Скроллбар */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-dark); }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
