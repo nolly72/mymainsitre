@@ -308,6 +308,40 @@
     </div>
 </div>
 
+<!-- AI NOLLY (Кнопка и Чат) -->
+<div class="ai-container">
+    <button id="aiBtn" class="ai-toggle">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>AI NOLLY</span>
+    </button>
+    
+    <!-- Важно: убрали класс hidden, чтобы работал твой CSS (visibility: hidden) -->
+    <div id="aiChat" class="ai-chat">
+        <div class="ai-chat-header">
+            <div class="ai-header-info">
+                <span class="ai-name">AI NOLLY</span>
+                <span class="ai-status">Online</span>
+            </div>
+        </div>
+        <div class="ai-chat-content">
+            <p class="ai-chat-label">Задай вопрос NOLLY:</p>
+            <div class="ai-qa-list">
+                <button class="ai-q" data-q="1">Какие технологии?</button>
+                <button class="ai-q" data-q="2">Сроки работы?</button>
+                <button class="ai-q" data-q="3">Делаешь дизайн?</button>
+                <button class="ai-q" data-q="4">Есть ли поддержка?</button>
+                <button class="ai-q" data-q="5">Работа по договору?</button>
+                <button class="ai-q" data-q="6">Как оплачивать?</button>
+                <button class="ai-q" data-q="7">Сделаешь скидку?</button>
+                <button class="ai-q" data-q="8">Какой хостинг?</button>
+                <button class="ai-q" data-q="9">Что по SEO?</button>
+                <button class="ai-q" data-q="10">Почему именно ты?</button>
+            </div>
+            <div id="aiBox" class="ai-box">Привет! Выбери вопрос выше.</div>
+        </div>
+    </div>
+</div>
+
 <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ (С ФОРМОЙ) -->
 <div id="orderModal" class="modal-overlay">
     <div class="modal-window order-window">
@@ -333,8 +367,15 @@
     </div>
 </div>
 
+<!-- ПЛАВАЮЩАЯ КНОПКА СВЯЗИ (СЛЕВА) -->
+<button class="floating-contact-btn" onclick="openOrderModal('Общий запрос')">
+    <span class="icon">✉</span>
+    <span class="text">Связаться со мной</span>
+</button>
 
-    <!-- AI NOLLY (Секция вопросов) -->
+
+
+<!-- AI NOLLY (Секция вопросов) -->
     <div class="ai-container">
         <button id="aiBtn" class="ai-toggle">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -342,7 +383,6 @@
         </button>
         
         <div id="aiChat" class="ai-chat"> <!-- УБРАЛ HIDDEN ТУТ -->
-
             <div class="ai-chat-header">
                 <div class="ai-header-info">
                     <span class="ai-name">AI NOLLY</span>
@@ -376,21 +416,3 @@
         </div>
     </div>
 </footer>
-
-
-     <!-- 1. Библиотека EmailJS (ТЕПЕРЬ ПРАВИЛЬНАЯ) -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- 2. Модуль отправки почты -->
-    <script src="js/mail-module.js"></script>
-
-    <!-- 3. Твой основной скрипт -->
-    <script src="script.js"></script>
-</body>
-</html>
-
-<!-- Плавающая кнопка связи -->
-<button class="floating-contact-btn" onclick="openOrderModal('Общий запрос')">
-    <span class="icon">✉</span>
-    <span class="text">Связаться со мной</span>
-</button>
