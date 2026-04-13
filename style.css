@@ -489,3 +489,40 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* --- ФУТЕР --- */
+.footer {
+    padding: 60px 0;
+    margin-top: 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+}
+
+.footer p {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Эффект свечения для твоего ника */
+.footer p::selection {
+    background: #d4af37;
+    color: #000;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px;
+        margin-top: 60px;
+    }
+    .footer p {
+        font-size: 11px;
+        letter-spacing: 1px;
+        line-height: 1.6;
+    }
+}

@@ -234,7 +234,8 @@
                     <li><i class="fa-solid fa-check"></i> Базовая SEO-база</li>
                     <li><i class="fa-solid fa-check"></i> Срок: до 3 дней</li>
                 </ul>
-                <a href="#contact" class="price-btn">Выбрать Start</a>
+                <!-- Изменено: теперь кнопка вызывает окно заказа -->
+                <button onclick="openOrderModal('Start')" class="price-btn">Выбрать Start</button>
             </div>
 
             <!-- Advanced (Featured) -->
@@ -250,7 +251,7 @@
                     <li><i class="fa-solid fa-check"></i> Оптимизация PageSpeed</li>
                     <li><i class="fa-solid fa-check"></i> Срок: 7-10 дней</li>
                 </ul>
-                <a href="#contact" class="price-btn btn-gold">Начать проект</a>
+                <button onclick="openOrderModal('Advanced')" class="price-btn btn-gold">Начать проект</button>
             </div>
 
             <!-- Elite -->
@@ -265,11 +266,12 @@
                     <li><i class="fa-solid fa-check"></i> Приоритет в очереди</li>
                     <li><i class="fa-solid fa-check"></i> Пожизненный сервис</li>
                 </ul>
-                <a href="#contact" class="price-btn">Стать Elite</a>
+                <button onclick="openOrderModal('Elite')" class="price-btn">Стать Elite</button>
             </div>
         </div>
     </div>
 </section>
+
 
 
     <!-- МОДАЛЬНОЕ ОКНО -->
@@ -289,6 +291,26 @@
             </div>
         </div>
     </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
+<div id="orderModal" class="modal-overlay">
+    <div class="modal-window order-window">
+        <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+        <div class="modal-body">
+            <span class="cat-label premium-label">Order Form</span>
+            <h3 id="orderTitle">Начать проект</h3>
+            <p>Оставьте контакты, и я свяжусь с вами для обсуждения деталей.</p>
+            
+            <form class="order-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Email или Telegram" required>
+                <textarea placeholder="Кратко о задаче (необязательно)"></textarea>
+                <button type="submit" class="price-btn btn-gold">Отправить запрос</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 
     <!-- AI NOLLY (Секция вопросов) -->
     <div class="ai-container">
@@ -323,10 +345,15 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>© 2026 NOLLY DEVELOPER. Сделано с душой и кодом.</p>
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 <span class="gold-text">NOLLY DEVELOPER</span>. Сделано с душой и кодом.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Основной скрипт -->
     <script src="script.js"></script>
 </body>
 </html>
