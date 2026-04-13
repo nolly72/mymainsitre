@@ -2,7 +2,7 @@
    SCRIPT.JS — Интерактив, AI-помощник, Слайдер и Отправка
    ============================================================ */
 
-// 0. ИНИЦИАЛИЗАЦИЯ EMAILJS (Твой Public Key)
+// 0. ИНИЦИАЛИЗАЦИЯ EMAILJS
 (function() {
     emailjs.init("uMomqe3GHuHo1r5KO"); 
 })();
@@ -31,8 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aiBtn && aiChat) {
         aiBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            aiChat.classList.toggle('active');
-            aiChat.classList.toggle('hidden');
+            // Исправленная логика переключения
+            const isActive = aiChat.classList.contains('active');
+            if (isActive) {
+                aiChat.classList.remove('active');
+                aiChat.classList.add('hidden');
+            } else {
+                aiChat.classList.remove('hidden');
+                aiChat.classList.add('active');
+            }
         });
     }
 
@@ -51,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ И ЗАКАЗ)
+    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН
     const caseModal = document.getElementById('caseModal');
     const orderModal = document.getElementById('orderModal');
     const modalImg = document.getElementById('modalImg');
@@ -59,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDesc = document.getElementById('modalDesc');
     const orderTitle = document.getElementById('orderTitle');
     const slideCounter = document.getElementById('slideCounter');
-    const orderForm = document.getElementById('order-form'); // Важно для отправки
+    const orderForm = document.getElementById('order-form');
 
     let currentImages = [];
     let currentSlideIndex = 0;
@@ -78,10 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openOrderModal = function(planName) {
         if (!orderModal) return;
         if (orderTitle) orderTitle.innerText = `Заказать тариф: ${planName}`;
-        // Если в форме есть скрытое поле для тарифа:
         const planInput = document.getElementById('selected-plan');
         if (planInput) planInput.value = planName;
-        
         orderModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     };
@@ -126,9 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = btn ? btn.innerText : "Отправить";
             if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
 
-            // Твой Service ID: service_ernscfc
-            // ЗАМЕНИ 'template_XXXXX' на ID из раздела Email Templates!
-            emailjs.sendForm('service_ernscfc', 'template_XXXXX', this)
+            // Используем твои проверенные данные
+            emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
                 .then(() => {
                     alert('Заявка успешно отправлена!');
                     orderForm.reset();
@@ -142,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Закрытие окон
     window.addEventListener('click', (e) => {
         if (e.target === caseModal) closeModal();
         if (e.target === orderModal) closeOrderModal();
