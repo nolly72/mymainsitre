@@ -31,15 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aiBtn && aiChat) {
         aiBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Исправленная логика переключения
-            const isActive = aiChat.classList.contains('active');
-            if (isActive) {
-                aiChat.classList.remove('active');
-                aiChat.classList.add('hidden');
-            } else {
-                aiChat.classList.remove('hidden');
-                aiChat.classList.add('active');
-            }
+            // В твоем CSS уже есть логика для .active (opacity и visibility)
+            // Класс hidden только мешает, поэтому используем просто toggle('active')
+            aiChat.classList.toggle('active');
         });
     }
 
@@ -57,6 +51,123 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ И ЗАКАЗ)
+    const caseModal = document.getElementById('caseModal');
+    const orderModal = document.getElementById('orderModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const orderTitle = document.getElementById('orderTitle');
+    const slideCounter = document.getElementById('slideCounter');
+    const orderForm = document.getElementById('order-form');
+
+    let currentImages = [];
+    let currentSlideIndex = 0;
+
+    window.openModal = function(images, title, description) {
+        if (!caseModal) return;
+        currentImages = Array.isArray(images) ? images : [images];
+        currentSlideIndex = 0;
+        if (modalTitle) modalTitle.innerText = title;
+        if (modalDesc) modalDesc.innerText = description;
+        updateSlide();
+        caseModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+    };
+
+    window.openOrderModal = function(planName) {
+        if (!orderModal) return;
+        if (orderTitle) orderTitle.innerText = `Заказать тариф: ${planName}`;
+        const planInput = document.getElementById('selected-plan');
+        if (planInput) planInput.value = planName;
+        orderModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.changeSlide = function(direction) {
+        if (currentImages.length <= 1) return;
+        currentSlideIndex += direction;
+        if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
+        if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
+        updateSlide();
+    };
+
+    function updateSlide() {
+        if (!modalImg) return;
+        modalImg.style.opacity = '0';
+        setTimeout(() => {
+            modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
+            modalImg.style.opacity = '1';
+        }, 150);
+        if (slideCounter) {
+            slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
+            slideCounter.style.display = currentImages.length > 1 ? 'block' : 'none';
+        }
+    }
+
+    window.closeModal = function() {
+        if (caseModal) caseModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+    };
+
+    window.closeOrderModal = function() {
+        if (orderModal) orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+    // --- ОТПРАВКА ФОРМЫ ---
+    if (orderForm) {
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn ? btn.innerText : "Отправить запрос";
+            
+            if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
+
+            emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
+                .then(() => {
+                    alert('Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.');
+                    orderForm.reset();
+                    closeOrderModal();
+                }, (err) => {
+                    alert('Ошибка: ' + JSON.stringify(err));
+                })
+                .finally(() => {
+                    if (btn) { btn.innerText = originalText; btn.disabled = false; }
+                });
+        });
+    }
+
+    // Закрытие окон при клике вне их области
+    window.addEventListener('click', (e) => {
+        if (e.target === caseModal) closeModal();
+        if (e.target === orderModal) closeOrderModal();
+        // Закрытие AI чата при клике мимо
+        if (aiChat && aiChat.classList.contains('active')) {
+            if (!aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
+                aiChat.classList.remove('active');
+            }
+        }
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") { closeModal(); closeOrderModal(); }
+    });
+
+    // 3. АНИМАЦИЯ ПРИ СКРОЛЛЕ
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('reveal-active');
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title, .main-project').forEach(item => {
+        item.classList.add('reveal-hidden');
+        observer.observe(item);
+    });
+});
+
 
     // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН
     const caseModal = document.getElementById('caseModal');
