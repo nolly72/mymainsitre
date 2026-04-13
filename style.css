@@ -253,16 +253,166 @@
 .price-wrapper {
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: stretch;
+    margin-top: 50px;
 }
 
+.price-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    position: relative;
+}
+
+.price-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Выделение популярного тарифа */
 .price-card.featured {
-    border: 2px solid var(--accent-primary);
-    background: rgba(255, 60, 95, 0.02);
+    background: rgba(212, 175, 55, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.cost { font-size: 48px; font-weight: 800; margin: 20px 0; }
-.cost span { font-size: 20px; color: var(--text-muted); }
+.price-card.featured:hover {
+    border-color: #d4af37;
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.1);
+}
+
+.popular-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #d4af37;
+    color: #000;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Верхняя часть карточки */
+.price-top {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.plan-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+.plan-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+.cost {
+    font-size: 54px;
+    font-weight: 900;
+    color: #fff;
+    margin: 15px 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cost span {
+    font-size: 20px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Список услуг */
+.price-content {
+    flex-grow: 1;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.price-list li {
+    padding: 12px 0;
+    font-size: 15px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.price-list li i {
+    color: #d4af37;
+    font-size: 16px;
+}
+
+/* Кнопки */
+.price-bottom .price-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.price-bottom .price-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.btn-gold {
+    background: #d4af37 !important;
+    border: none !important;
+    color: #000 !important;
+}
+
+.btn-gold:hover {
+    background: #fff !important;
+    transform: scale(1.02);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .price-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .price-card {
+        padding: 30px;
+    }
+    .cost {
+        font-size: 44px;
+    }
+    .price-card.featured {
+        order: -1; /* Популярный тариф сверху на мобилках */
+    }
+}
+
 
 /* 6. AI NOLLY (ЧАТ) */
 .ai-container {

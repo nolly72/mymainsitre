@@ -23,25 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
         "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
-    // Открытие/закрытие чата
     if (aiBtn && aiChat) {
         aiBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            aiChat.classList.toggle('active'); // Используем active для плавности из CSS
+            aiChat.classList.toggle('active');
             aiChat.classList.toggle('hidden');
         });
     }
 
-    // Обработка клика по вопросу
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
             const answer = aiAnswers[qId];
-            
             if (aiBox) {
                 aiBox.style.opacity = '0.5';
                 aiBox.innerText = "NOLLY печатает...";
-                
                 setTimeout(() => {
                     aiBox.style.opacity = '1';
                     aiBox.innerText = answer;
@@ -50,71 +46,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. ЛОГИКА МОДАЛЬНОГО ОКНА СО СЛАЙДЕРОМ
-    const modal = document.getElementById('caseModal');
+    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ И ЗАКАЗ)
+    const caseModal = document.getElementById('caseModal');
+    const orderModal = document.getElementById('orderModal');
     const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
+    const orderTitle = document.getElementById('orderTitle');
     const slideCounter = document.getElementById('slideCounter');
 
     let currentImages = [];
     let currentSlideIndex = 0;
 
-    // Глобальная функция открытия
+    // Глобальная функция открытия кейсов
     window.openModal = function(images, title, description) {
-        if (!modal) return;
-        
+        if (!caseModal) return;
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
-        
         if (modalTitle) modalTitle.innerText = title;
         if (modalDesc) modalDesc.innerText = description;
-        
         updateSlide();
-        
-        modal.style.display = 'flex';
+        caseModal.style.display = 'flex';
         document.body.style.overflow = 'hidden'; 
     };
 
-    // Глобальная функция переключения
+    // Глобальная функция открытия заказа (для цен)
+    window.openOrderModal = function(planName) {
+        if (!orderModal) return;
+        if (orderTitle) orderTitle.innerText = `Заказать тариф: ${planName}`;
+        orderModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    };
+
+    // Переключение слайдов
     window.changeSlide = function(direction) {
         if (currentImages.length <= 1) return;
-        
         currentSlideIndex += direction;
-        
         if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
         if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
-        
         updateSlide();
     };
 
     function updateSlide() {
         if (!modalImg) return;
-        
         modalImg.style.opacity = '0';
         setTimeout(() => {
             modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
             modalImg.style.opacity = '1';
         }, 150);
-
         if (slideCounter) {
             slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
             slideCounter.style.display = currentImages.length > 1 ? 'block' : 'none';
         }
     }
 
+    // Функции закрытия
     window.closeModal = function() {
-        if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; 
-        }
+        if (caseModal) caseModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
     };
 
-    // Закрытие по клику вне окна и кнопке Esc
+    window.closeOrderModal = function() {
+        if (orderModal) orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+    // Закрытие по клику вне окон и кнопке Esc
     window.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+        if (e.target === caseModal) closeModal();
+        if (e.target === orderModal) closeOrderModal();
         
-        // Закрытие AI чата при клике мимо
         if (aiChat && !aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
             aiChat.classList.remove('active');
             aiChat.classList.add('hidden');
@@ -122,12 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") closeModal();
+        if (e.key === "Escape") {
+            closeModal();
+            closeOrderModal();
+        }
     });
 
     // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
     const observerOptions = { threshold: 0.15 };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -136,9 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Добавлена поддержка новых карточек elite showcase
     const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title, .main-project');
-    
     itemsToAnimate.forEach(item => {
         item.classList.add('reveal-hidden');
         observer.observe(item);
