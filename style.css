@@ -701,91 +701,49 @@
 
 .floating-contact-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #c5a47e; /* Твой золотой цвет */
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-}
-
-.floating-contact-btn {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    width: 50px;  /* Фиксированная ширина */
-    height: 50px; /* Фиксированная высота */
+    /* Поднимаем повыше, чтобы не перекрывала футер/меню */
+    bottom: 80px; 
+    left: 20px;
+    
+    /* Делаем аккуратный кружок */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
     background: #c5a47e;
     color: #fff;
     border: none;
-    border-radius: 50%; /* Делаем круг */
+    
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 999;
+    
+    /* Тень и слой поверх всего */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 1001; 
     transition: all 0.3s ease;
 }
 
+/* Скрываем текст, оставляем только иконку */
 .floating-contact-btn .text {
-    display: none; /* Скрываем текст совсем */
+    display: none;
 }
 
 .floating-contact-btn .icon {
-    font-size: 1.5rem; /* Иконка покрупнее */
-    line-height: 1;
-}
-
-.floating-contact-btn {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    width: 50px;  /* Фиксированная ширина */
-    height: 50px; /* Фиксированная высота */
-    background: #c5a47e;
-    color: #fff;
-    border: none;
-    border-radius: 50%; /* Делаем круг */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: all 0.3s ease;
-}
-
-.floating-contact-btn .text {
-    display: none; /* Скрываем текст совсем */
-}
-
-.floating-contact-btn .icon {
-    font-size: 1.5rem; /* Иконка покрупнее */
-    line-height: 1;
+    font-size: 20px;
 }
 
 .floating-contact-btn:hover {
-    transform: scale(1.1); /* Слегка увеличивается при наведении. */
+    transform: scale(1.1);
     background: #b3936d;
-    box-shadow: 0 8px 20px rgba(197, 164, 126, 0.4);
 }
 
-/* На мобилках сделаем чуть меньше, чтобы не мешала */
+/* Настройки для мобилок */
 @media (max-width: 480px) {
     .floating-contact-btn {
-        bottom: 20px;
-        left: 20px;
+        bottom: 90px; /* На телефоне еще чуть выше */
+        left: 15px;
         width: 45px;
         height: 45px;
     }
