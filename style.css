@@ -749,3 +749,19 @@
         font-size: 13px;
     }
 }
+
+
+#newAiWrapper {
+    pointer-events: all !important; /* Разрешает клики */
+}
+#newAiBtn {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    z-index: 10000 !important;
+}
+.ai-chat.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

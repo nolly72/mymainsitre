@@ -10,18 +10,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. ЛОГИКА AI-АССИСТЕНТА
-    const aiBtn = document.getElementById('aiBtn');
-    const aiChat = document.getElementById('aiChat');
-    const aiBox = document.getElementById('aiBox');
-    const qButtons = document.querySelectorAll('.ai-q');
+    const aiBtn = document.getElementById('newAiBtn'); // Обновили ID
+const aiChat = document.getElementById('aiChat');
+const aiBox = document.getElementById('aiBox');
+const qButtons = document.querySelectorAll('.ai-q');
 
-    if (aiBtn && aiChat) {
-        aiBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            aiChat.classList.toggle('active');
-            console.log("Чат переключен"); 
-        });
-    }
+if (aiBtn && aiChat) {
+    aiBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Принудительно меняем видимость, если класс .active не срабатывает
+        if (aiChat.style.display === 'block') {
+            aiChat.style.display = 'none';
+        } else {
+            aiChat.style.display = 'block';
+        }
+        aiChat.classList.toggle('active');
+        console.log("Новая кнопка сработала!"); 
+    });
+}
 
     qButtons.forEach(button => {
         button.addEventListener('click', (e) => {
