@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Данные обновлены: Service ID и Template ID с закрытой кавычкой
-            emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
+            emailjs.sendForm('service_ernscfc', 'template_n27b5hj', this)
                 .then(() => {
                     alert('Заявка успешно отправлена! Я скоро свяжусь с вами.');
                     orderForm.reset();
