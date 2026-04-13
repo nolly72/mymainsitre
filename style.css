@@ -676,3 +676,24 @@
         line-height: 1.6;
     }
 }
+
+
+
+.modal-overlay {
+    display: none; /* Скрыто до нажатия кнопки */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999; /* Очень высокий приоритет */
+    justify-content: center;
+    align-items: center;
+}
+.order-window {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #c5a47e; /* Твой золотой цвет */
+    max-width: 400px;
+    width: 90%;
+}

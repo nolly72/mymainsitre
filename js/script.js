@@ -1,10 +1,10 @@
 /* ============================================================
-   SCRIPT.JS — Интерактив, AI-помощник, Слайдер и Отправка заявок
+   SCRIPT.JS — Интерактив, AI-помощник, Слайдер и Отправка
    ============================================================ */
 
-// 0. ИНИЦИАЛИЗАЦИЯ EMAILJS (Вставь свой Public Key из раздела Account -> API Keys)
+// 0. ИНИЦИАЛИЗАЦИЯ EMAILJS (Твой Public Key)
 (function() {
-    emailjs.init("ТВОЙ_PUBLIC_KEY"); 
+    emailjs.init("uMomqe3GHuHo1r5KO"); 
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const qButtons = document.querySelectorAll('.ai-q');
 
     const aiAnswers = {
-        "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3. Для сложных интерфейсов использую библиотеки анимаций GSAP.",
+        "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3. Для сложных интерфейсов использую библиотеки анимаций GSAP или Framer Motion.",
         "2": "Lite-проекты сдаю за 3 дня. High-End сайты с индивидуальным дизайном и анимациями занимают от 7 до 14 дней.",
         "3": "Да, каждый проект начинается с макета в Figma. Я создаю уникальный визуальный язык, а не использую готовые шаблоны.",
-        "4": "Я даю пожизненную гарантию на работоспособность моего кода. Если возникнет баг — исправлю его бесплатно.",
-        "5": "Работаю официально как самозанятый. Можем заключить договор, где будут прописаны все этапы и сроки.",
-        "6": "Обычно работаю по системе 50/50: первая часть после утверждения дизайна, вторая — после полной готовности сайта.",
-        "7": "Я всегда открыт к обсуждению. При заказе комплекса услуг или для стартапов я делаю приятные бонусы.",
-        "8": "Я помогу с выбором: от бесплатного Vercel для лендингов до мощных защищенных серверов.",
-        "9": "В каждый сайт уже заложена структура для поисковиков: теги, мета-данные и высокая скорость загрузки.",
-        "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна по ценам ниже студийных."
+        "4": "Я даю пожизненную гарантию на работоспособность моего кода. Если возникнет баг — исправлю его бесплатно в кратчайшие сроки.",
+        "5": "Работаю официально как самозанятый. Можем заключить договор, где будут прописаны все этапы, сроки и итоговая стоимость.",
+        "6": "Обычно работаю по системе 50/50: первая часть после утверждения дизайна, вторая — после полной готовности и теста сайта.",
+        "7": "Я всегда открыт к обсуждению. При заказе комплекса услуг или для очень интересных стартапов я делаю приятные бонусы.",
+        "8": "Я помогу с выбором и настройкой: от бесплатного Vercel для лендингов до мощных защищенных серверов для крупных проектов.",
+        "9": "В каждый сайт уже заложена правильная структура для поисковиков: теги, мета-данные, высокая скорость загрузки и адаптивность.",
+        "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
     };
 
     if (aiBtn && aiChat) {
@@ -39,12 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
     qButtons.forEach(button => {
         button.addEventListener('click', () => {
             const qId = button.getAttribute('data-q');
+            const answer = aiAnswers[qId];
             if (aiBox) {
                 aiBox.style.opacity = '0.5';
                 aiBox.innerText = "NOLLY печатает...";
                 setTimeout(() => {
                     aiBox.style.opacity = '1';
-                    aiBox.innerText = aiAnswers[qId];
+                    aiBox.innerText = answer;
                 }, 500);
             }
         });
@@ -56,8 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
+    const orderTitle = document.getElementById('orderTitle');
     const slideCounter = document.getElementById('slideCounter');
-    const orderForm = document.getElementById('order-form');
+    const orderForm = document.getElementById('order-form'); // Важно для отправки
 
     let currentImages = [];
     let currentSlideIndex = 0;
@@ -75,8 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.openOrderModal = function(planName) {
         if (!orderModal) return;
-        document.getElementById('orderTitle').innerText = `Тариф: ${planName}`;
-        document.getElementById('selected-plan').value = planName;
+        if (orderTitle) orderTitle.innerText = `Заказать тариф: ${planName}`;
+        // Если в форме есть скрытое поле для тарифа:
+        const planInput = document.getElementById('selected-plan');
+        if (planInput) planInput.value = planName;
+        
         orderModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     };
@@ -112,33 +117,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     };
 
-    // --- ОБРАБОТКА ОТПРАВКИ ФОРМЫ ЧЕРЕЗ EMAILJS ---
+    // --- ОТПРАВКА ФОРМЫ ---
     if (orderForm) {
         orderForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const btn = document.getElementById('submit-btn');
-            const originalText = btn.innerText;
-            btn.innerText = "Отправка...";
-            btn.disabled = true;
+            const btn = document.querySelector('#order-form button[type="submit"]');
+            const originalText = btn ? btn.innerText : "Отправить";
+            if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
 
-            // Замени 'ВАШ_TEMPLATE_ID' на ID своего шаблона из EmailJS
-            emailjs.sendForm('service_ernscfc', 'uMomqe3GHuHo1r5KO', this)
+            // Твой Service ID: service_ernscfc
+            // ЗАМЕНИ 'template_XXXXX' на ID из раздела Email Templates!
+            emailjs.sendForm('service_ernscfc', 'template_XXXXX', this)
                 .then(() => {
-                    alert('Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.');
+                    alert('Заявка успешно отправлена!');
                     orderForm.reset();
                     closeOrderModal();
                 }, (err) => {
-                    alert('Ошибка отправки: ' + JSON.stringify(err));
+                    alert('Ошибка: ' + JSON.stringify(err));
                 })
                 .finally(() => {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
+                    if (btn) { btn.innerText = originalText; btn.disabled = false; }
                 });
         });
     }
 
-    // Закрытие по клику вне окон
     window.addEventListener('click', (e) => {
         if (e.target === caseModal) closeModal();
         if (e.target === orderModal) closeOrderModal();
@@ -152,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === "Escape") { closeModal(); closeOrderModal(); }
     });
 
-    // 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+    // 3. АНИМАЦИЯ ПРИ СКРОЛЛЕ
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('reveal-active');
