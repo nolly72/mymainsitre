@@ -24,9 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Открытие/закрытие чата
-    if (aiBtn) {
+    if (aiBtn && aiChat) {
         aiBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            aiChat.classList.toggle('active'); // Используем active для плавности из CSS
             aiChat.classList.toggle('hidden');
         });
     }
@@ -37,13 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const qId = button.getAttribute('data-q');
             const answer = aiAnswers[qId];
             
-            aiBox.style.opacity = '0.5';
-            aiBox.innerText = "NOLLY печатает...";
-            
-            setTimeout(() => {
-                aiBox.style.opacity = '1';
-                aiBox.innerText = answer;
-            }, 500);
+            if (aiBox) {
+                aiBox.style.opacity = '0.5';
+                aiBox.innerText = "NOLLY печатает...";
+                
+                setTimeout(() => {
+                    aiBox.style.opacity = '1';
+                    aiBox.innerText = answer;
+                }, 500);
+            }
         });
     });
 
@@ -59,11 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Глобальная функция открытия
     window.openModal = function(images, title, description) {
+        if (!modal) return;
+        
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
         
-        modalTitle.innerText = title;
-        modalDesc.innerText = description;
+        if (modalTitle) modalTitle.innerText = title;
+        if (modalDesc) modalDesc.innerText = description;
         
         updateSlide();
         
@@ -73,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Глобальная функция переключения
     window.changeSlide = function(direction) {
+        if (currentImages.length <= 1) return;
+        
         currentSlideIndex += direction;
         
         if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
@@ -82,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updateSlide() {
+        if (!modalImg) return;
+        
         modalImg.style.opacity = '0';
         setTimeout(() => {
             modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
@@ -90,18 +99,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (slideCounter) {
             slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
+            slideCounter.style.display = currentImages.length > 1 ? 'block' : 'none';
         }
     }
 
     window.closeModal = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; 
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
     };
 
     // Закрытие по клику вне окна и кнопке Esc
     window.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
+        
+        // Закрытие AI чата при клике мимо
         if (aiChat && !aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
+            aiChat.classList.remove('active');
             aiChat.classList.add('hidden');
         }
     });
@@ -121,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title');
+    // Добавлена поддержка новых карточек elite showcase
+    const itemsToAnimate = document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title, .main-project');
     
     itemsToAnimate.forEach(item => {
         item.classList.add('reveal-hidden');
