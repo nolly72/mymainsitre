@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Данные обновлены: Service ID и Template ID с закрытой кавычкой
-            emailjs.sendForm('service_ernscfc', 'template_1l6netl', this)
+            emailjs.sendForm('service_ernscfc', 'template_vakrk4p', this)
                 .then(() => {
                     alert('Заявка успешно отправлена! Я скоро свяжусь с вами.');
                     orderForm.reset();
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Закрытие по клику на фон
+    // Закрытие по клику наа фон ам ам ам
     window.addEventListener('click', (e) => {
         const orderModal = document.getElementById('orderModal');
         if (e.target === orderModal) {
