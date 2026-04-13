@@ -697,3 +697,47 @@
     max-width: 400px;
     width: 90%;
 }
+
+
+.floating-contact-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #c5a47e; /* Твой золотой цвет */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.floating-contact-btn:hover {
+    transform: translateY(-5px);
+    background: #b3936d;
+    box-shadow: 0 8px 20px rgba(197, 164, 126, 0.4);
+}
+
+.floating-contact-btn .icon {
+    font-size: 1.2rem;
+}
+
+/* На мобилках можно оставить только иконку, чтобы не мешала */
+@media (max-width: 480px) {
+    .floating-contact-btn .text {
+        display: none;
+    }
+    .floating-contact-btn {
+        padding: 15px;
+        border-radius: 50%;
+    }
+}
+
+
