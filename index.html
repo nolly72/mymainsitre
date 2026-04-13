@@ -217,95 +217,117 @@
                 </div>
             </div>
 
-<!-- Цены -->
+<!-- Секция Цен -->
 <section id="pricing" class="section alt-bg">
     <div class="container">
-        <h2 class="section-title">Инвестиции в результат</h2>
+        <div class="section-head text-center">
+            <h2 class="section-title">Инвестиции в результат</h2>
+            <p class="section-subtitle">Прозрачное ценообразование для проектов любого масштаба</p>
+        </div>
+
         <div class="price-wrapper">
-            <!-- Start -->
+            <!-- Тариф Start -->
             <div class="price-card">
-                <div class="price-header">
+                <div class="price-top">
+                    <div class="plan-icon"><i class="fa-solid fa-paper-plane"></i></div>
                     <span class="plan-name">Start</span>
                     <div class="cost">5 000<span>₽</span></div>
                 </div>
-                <ul class="price-list">
-                    <li><i class="fa-solid fa-check"></i> Адаптивный Landing</li>
-                    <li><i class="fa-solid fa-check"></i> 10 блоков контента</li>
-                    <li><i class="fa-solid fa-check"></i> Базовая SEO-база</li>
-                    <li><i class="fa-solid fa-check"></i> Срок: до 3 дней</li>
-                </ul>
-                <!-- Изменено: теперь кнопка вызывает окно заказа -->
-                <button onclick="openOrderModal('Start')" class="price-btn">Выбрать Start</button>
+                <div class="price-content">
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Адаптивный Landing</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 10 блоков контента</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Базовая SEO-база</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Срок: до 3 дней</li>
+                    </ul>
+                </div>
+                <div class="price-bottom">
+                    <button onclick="openOrderModal('Start')" class="price-btn">Начать Start</button>
+                </div>
             </div>
 
-            <!-- Advanced (Featured) -->
+            <!-- Тариф Advanced (Популярный) -->
             <div class="price-card featured">
-                <div class="popular-badge">Популярный выбор</div>
-                <div class="price-header">
-                    <span class="plan-name">Advanced</span>
+                <div class="popular-tag">Рекомендую</div>
+                <div class="price-top">
+                    <div class="plan-icon gold-text"><i class="fa-solid fa-rocket"></i></div>
+                    <span class="plan-name gold-text">Advanced</span>
                     <div class="cost">15 000<span>₽</span></div>
                 </div>
-                <ul class="price-list">
-                    <li><i class="fa-solid fa-check"></i> До 5 страниц сайта</li>
-                    <li><i class="fa-solid fa-check"></i> Дизайн в Figma</li>
-                    <li><i class="fa-solid fa-check"></i> Оптимизация PageSpeed</li>
-                    <li><i class="fa-solid fa-check"></i> Срок: 7-10 дней</li>
-                </ul>
-                <button onclick="openOrderModal('Advanced')" class="price-btn btn-gold">Начать проект</button>
+                <div class="price-content">
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-circle-check"></i> До 5 страниц сайта</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Дизайн в Figma</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Оптимизация PageSpeed</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Срок: 7-10 дней</li>
+                    </ul>
+                </div>
+                <div class="price-bottom">
+                    <button onclick="openOrderModal('Advanced')" class="price-btn btn-gold">Приступить</button>
+                </div>
             </div>
 
-            <!-- Elite -->
+            <!-- Тариф Elite -->
             <div class="price-card">
-                <div class="price-header">
+                <div class="price-top">
+                    <div class="plan-icon"><i class="fa-solid fa-crown"></i></div>
                     <span class="plan-name">Elite</span>
                     <div class="cost">23 000<span>₽</span></div>
                 </div>
-                <ul class="price-list">
-                    <li><i class="fa-solid fa-check"></i> High-End разработка</li>
-                    <li><i class="fa-solid fa-check"></i> 3D элементы декора</li>
-                    <li><i class="fa-solid fa-check"></i> Приоритет в очереди</li>
-                    <li><i class="fa-solid fa-check"></i> Пожизненный сервис</li>
-                </ul>
-                <button onclick="openOrderModal('Elite')" class="price-btn">Стать Elite</button>
+                <div class="price-content">
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-circle-check"></i> High-End разработка</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 3D элементы декора</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Приоритет в очереди</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Пожизненный сервис</li>
+                    </ul>
+                </div>
+                <div class="price-bottom">
+                    <button onclick="openOrderModal('Elite')" class="price-btn">Выбрать Elite</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-    <!-- МОДАЛЬНОЕ ОКНО -->
-    <div id="caseModal" class="modal-overlay">
-        <div class="modal-window">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="modal-slider-box">
-                <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
-                <div id="modalImg" class="modal-img"></div>
-                <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
-                <div id="slideCounter" class="slide-counter">1 / 5</div>
-            </div>
-            <div class="modal-body">
-                <h3 id="modalTitle">Название проекта</h3>
-                <p id="modalDesc">Описание проекта...</p>
-                <a href="#" class="btn-primary">Связаться</a>
-            </div>
+<!-- МОДАЛЬНОЕ ОКНО КЕЙСОВ -->
+<div id="caseModal" class="modal-overlay">
+    <div class="modal-window">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-slider-box">
+            <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+            <div id="modalImg" class="modal-img"></div>
+            <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+            <div id="slideCounter" class="slide-counter">1 / 5</div>
+        </div>
+        <div class="modal-body">
+            <h3 id="modalTitle">Название проекта</h3>
+            <p id="modalDesc">Описание проекта...</p>
+            <button onclick="closeModal(); openOrderModal('Из кейса')" class="price-btn btn-gold">Обсудить проект</button>
         </div>
     </div>
+</div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
+<!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ (С ФОРМОЙ) -->
 <div id="orderModal" class="modal-overlay">
     <div class="modal-window order-window">
         <button class="modal-close" onclick="closeOrderModal()">&times;</button>
         <div class="modal-body">
             <span class="cat-label premium-label">Order Form</span>
-            <h3 id="orderTitle">Начать проект</h3>
-            <p>Оставьте контакты, и я свяжусь с вами для обсуждения деталей.</p>
+            <h3 id="orderTitle">Оформить заказ</h3>
+            <p>Оставьте контакты, и я свяжусь с вами в ближайшее время.</p>
             
-            <form class="order-form">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Email или Telegram" required>
-                <textarea placeholder="Кратко о задаче (необязательно)"></textarea>
-                <button type="submit" class="price-btn btn-gold">Отправить запрос</button>
+            <form class="order-form" id="order-form">
+                <!-- Скрытое поле для передачи названия тарифа -->
+                <input type="hidden" name="user_plan" id="selected-plan" value="Не указан">
+                
+                <input type="text" name="user_name" placeholder="Ваше имя" required>
+                <input type="text" name="user_contact" placeholder="Email или Telegram" required>
+                <textarea name="user_message" placeholder="Кратко о вашей задаче..."></textarea>
+                
+                <button type="submit" id="submit-btn" class="price-btn btn-gold" style="width: 100%; border: none; cursor: pointer;">
+                    Отправить запрос
+                </button>
             </form>
         </div>
     </div>
@@ -353,7 +375,10 @@
         </div>
     </footer>
 
-    <!-- Основной скрипт -->
+        <!-- Библиотека для отправки писем (EmailJS) -->
+    <script src="https://jsdelivr.net"></script>
+    
+    <!-- Твой основной скрипт -->
     <script src="script.js"></script>
 </body>
 </html>
