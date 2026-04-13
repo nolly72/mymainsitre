@@ -719,51 +719,74 @@
     font-weight: 500;
 }
 
-.floating-contact-btn:hover {
-    transform: translateY(-5px);
-    background: #b3936d;
-    box-shadow: 0 8px 20px rgba(197, 164, 126, 0.4);
-}
-
 .floating-contact-btn {
     position: fixed;
-    bottom: 25px; /* Отступ снизу */
-    left: 25px;   /* ТЕПЕРЬ СЛЕВА */
-    background: #c5a47e; /* Твой золотой цвет */
+    bottom: 25px;
+    left: 25px;
+    width: 50px;  /* Фиксированная ширина */
+    height: 50px; /* Фиксированная высота */
+    background: #c5a47e;
     color: #fff;
     border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
+    border-radius: 50%; /* Делаем круг */
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 999;
     transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+}
+
+.floating-contact-btn .text {
+    display: none; /* Скрываем текст совсем */
+}
+
+.floating-contact-btn .icon {
+    font-size: 1.5rem; /* Иконка покрупнее */
+    line-height: 1;
+}
+
+.floating-contact-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;  /* Фиксированная ширина */
+    height: 50px; /* Фиксированная высота */
+    background: #c5a47e;
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Делаем круг */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.floating-contact-btn .text {
+    display: none; /* Скрываем текст совсем */
+}
+
+.floating-contact-btn .icon {
+    font-size: 1.5rem; /* Иконка покрупнее */
+    line-height: 1;
 }
 
 .floating-contact-btn:hover {
-    transform: translateY(-5px);
+    transform: scale(1.1); /* Слегка увеличивается при наведении. */
     background: #b3936d;
     box-shadow: 0 8px 20px rgba(197, 164, 126, 0.4);
 }
 
-/* Оптимизация для мобильных устройств */
+/* На мобилках сделаем чуть меньше, чтобы не мешала */
 @media (max-width: 480px) {
     .floating-contact-btn {
         bottom: 20px;
         left: 20px;
-        padding: 12px 15px;
-        font-size: 14px;
+        width: 45px;
+        height: 45px;
     }
-    /* Если хочешь оставить только иконку на очень маленьких экранах, 
-       раскомментируй код ниже: */
-    /* 
-    .floating-contact-btn .text { display: none; } 
-    .floating-contact-btn { border-radius: 50%; padding: 15px; } 
-    */
 }
-
