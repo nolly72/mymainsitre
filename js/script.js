@@ -15,42 +15,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiBox = document.getElementById('aiBox');
     const qButtons = document.querySelectorAll('.ai-q');
 
-    const aiAnswers = {
-        "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3. Для сложных интерфейсов использую библиотеки анимаций GSAP или Framer Motion.",
-        "2": "Lite-проекты сдаю за 3 дня. High-End сайты с индивидуальным дизайном и анимациями занимают от 7 до 14 дней.",
-        "3": "Да, каждый проект начинается с макета в Figma. Я создаю уникальный визуальный язык, а не использую готовые шаблоны.",
-        "4": "Я даю пожизненную гарантию на работоспособность моего кода. Если возникнет баг — исправлю его бесплатно в кратчайшие сроки.",
-        "5": "Работаю официально как самозанятый. Можем заключить договор, где будут прописаны все этапы, сроки и итоговая стоимость.",
-        "6": "Обычно работаю по системе 50/50: первая часть после утверждения дизайна, вторая — после полной готовности и теста сайта.",
-        "7": "Я всегда открыт к обсуждению. При заказе комплекса услуг или для очень интересных стартапов я делаю приятные бонусы.",
-        "8": "Я помогу с выбором и настройкой: от бесплатного Vercel для лендингов до мощных защищенных серверов для крупных проектов.",
-        "9": "В каждый сайт уже заложена правильная структура для поисковиков: теги, мета-данные, высокая скорость загрузки и адаптивность.",
-        "10": "Мне 19, и я горю своим делом. Я предлагаю премиальный уровень дизайна и разработки по ценам, которые ниже рыночных студийных."
-    };
-
     if (aiBtn && aiChat) {
         aiBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            // В твоем CSS уже есть логика для .active (opacity и visibility)
-            // Класс hidden только мешает, поэтому используем просто toggle('active')
             aiChat.classList.toggle('active');
+            console.log("Чат переключен"); 
         });
     }
 
     qButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
             const qId = button.getAttribute('data-q');
-            const answer = aiAnswers[qId];
+            const aiAnswers = {
+                "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3...",
+                "2": "Lite-проекты сдаю за 3 дня. High-End сайты — от 7 до 14 дней.",
+                "3": "Да, каждый проект начинается с макета в Figma. Никаких шаблонов.",
+                "4": "Я даю пожизненную гарантию на работоспособность кода.",
+                "5": "Работаю официально как самозанятый. Возможен договор.",
+                "6": "Система 50/50: после дизайна и после полной готовности.",
+                "7": "Я открыт к обсуждению. Для крутых стартапов есть бонусы.",
+                "8": "Помогу с хостингом: от Vercel до выделенных серверов.",
+                "9": "SEO-база (теги, мета, скорость) уже включена в работу.",
+                "10": "Мне 19, я горю своим делом и даю премиум-качество дешевле студий."
+            };
+
             if (aiBox) {
                 aiBox.style.opacity = '0.5';
                 aiBox.innerText = "NOLLY печатает...";
                 setTimeout(() => {
                     aiBox.style.opacity = '1';
-                    aiBox.innerText = answer;
+                    aiBox.innerText = aiAnswers[qId];
                 }, 500);
             }
         });
     });
+
+    window.addEventListener('click', (e) => {
+        if (aiChat && aiChat.classList.contains('active')) {
+            if (!aiChat.contains(e.target) && e.target !== aiBtn) {
+                aiChat.classList.remove('active');
+            }
+        }
+    });
+
+    // ЗДЕСЬ БУДЕТ ПРОДОЛЖЕНИЕ (Кейсы, Формы и т.д.)
+
+}); // Закрытие DOMContentLoaded
+
+// 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (Добавил, чтобы работали остальные кнопки)
+function openOrderModal(plan) {
+    const modal = document.getElementById('orderModal');
+    if(modal) {
+        modal.style.display = 'flex';
+        document.getElementById('selected-plan').value = plan;
+    }
+}
+
+function closeOrderModal() {
+    document.getElementById('orderModal').style.display = 'none';
+}
+
+function closeModal() {
+    // Для окна кейсов
+    const caseModal = document.getElementById('caseModal');
+    if(caseModal) caseModal.style.display = 'none';
+}
+</script>
+
 
     // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ И ЗАКАЗ)
     const caseModal = document.getElementById('caseModal');
