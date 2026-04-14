@@ -1,40 +1,41 @@
 /* ============================================================
-   BASE.CSS — Исправленный фундамент (Premium Soft Style)
+   BASE.CSS — Фундамент с Анимированной Цветовой Средой
    ============================================================ */
 
 :root {
     /* Основная палитра (Deep Dark) */
     --bg-dark: #050505;
-    --bg-card: rgba(255, 255, 255, 0.02);
-    --bg-card-hover: rgba(255, 255, 255, 0.04);
+    --bg-card: #0f0f11;
+    --bg-card-hover: #161618;
     
-    /* Акцентные цвета (Переход от розового к Золоту) */
-    --accent-primary: #c5a47e; 
-    --accent-secondary: #d4af37;
-    --gradient-main: linear-gradient(135deg, #ffffff 0%, #c5a47e 50%, #ffffff 100%);
+    /* Акцентные цвета */
+    --accent-primary: #ff3c5f;
+    --accent-secondary: #7928ca;
+    --gradient-main: linear-gradient(135deg, #ff3c5f 0%, #7928ca 50%, #ff3c5f 100%);
     
-    /* Текстовые переменные (Мягкий контраст) */
+    /* Текстовые переменные */
     --text-pure: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.6);
-    --text-muted: rgba(255, 255, 255, 0.4);
+    --text-dim: #a1a1aa;
+    --text-muted: #63636b;
     
-    /* Трендовые скругления */
+    /* Трендовые скругления (High-End Style) */
     --radius-full: 100px;
-    --radius-xl: 32px;   
-    --radius-lg: 24px;   
+    --radius-xl: 42px;   
+    --radius-lg: 28px;   
     --radius-md: 16px;   
     
-    /* Тайминги анимаций (Более инерционные) */
-    --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Тайминги анимаций */
+    --transition-smooth: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Анимация для "дышащего" золотистого фона */
+/* Анимация для "дышащего" фона */
 @keyframes fluidBackground {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* Анимация для переливающегося текста */
 @keyframes textShimmer {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
@@ -44,8 +45,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* УБРАЛ !important, чтобы Inter из style.css мог работать */
-    font-family: 'Inter', 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif !important;
     outline: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -62,90 +62,87 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     
-    /* Фоновые пятна теперь в золотистых тонах */
+    /* Фоновые "цветные пятна" с анимацией */
     background-image: 
-        radial-gradient(circle at 15% 25%, rgba(197, 164, 126, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.08) 0%, transparent 45%);
+        radial-gradient(circle at 20% 30%, rgba(255, 60, 95, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(121, 40, 202, 0.15) 0%, transparent 40%);
     background-attachment: fixed;
     background-size: 200% 200%;
-    animation: fluidBackground 12s ease-infinite;
+    animation: fluidBackground 15s ease infinite;
 }
 
-/* Контейнер */
+/* Контейнер для выравнивания */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 0 24px;
 }
 
+/* Секции */
 .section {
-    padding: 120px 0;
+    padding: 100px 0;
     position: relative;
 }
 
-/* Мягкий и глубокий заголовок секции */
 .section-title {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(32px, 6vw, 54px);
+    font-size: clamp(34px, 7vw, 60px);
     text-align: center;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 60px;
-    letter-spacing: -0.04em; /* Секрет мягкости */
+    letter-spacing: -0.02em;
     line-height: 1.1;
-    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
-/* Скроллбар в стиле Minimal */
+/* Стилизация скроллбара */
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--bg-dark);
 }
+
 ::-webkit-scrollbar-thumb {
-    background: rgba(197, 164, 126, 0.3);
+    background: #222;
     border-radius: var(--radius-full);
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-primary);
 }
 
-/* Переливающийся текст */
+/* ГРАДИЕНТНЫЙ ТЕКСТ (теперь переливается) */
 .gradient-text {
     background: var(--gradient-main);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 700;
+    font-weight: 800;
     display: inline-block;
-    animation: textShimmer 5s linear infinite;
+    animation: textShimmer 4s linear infinite;
 }
 
 /* Кнопки */
 .btn-cta, .btn-primary {
     display: inline-block;
-    padding: 18px 40px;
-    background: #fff;
-    color: #000;
+    padding: 16px 36px;
+    background: var(--text-pure);
+    color: var(--bg-dark);
     border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: 800;
+    font-size: 15px;
     text-decoration: none;
     transition: var(--transition-smooth);
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary:hover {
-    background: var(--accent-primary);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(197, 164, 126, 0.3);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 60, 95, 0.2);
 }
 
 /* Утилиты */
 .hidden { display: none !important; }
-.alt-bg { background: rgba(255, 255, 255, 0.01); }
+.alt-bg { background: rgba(255, 255, 255, 0.02); }
