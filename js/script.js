@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
 
-            // ПРОВЕРЬ ID ШАБЛОНА ТУТ (ra86h16 или vakrk4p)
             emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
                 .then(() => {
                     alert('Заявка отправлена! Я скоро свяжусь с вами.');
@@ -144,6 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") { window.closeModal(); window.closeOrderModal(); }
+        if (e.key === "Escape") { 
+            window.closeModal(); 
+            window.closeOrderModal(); 
+        }
     });
 });

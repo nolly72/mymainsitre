@@ -309,7 +309,6 @@
 </div>
 
 <!-- 2. AI NOLLY (Кнопка и Чат) -->
-<!-- НОВАЯ КНОПКА И ЧАТ -->
 <div id="newAiWrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
     <button id="newAiBtn" class="ai-toggle" style="cursor: pointer;">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -380,6 +379,19 @@
         </div>
     </div>
 </footer>
+
+<!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ (ВАЖНО!) -->
+
+<!-- Иконки (если не подключены в head) -->
+<link rel="stylesheet" href="https://cloudflare.com">
+
+<!-- Библиотека EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+
+
+<!-- Твои файлы логики -->
+<script src="js/mail-module.js"></script> 
+<script src="js/script.js"></script>
 
 </body>
 </html>

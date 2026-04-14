@@ -413,143 +413,140 @@
     }
 }
 
-
 /* ============================================================
-   7. МОДАЛЬНЫЕ ОКНА И ФОРМЫ (ИСПРАВЛЕНО)
+   7. МОДАЛЬНЫЕ ОКНА, ФОРМЫ И AI (PREMIUM STYLE)
    ============================================================ */
 
-/* Общий оверлей для всех модалок */
+/* Оверлей — глубокое размытие */
 .modal-overlay {
-    display: none; /* Управляется через JS (style.display = 'flex') */
+    display: none;
     position: fixed; 
     inset: 0;
-    background: rgba(0, 0, 0, 0.9); 
+    background: rgba(0, 0, 0, 0.92); 
     z-index: 10000; 
     align-items: center; 
     justify-content: center; 
     padding: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
-/* Окно заказа и окно кейсов (общие стили) */
+/* Окна — эффект левитации и золотая нить */
 .order-window, .modal-window {
-    background: #1a1a1a;
-    border-radius: 20px;
-    border: 1px solid rgba(197, 164, 126, 0.3); /* Твой золотой */
+    background: #0f0f0f;
+    border-radius: 24px;
+    border: 1px solid rgba(197, 164, 126, 0.2);
     position: relative;
-    animation: modalFadeIn 0.3s ease forwards;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: modalSlideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(197, 164, 126, 0.05);
 }
 
-.order-window {
-    max-width: 450px;
-    width: 100%;
-    padding: 40px 30px;
-}
+.order-window { max-width: 420px; width: 100%; padding: 40px; }
+.modal-window { max-width: 950px; width: 100%; overflow: hidden; }
 
-.modal-window {
-    max-width: 900px;
-    width: 100%;
-    overflow: hidden;
-}
-
-@keyframes modalFadeIn {
-    from { transform: translateY(30px); opacity: 0; }
+@keyframes modalSlideUp {
+    from { transform: translateY(40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Кнопка закрытия (крестик) */
+/* Кнопка закрытия — минимализм */
 .modal-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: none; border: none;
-    color: #666; font-size: 24px;
-    cursor: pointer; transition: 0.3s;
-    z-index: 10;
+    position: absolute; top: 20px; right: 20px;
+    background: none; border: none; color: #555;
+    font-size: 28px; cursor: pointer; transition: 0.3s; z-index: 10;
 }
 .modal-close:hover { color: #c5a47e; transform: rotate(90deg); }
 
-/* --- СТИЛИ ФОРМЫ ЗАКАЗА --- */
-#order-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
+/* --- ФОРМА ЗАКАЗА --- */
+#order-form { display: flex; flex-direction: column; gap: 18px; margin-top: 25px; }
 
-#order-form input, 
-#order-form textarea {
-    background: #0b0b0b;
+#order-form input, #order-form textarea {
+    background: #050505;
     border: 1px solid rgba(255,255,255,0.05);
     color: #fff;
-    padding: 14px 18px;
-    border-radius: 10px;
-    font-family: inherit;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-#order-form input:focus, 
-#order-form textarea:focus {
+#order-form input:focus, #order-form textarea:focus {
     border-color: #c5a47e;
+    background: #0a0a0a;
+    box-shadow: 0 0 15px rgba(197, 164, 126, 0.1);
     outline: none;
-    background: #111;
 }
 
-/* Кнопка в форме */
 #submit-btn {
     background: #c5a47e;
     color: #000;
     border: none;
-    padding: 16px;
-    border-radius: 10px;
+    padding: 18px;
+    border-radius: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #submit-btn:hover {
     background: #d4af37;
-    box-shadow: 0 5px 15px rgba(197, 164, 126, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(197, 164, 126, 0.3);
 }
 
-#submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* --- ФИКС AI ЧАТА (ЧТОБЫ КНОПКИ НЕ СЛИПАЛИСЬ) --- */
+/* --- AI NOLLY: PREMIUM CHAT --- */
 .ai-chat {
-    display: none; /* Показывается через класс .active в JS */
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 85px; right: 0;
+    width: 350px;
+    background: #0a0a0a;
+    border: 1px solid rgba(197, 164, 126, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
 }
-.ai-chat.active {
-    display: flex !important;
-}
+
+.ai-chat.active { display: flex !important; animation: modalSlideUp 0.3s ease forwards; }
 
 .ai-qa-list {
-    display: flex;
-    flex-wrap: wrap; /* ЭТО ИСПРАВИТ ТВОЙ СКРИНШОТ */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ровная сетка в 2 колонки */
     gap: 8px;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 .ai-q {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #aaa;
-    padding: 6px 12px;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #888;
+    padding: 10px;
+    border-radius: 10px;
     font-size: 11px;
     cursor: pointer;
     transition: 0.3s;
-    white-space: nowrap;
+    text-align: left;
+    line-height: 1.2;
 }
 
 .ai-q:hover {
     border-color: #c5a47e;
     color: #fff;
-    background: rgba(197, 164, 126, 0.1);
+    background: rgba(197, 164, 126, 0.05);
+}
+
+/* Окно терминала AI */
+.ai-box {
+    background: #000;
+    padding: 15px;
+    border-radius: 12px;
+    color: #00ff88; /* Твой зеленый код */
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    min-height: 90px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.02);
 }
