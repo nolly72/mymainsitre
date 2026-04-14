@@ -130,7 +130,7 @@
     opacity: 0.8;
 }
 
-/* Эффект при наведении. */
+/* Эффект при наведении */
 .phi-card:hover, .skill-card:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(197, 164, 126, 0.3);
