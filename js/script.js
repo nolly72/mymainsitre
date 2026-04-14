@@ -193,7 +193,7 @@ function closeModal() {
         if (e.key === "Escape") { closeModal(); closeOrderModal(); }
     });
 
-    // 3. АНИМАЦИЯ ПРИ СКРОЛЛЕ
+    // 3. АНИМАЦИЯ ПРИ СКРОЛЛЕ.
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('reveal-active');
