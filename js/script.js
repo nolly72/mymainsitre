@@ -1,96 +1,16 @@
 /* ============================================================
-   SCRIPT.JS — Интерактив, AI-помощник, Слайдер и Отправка
+   ЕДИНЫЙ СКРИПТ: МОДАЛКИ, КЕЙСЫ, AI И MAILJS
    ============================================================ */
 
-// 0. ИНИЦИАЛИЗАЦИЯ EMAILJS
+// 1. Инициализация EmailJS
 (function() {
-    emailjs.init("uMomqe3GHuHo1r5KO"); 
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("uMomqe3GHuHo1r5KO"); 
+    }
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. ЛОГИКА AI-АССИСТЕНТА
-    const aiBtn = document.getElementById('newAiBtn'); // Обновили ID
-const aiChat = document.getElementById('aiChat');
-const aiBox = document.getElementById('aiBox');
-const qButtons = document.querySelectorAll('.ai-q');
-
-if (aiBtn && aiChat) {
-    aiBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Принудительно меняем видимость, если класс .active не срабатывает
-        if (aiChat.style.display === 'block') {
-            aiChat.style.display = 'none';
-        } else {
-            aiChat.style.display = 'block';
-        }
-        aiChat.classList.toggle('active');
-        console.log("Новая кнопка сработала!"); 
-    });
-}
-
-    qButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const qId = button.getAttribute('data-q');
-            const aiAnswers = {
-                "1": "Мой основной стек: чистый JavaScript (ES6+), современные стандарты HTML5 и CSS3...",
-                "2": "Lite-проекты сдаю за 3 дня. High-End сайты — от 7 до 14 дней.",
-                "3": "Да, каждый проект начинается с макета в Figma. Никаких шаблонов.",
-                "4": "Я даю пожизненную гарантию на работоспособность кода.",
-                "5": "Работаю официально как самозанятый. Возможен договор.",
-                "6": "Система 50/50: после дизайна и после полной готовности.",
-                "7": "Я открыт к обсуждению. Для крутых стартапов есть бонусы.",
-                "8": "Помогу с хостингом: от Vercel до выделенных серверов.",
-                "9": "SEO-база (теги, мета, скорость) уже включена в работу.",
-                "10": "Мне 19, я горю своим делом и даю премиум-качество дешевле студий."
-            };
-
-            if (aiBox) {
-                aiBox.style.opacity = '0.5';
-                aiBox.innerText = "NOLLY печатает...";
-                setTimeout(() => {
-                    aiBox.style.opacity = '1';
-                    aiBox.innerText = aiAnswers[qId];
-                }, 500);
-            }
-        });
-    });
-
-    window.addEventListener('click', (e) => {
-        if (aiChat && aiChat.classList.contains('active')) {
-            if (!aiChat.contains(e.target) && e.target !== aiBtn) {
-                aiChat.classList.remove('active');
-            }
-        }
-    });
-
-    // ЗДЕСЬ БУДЕТ ПРОДОЛЖЕНИЕ (Кейсы, Формы и т.д.)
-
-}); // Закрытие DOMContentLoaded
-
-// 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (Добавил, чтобы работали остальные кнопки)
-function openOrderModal(plan) {
-    const modal = document.getElementById('orderModal');
-    if(modal) {
-        modal.style.display = 'flex';
-        document.getElementById('selected-plan').value = plan;
-    }
-}
-
-function closeOrderModal() {
-    document.getElementById('orderModal').style.display = 'none';
-}
-
-function closeModal() {
-    // Для окна кейсов
-    const caseModal = document.getElementById('caseModal');
-    if(caseModal) caseModal.style.display = 'none';
-}
-</script>
-
-
-    // 2. ЛОГИКА МОДАЛЬНЫХ ОКОН (КЕЙСЫ И ЗАКАЗ)
+    // Элементы
     const caseModal = document.getElementById('caseModal');
     const orderModal = document.getElementById('orderModal');
     const modalImg = document.getElementById('modalImg');
@@ -99,10 +19,14 @@ function closeModal() {
     const orderTitle = document.getElementById('orderTitle');
     const slideCounter = document.getElementById('slideCounter');
     const orderForm = document.getElementById('order-form');
+    const aiBtn = document.getElementById('newAiBtn');
+    const aiChat = document.getElementById('aiChat');
+    const aiBox = document.getElementById('aiBox');
 
     let currentImages = [];
     let currentSlideIndex = 0;
 
+    // --- ЛОГИКА КЕЙСОВ ---
     window.openModal = function(images, title, description) {
         if (!caseModal) return;
         currentImages = Array.isArray(images) ? images : [images];
@@ -114,13 +38,11 @@ function closeModal() {
         document.body.style.overflow = 'hidden'; 
     };
 
-    window.openOrderModal = function(planName) {
-        if (!orderModal) return;
-        if (orderTitle) orderTitle.innerText = `Заказать тариф: ${planName}`;
-        const planInput = document.getElementById('selected-plan');
-        if (planInput) planInput.value = planName;
-        orderModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    window.closeModal = function() {
+        if (caseModal) caseModal.style.display = 'none';
+        if (!orderModal || orderModal.style.display !== 'flex') {
+            document.body.style.overflow = 'auto';
+        }
     };
 
     window.changeSlide = function(direction) {
@@ -144,9 +66,14 @@ function closeModal() {
         }
     }
 
-    window.closeModal = function() {
-        if (caseModal) caseModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; 
+    // --- ЛОГИКА ЗАКАЗА ---
+    window.openOrderModal = function(planName) {
+        if (!orderModal) return;
+        if (orderTitle) orderTitle.innerText = `Заказать: ${planName}`;
+        const planInput = document.getElementById('selected-plan');
+        if (planInput) planInput.value = planName;
+        orderModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     };
 
     window.closeOrderModal = function() {
@@ -154,21 +81,23 @@ function closeModal() {
         document.body.style.overflow = 'auto';
     };
 
-    // --- ОТПРАВКА ФОРМЫ ---
+    // --- ОТПРАВКА MAILJS ---
     if (orderForm) {
         orderForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
-            const originalText = btn ? btn.innerText : "Отправить запрос";
+            const originalText = btn ? btn.innerText : "Отправить";
             
             if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
 
+            // ПРОВЕРЬ ID ШАБЛОНА ТУТ (ra86h16 или vakrk4p)
             emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
                 .then(() => {
-                    alert('Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.');
+                    alert('Заявка отправлена! Я скоро свяжусь с вами.');
                     orderForm.reset();
-                    closeOrderModal();
-                }, (err) => {
+                    window.closeOrderModal();
+                })
+                .catch((err) => {
                     alert('Ошибка: ' + JSON.stringify(err));
                 })
                 .finally(() => {
@@ -177,31 +106,44 @@ function closeModal() {
         });
     }
 
-    // Закрытие окон при клике вне их области
+    // --- ЛОГИКА AI ---
+    const responses = {
+        "1": "Использую HTML5, CSS3, JS и современные фреймворки.",
+        "2": "Сроки: от 3 до 10 дней в зависимости от сложности.",
+        "3": "Да, рисую уникальный дизайн в Figma.",
+        "4": "Конечно, 2 недели бесплатной поддержки.",
+        "5": "Работаю официально, можем заключить договор.",
+        "6": "Карта, крипта или расчетный счет.",
+        "7": "При заказе 'под ключ' всегда делаю скидку.",
+        "8": "Помогу с выбором и настройкой хостинга.",
+        "9": "Делаю базовую SEO-подготовку для всех сайтов.",
+        "10": "Качество кода + современный дизайн + сроки."
+    };
+
+    if (aiBtn) {
+        aiBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            aiChat.classList.toggle('active');
+        });
+    }
+
+    document.querySelectorAll('.ai-q').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-q');
+            if (aiBox) aiBox.innerText = responses[id] || "Спроси меня в Telegram!";
+        });
+    });
+
+    // --- ЗАКРЫТИЕ ПО КЛИКУ ВНЕ ОКОН ---
     window.addEventListener('click', (e) => {
-        if (e.target === caseModal) closeModal();
-        if (e.target === orderModal) closeOrderModal();
-        // Закрытие AI чата при клике мимо
-        if (aiChat && aiChat.classList.contains('active')) {
-            if (!aiChat.contains(e.target) && !aiBtn.contains(e.target)) {
-                aiChat.classList.remove('active');
-            }
+        if (e.target === caseModal) window.closeModal();
+        if (e.target === orderModal) window.closeOrderModal();
+        if (aiChat && !aiChat.contains(e.target) && e.target !== aiBtn) {
+            aiChat.classList.remove('active');
         }
     });
 
     window.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") { closeModal(); closeOrderModal(); }
-    });
-
-    // 3. АНИМАЦИЯ ПРИ СКРОЛЛЕ.
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('reveal-active');
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.phi-card, .case-card, .price-card, .skill-card, .section-title, .main-project').forEach(item => {
-        item.classList.add('reveal-hidden');
-        observer.observe(item);
+        if (e.key === "Escape") { window.closeModal(); window.closeOrderModal(); }
     });
 });

@@ -415,20 +415,39 @@
 
 
 
-/* 7. МОДАЛЬНОЕ ОКНО */
+/* 7. МОДАЛЬНОЕ ОКНО (ОБЩЕЕ) */
 .modal-overlay {
-    display: none; /* Управляется через JS */
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.9); z-index: 3000;
-    align-items: center; justify-content: center; padding: 20px;
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; 
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9); 
+    z-index: 9999; /* Поверх всего */
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
     backdrop-filter: blur(10px);
 }
 
+/* Окно оформления заказа (конкретно для формы) */
+.order-window {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #c5a47e; /* Твой золотой цвет */
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+
+/* Слайдер-модалка (если используешь для портфолио) */
 .modal-window {
-    background: var(--bg-card);
-    width: 100%; max-width: 900px;
-    border-radius: var(--radius-xl);
-    overflow: hidden; position: relative;
+    background: #1a1a1a;
+    width: 100%; 
+    max-width: 900px;
+    border-radius: 15px;
+    overflow: hidden; 
+    position: relative;
     border: 1px solid rgba(255,255,255,0.1);
     animation: modalFadeIn 0.3s ease;
 }
@@ -438,216 +457,35 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
-.modal-slider-box {
-    position: relative;
-    height: 450px;
-    background: #000;
-}
-
-.modal-img { 
-    height: 100%; 
-    width: 100%;
-    background-size: contain; /* Чтобы фото не обрезалось на телефоне */
-    background-position: center; 
-    background-repeat: no-repeat;
-    transition: 0.3s ease; 
-}
-
-.slider-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); 
-    color: white; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
-    font-size: 18px; transition: 0.3s; z-index: 10;
-    display: flex; align-items: center; justify-content: center;
-}
-
-.slider-btn:hover { background: #fff; color: #000; }
-.prev { left: 15px; } .next { right: 15px; }
-
-.modal-close {
-    position: absolute; top: 15px; right: 15px;
-    background: rgba(0,0,0,0.5); border: none; color: white;
-    width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
-    z-index: 100; font-size: 20px;
-}
-
-.slide-counter {
-    position: absolute; bottom: 15px; right: 20px;
-    background: rgba(0,0,0,0.6); padding: 4px 12px; border-radius: 20px;
-    font-size: 11px; color: #fff; letter-spacing: 1px;
-}
-
-.modal-body { padding: 30px; text-align: left; }
-.modal-body h3 { margin-bottom: 10px; font-size: 1.5rem; color: #fff; }
-.modal-body p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-
-/* Адаптив для телефонов */
-@media (max-width: 768px) {
-    .modal-overlay { padding: 10px; }
-    .modal-slider-box { height: 250px; }
-    .slider-btn { width: 36px; height: 36px; font-size: 14px; }
-    .modal-body { padding: 20px; }
-    .modal-body h3 { font-size: 1.2rem; }
-}
-
-
-/* 8. МОБИЛЬНАЯ АДАПТАЦИЯ */
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* Скрываем меню */
-    .section { padding: 60px 0; }
-    .hero { padding-top: 80px; }
-    .philosophy-grid { grid-template-columns: 1fr; }
-    .ai-chat { width: 280px; right: -10px; }
-    .modal-img { height: 250px; }
-    .price-card.featured { transform: none; }
-}
-
-/* Анимации появления */
-.reveal-hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.reveal-active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* --- ФУТЕР --- */
-.footer {
-    padding: 60px 0;
-    margin-top: 100px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-}
-
-.footer p {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* Эффект свечения для твоего ника */
-.footer p::selection {
-    background: #d4af37;
-    color: #000;
-}
-
-/* Адаптив для мобилок */
-@media (max-width: 768px) {
-    .footer {
-        padding: 40px 20px;
-        margin-top: 60px;
-    }
-    .footer p {
-        font-size: 11px;
-        letter-spacing: 1px;
-        line-height: 1.6;
-    }
-}
-
-
-
-.modal-overlay {
-    display: none; /* Скрыто до нажатия кнопки */
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 9999; /* Очень высокий приоритет */
-    justify-content: center;
-    align-items: center;
-}
-.order-window {
-    background: #1a1a1a;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #c5a47e; /* Твой золотой цвет */
-    max-width: 400px;
-    width: 90%;
-}
-
-
-.floating-contact-btn {
-    position: fixed;
-    bottom: 85px; /* Чуть выше нижней панели */
-    left: 20px;
-    
-    /* Цвета из палитры сайта */
-    background: #1a1a1a; /* Темный фон как у карточек */
-    color: #fff;
-    border: 1px solid #c5a47e; /* Золотистый контур */
-    
-    padding: 10px 18px;
-    border-radius: 30px;
+/* Элементы формы внутри модалки */
+#order-form {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.floating-contact-btn .icon {
-    color: #c5a47e; /* Иконка золотистого цвета */
-    font-size: 16px;
-}
-
-.floating-contact-btn:hover {
-    /* Эффект свечения как у кнопок на твоем сайте */
-    background: #c5a47e;
-    color: #1a1a1a;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(197, 164, 126, 0.3);
-}
-
-.floating-contact-btn:hover .icon {
-    color: #1a1a1a;
-}
-
-/* На мобильных телефонах */
-@media (max-width: 480px) {
-    .floating-contact-btn {
-        bottom: 90px;
-        left: 15px;
-        padding: 8px 14px;
-        font-size: 13px;
-    }
-}
-
-
-#newAiWrapper {
-    pointer-events: all !important; /* Разрешает клики */
-}
-#newAiBtn {
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
-    z-index: 10000 !important;
-}
-.ai-chat.active {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-/* Оставь только это, если хочешь сохранить "зеленый текст" */
-.ai-box {
+#order-form input, 
+#order-form textarea {
     background: #000;
-    padding: 15px;
-    border-radius: var(--radius-md);
-    color: #00ff88; 
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    min-height: 100px;
-    border: 1px solid rgba(0, 255, 136, 0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: inherit;
 }
 
+#order-form button {
+    background: #c5a47e;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#order-form button:hover {
+    background: #d4af37;
+    transform: scale(1.02);
+}
