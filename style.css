@@ -414,78 +414,142 @@
 }
 
 
+/* ============================================================
+   7. МОДАЛЬНЫЕ ОКНА И ФОРМЫ (ИСПРАВЛЕНО)
+   ============================================================ */
 
-/* 7. МОДАЛЬНОЕ ОКНО (ОБЩЕЕ) */
+/* Общий оверлей для всех модалок */
 .modal-overlay {
-    display: none; /* Скрыто по умолчанию */
+    display: none; /* Управляется через JS (style.display = 'flex') */
     position: fixed; 
     inset: 0;
     background: rgba(0, 0, 0, 0.9); 
-    z-index: 9999; /* Поверх всего */
+    z-index: 10000; 
     align-items: center; 
     justify-content: center; 
     padding: 20px;
     backdrop-filter: blur(10px);
 }
 
-/* Окно оформления заказа (конкретно для формы) */
-.order-window {
+/* Окно заказа и окно кейсов (общие стили) */
+.order-window, .modal-window {
     background: #1a1a1a;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #c5a47e; /* Твой золотой цвет */
-    max-width: 450px;
-    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 164, 126, 0.3); /* Твой золотой */
     position: relative;
-    animation: modalFadeIn 0.3s ease;
+    animation: modalFadeIn 0.3s ease forwards;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* Слайдер-модалка (если используешь для портфолио) */
+.order-window {
+    max-width: 450px;
+    width: 100%;
+    padding: 40px 30px;
+}
+
 .modal-window {
-    background: #1a1a1a;
-    width: 100%; 
     max-width: 900px;
-    border-radius: 15px;
-    overflow: hidden; 
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-    animation: modalFadeIn 0.3s ease;
+    width: 100%;
+    overflow: hidden;
 }
 
 @keyframes modalFadeIn {
-    from { transform: translateY(20px); opacity: 0; }
+    from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Элементы формы внутри модалки */
+/* Кнопка закрытия (крестик) */
+.modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none; border: none;
+    color: #666; font-size: 24px;
+    cursor: pointer; transition: 0.3s;
+    z-index: 10;
+}
+.modal-close:hover { color: #c5a47e; transform: rotate(90deg); }
+
+/* --- СТИЛИ ФОРМЫ ЗАКАЗА --- */
 #order-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 20px;
 }
 
 #order-form input, 
 #order-form textarea {
-    background: #000;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #0b0b0b;
+    border: 1px solid rgba(255,255,255,0.05);
     color: #fff;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 14px 18px;
+    border-radius: 10px;
     font-family: inherit;
-}
-
-#order-form button {
-    background: #c5a47e;
-    color: #000;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+    font-size: 14px;
     transition: 0.3s;
 }
 
-#order-form button:hover {
+#order-form input:focus, 
+#order-form textarea:focus {
+    border-color: #c5a47e;
+    outline: none;
+    background: #111;
+}
+
+/* Кнопка в форме */
+#submit-btn {
+    background: #c5a47e;
+    color: #000;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+#submit-btn:hover {
     background: #d4af37;
-    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(197, 164, 126, 0.3);
+}
+
+#submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- ФИКС AI ЧАТА (ЧТОБЫ КНОПКИ НЕ СЛИПАЛИСЬ) --- */
+.ai-chat {
+    display: none; /* Показывается через класс .active в JS */
+}
+.ai-chat.active {
+    display: flex !important;
+}
+
+.ai-qa-list {
+    display: flex;
+    flex-wrap: wrap; /* ЭТО ИСПРАВИТ ТВОЙ СКРИНШОТ */
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.ai-q {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.ai-q:hover {
+    border-color: #c5a47e;
+    color: #fff;
+    background: rgba(197, 164, 126, 0.1);
 }
