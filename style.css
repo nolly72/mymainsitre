@@ -76,80 +76,76 @@
     margin: 0 auto 40px;
 }
 
-/* 3. КАРТОЧКИ (ФИЛОСОФИЯ И НАВЫКИ) — SOFT PREMIUM */
+/* 3. КАРТОЧКИ (ФИЛОСОФИЯ И НАВЫКИ) — PREMIUM SOFT */
 .philosophy-grid, .skills-grid {
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .phi-card, .skill-card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    padding: 40px;
-    border-radius: 30px; /* Еще более округлые формы */
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.015) !important; /* Ультра-прозрачный */
+    backdrop-filter: blur(20px) !important; /* Глубокое размытие */
+    padding: 50px 40px;
+    border-radius: 32px; /* Очень мягкие углы */
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    
-    /* Сглаживание шрифта */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    position: relative;
 }
 
-/* Заголовки: Мягкое переливание */
+/* Мягкие переливающиеся заголовки */
 .phi-card h3, .skill-card h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: -0.02em; /* Чуть сближаем буквы для "мягкости" */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em !important; /* Секрет "мягкого" и дорогого шрифта */
+    line-height: 1.2;
     
-    background: linear-gradient(135deg, #ffffff 30%, rgba(197, 164, 126, 0.7) 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-/* Текст описания: Мягкий и читабельный */
+/* Текст описания — дымчатый и легкий */
 .phi-card p, .skill-card p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.55); /* Не чисто белый, а дымчатый */
-    line-height: 1.8;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    line-height: 1.7;
     font-size: 15px;
-    letter-spacing: 0.2px;
+    letter-spacing: -0.01em;
+}
+
+/* Эффект свечения при наведении */
+.phi-card:hover, .skill-card:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(197, 164, 126, 0.3);
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 
+                0 0 30px rgba(197, 164, 126, 0.05);
+}
+
+/* Иконки в навыках */
+.skill-icon {
+    font-size: 42px;
+    color: #c5a47e;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 15px rgba(197, 164, 126, 0.2));
 }
 
 /* Теги (01 / 02) */
 .phi-tag {
-    display: inline-block;
-    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(197, 164, 126, 0.6);
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #c5a47e;
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
-
-/* Эффект при наведении */
-.phi-card:hover, .skill-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(197, 164, 126, 0.3);
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-}
-
-.skill-icon {
-    font-size: 38px;
-    color: #c5a47e;
+    letter-spacing: 3px;
     margin-bottom: 25px;
-    filter: drop-shadow(0 0 15px rgba(197, 164, 126, 0.2));
-    transition: 0.4s ease;
+    display: block;
 }
 
-.skill-card:hover .skill-icon {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 25px rgba(197, 164, 126, 0.5));
-}
 
 
 /* 4. ПОРТФОЛИО (КЕЙСЫ) */
