@@ -1,11 +1,11 @@
 /* ============================================================
    ЕДИНЫЙ СКРИПТ: МОДАЛКИ, КЕЙСЫ, AI И MAILJS
-   ============================================================ */
+============================================================ */
 
 // 1. Инициализация EmailJS
 (function() {
     if (typeof emailjs !== 'undefined') {
-        emailjs.init("uMomqe3GHuHo1r5KO"); 
+        emailjs.init("uMomqe3GHuHo1r5KO");
     }
 })();
 
@@ -29,13 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ЛОГИКА КЕЙСОВ ---
     window.openModal = function(images, title, description) {
         if (!caseModal) return;
+        
+        // Убеждаемся, что images - это массив
         currentImages = Array.isArray(images) ? images : [images];
         currentSlideIndex = 0;
+
         if (modalTitle) modalTitle.innerText = title;
         if (modalDesc) modalDesc.innerText = description;
+
         updateSlide();
+        
         caseModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; 
+        document.body.style.overflow = 'hidden';
     };
 
     window.closeModal = function() {
@@ -48,18 +53,34 @@ document.addEventListener('DOMContentLoaded', () => {
     window.changeSlide = function(direction) {
         if (currentImages.length <= 1) return;
         currentSlideIndex += direction;
+
         if (currentSlideIndex >= currentImages.length) currentSlideIndex = 0;
         if (currentSlideIndex < 0) currentSlideIndex = currentImages.length - 1;
+
         updateSlide();
     };
 
     function updateSlide() {
         if (!modalImg) return;
+
+        // Плавный переход
         modalImg.style.opacity = '0';
+        
         setTimeout(() => {
-            modalImg.style.backgroundImage = `url('${currentImages[currentSlideIndex]}')`;
+            const imagePath = currentImages[currentSlideIndex];
+            
+            // Устанавливаем фон и гарантируем его видимость
+            modalImg.style.backgroundImage = `url('${imagePath}')`;
+            modalImg.style.backgroundSize = 'cover';
+            modalImg.style.backgroundPosition = 'center';
+            modalImg.style.backgroundRepeat = 'no-repeat';
+            
+            // Форсируем высоту, если она вдруг слетела
+            modalImg.style.minHeight = '300px'; 
+            
             modalImg.style.opacity = '1';
         }, 150);
+
         if (slideCounter) {
             slideCounter.innerText = `${currentSlideIndex + 1} / ${currentImages.length}`;
             slideCounter.style.display = currentImages.length > 1 ? 'block' : 'none';
@@ -70,8 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openOrderModal = function(planName) {
         if (!orderModal) return;
         if (orderTitle) orderTitle.innerText = `Заказать: ${planName}`;
+        
         const planInput = document.getElementById('selected-plan');
         if (planInput) planInput.value = planName;
+
         orderModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     };
@@ -87,8 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
             const originalText = btn ? btn.innerText : "Отправить";
-            
-            if (btn) { btn.innerText = "Отправка..."; btn.disabled = true; }
+
+            if (btn) {
+                btn.innerText = "Отправка...";
+                btn.disabled = true;
+            }
 
             emailjs.sendForm('service_ernscfc', 'template_ra86h16', this)
                 .then(() => {
@@ -100,7 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Ошибка: ' + JSON.stringify(err));
                 })
                 .finally(() => {
-                    if (btn) { btn.innerText = originalText; btn.disabled = false; }
+                    if (btn) {
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    }
                 });
         });
     }
@@ -143,9 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") { 
-            window.closeModal(); 
-            window.closeOrderModal(); 
+        if (e.key === "Escape") {
+            window.closeModal();
+            window.closeOrderModal();
         }
     });
 });
